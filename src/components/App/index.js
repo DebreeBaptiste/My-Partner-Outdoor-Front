@@ -7,6 +7,7 @@ import { Landing } from '../../pages/Landing';
 import { NotFound } from '../../pages/NotFound';
 
 /* Style */
+import Home from '../../pages/Home';
 import './styles.css';
 
 // == Composant
@@ -18,6 +19,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <h1>Composant : App</h1>
+      <Home />
     </div>
   );
 }
