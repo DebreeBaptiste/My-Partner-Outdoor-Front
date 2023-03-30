@@ -1,15 +1,14 @@
 // == Import
 import { NotFound } from '../../pages/NotFound';
-import reactLogo from './react-logo.svg';
+import Home from '../../pages/Home';
 import './styles.css';
 
 // == Composant
 function App() {
   return (
     <div className="app">
-      <img src={reactLogo} alt="react logo" />
       <h1>Composant : App</h1>
-      <NotFound />
+      <Home /> 
     </div>
   );
 }
