@@ -8,10 +8,10 @@ import Event from 'src/components/App/Events/Event/index.js';
 // == Composant
 function Events() {
   return (
-      <main className='events'> 
-        <Event /> 
-      </main>
-    
+    <main className='events'>
+      <Event />
+    </main>
+
   );
 }
 
