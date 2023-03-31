@@ -18,23 +18,7 @@ export const Header = () => {
   };
 
 
-  return (<>
-
-
-
-    <div className={`header-menu ${menuOpen ? 'active' : ""}`} >
-      <ul className="header-menu-list">
-        <li className="header-menu-list-item">
-          <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
-        </li>
-        <li className="header-menu-list-item">
-          <Link to='/login' onClick={handleClickBurgerButton}>Connexion</Link>
-        </li>
-        <li className="header-menu-list-item">
-          <Link to='/register' onClick={handleClickBurgerButton}>Inscription</Link>
-        </li>
-      </ul>
-    </div>
+  return (
     <header className="header">
       <div className='header-content'>
         <h1 className="header-title">
@@ -45,6 +29,7 @@ export const Header = () => {
         <span className='header-title-text'>My Partner Outdoor</span>
       </div>
       <Link to='/home' className="header-event">Evenement</Link>
+
 
       <div className='header-button-container'>
         <Button className="header-burger-button" onClick={handleClickBurgerButton}>
