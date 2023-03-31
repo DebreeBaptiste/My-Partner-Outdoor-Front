@@ -10,6 +10,14 @@ function Events() {
   return (
     <main className='events'>
       <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
     </main>
 
   );
