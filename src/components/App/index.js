@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Header } from '../Header';
 import { Landing } from '../../pages/Landing';
 import { NotFound } from '../../pages/NotFound';
-import  Footer  from '../Footer';
+import Footer from '../Footer';
 import Home from '../../pages/Home';
 import CreateEvent from '../../pages/CreateEvent';
 
