@@ -1,0 +1,19 @@
+.app img {
+  max-width: 150px;
+}
+
+
+.btn-transparent {
+  background-color: transparent;
+  color: var(--extra-light-grey);
+}
+
+.btn-green {
+  background-color: var(--medium-green);
+  color: var(--extra-light-grey);
+}
+
+.btn-grey {
+  background-color: var(--extra-light-grey);
+  color: var(--extra-dark-black);
+}
