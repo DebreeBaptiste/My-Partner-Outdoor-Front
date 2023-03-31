@@ -1,8 +1,8 @@
 // == Import
 // import { NotFound } from '../../pages/NotFound';
-import './styles.css';
-import Footer from '../../components/App/Footer';
-import Events from '../../components/App/Events';
+import Footer from '../components/App/Footer';
+import Events from '../components/App/Events';
+import { Header } from '../components/Header';
 
 // == Composant
 function Home() {
@@ -14,14 +14,8 @@ function Home() {
           <div className='search__bar__input'></div>
           <div className='search__bar__filter'></div> </div>
       </div>
-      <div className='event'>
-        <div className='card'></div>
-        <div className='card'></div>
-        <div className='card'></div>
-      </div>
       <div className='pagination'></div>
       <Events />
-      <Footer />
     </div>
   );
 }
