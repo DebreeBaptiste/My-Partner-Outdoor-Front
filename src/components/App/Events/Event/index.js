@@ -1,9 +1,5 @@
 // == Import
-import Logo from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/logoGreen.png';
-import Facebook from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/facebook.png';
-import Instagram from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/instagram.png';
-import Twitter from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/twitter.png';
-import kayak from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/kayak.jpg';
+import kayak from 'src/assets/resource/kayak.jpeg';
 import './styles.scss';
 
 // == Composant
