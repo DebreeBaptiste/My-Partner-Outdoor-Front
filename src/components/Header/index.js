@@ -18,7 +18,23 @@ export const Header = () => {
   };
 
 
-  return (
+  return (<>
+
+
+
+    <div className={`header-menu ${menuOpen ? 'active' : ""}`} >
+      <ul className="header-menu-list">
+        <li className="header-menu-list-item">
+          <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
+        </li>
+        <li className="header-menu-list-item">
+          <Link to='/login' onClick={handleClickBurgerButton}>Connexion</Link>
+        </li>
+        <li className="header-menu-list-item">
+          <Link to='/register' onClick={handleClickBurgerButton}>Inscription</Link>
+        </li>
+      </ul>
+    </div>
     <header className="header">
       <div className='header-content'>
         <h1 className="header-title">
