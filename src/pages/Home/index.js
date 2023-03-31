@@ -1,10 +1,5 @@
 // == Import
 // import { NotFound } from '../../pages/NotFound';
-import Logo from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/logoGreen.png';
-import Facebook from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/facebook.png';
-import Instagram from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/instagram.png';
-import Twitter from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/twitter.png';
-import Pinterest from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/pinterest.png';
 import './styles.css';
 import Footer from '../../components/App/Footer';
 import Events from '../../components/App/Events';
