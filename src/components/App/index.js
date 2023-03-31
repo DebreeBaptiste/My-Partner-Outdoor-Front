@@ -1,15 +1,23 @@
-// == Import
+/* Tools */
+
+/* Component */
+import { Route, Routes } from 'react-router-dom';
+import { Header } from '../Header';
+import { Landing } from '../../pages/Landing';
 import { NotFound } from '../../pages/NotFound';
-import reactLogo from './react-logo.svg';
+
+/* Style */
 import './styles.css';
 
 // == Composant
 function App() {
   return (
     <div className="app">
-      <img src={reactLogo} alt="react logo" />
-      <h1>Composant : App</h1>
-      <NotFound />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
