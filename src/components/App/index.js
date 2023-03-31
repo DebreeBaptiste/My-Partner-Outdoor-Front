@@ -4,7 +4,7 @@ import React from 'react';
 /* Component */
 import { Route, Routes } from 'react-router-dom';
 import { Header } from '../Header';
-import { Landing } from '../../pages/Landing';
+
 import { NotFound } from '../../pages/NotFound';
 import Footer from '../Footer';
 import Home from '../../pages/Home';

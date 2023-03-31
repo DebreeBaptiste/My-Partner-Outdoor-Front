@@ -9,18 +9,18 @@ import Event from './Event/index.js';
 // == Composant
 function Events() {
   return (
-      <main className='events'> 
-        <Event />
-        <Event /> 
-        <Event /> 
-        <Event /> 
-        <Event /> 
-        <Event /> 
-        <Event /> 
-        <Event /> 
-        <Event /> 
-      </main>
-    
+    <main className='events'>
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+    </main>
+
   );
 }
 
