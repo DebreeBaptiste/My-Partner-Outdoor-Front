@@ -55,9 +55,9 @@
 .header-button {
   display: none;
   min-width: 116px;
-  border: none;
+
   border-radius: var(--radius-lg);
-  cursor: pointer;
+
   padding: 8px 18px;
   font-size: var(--text-base);
 }
@@ -75,9 +75,7 @@
   z-index: 1;
   width: 36px;
   height: 40px;
-  cursor: pointer;
   background-color: transparent;
-  border: none;
 }
 @media (min-width: 600px) {
   .header-burger-button {

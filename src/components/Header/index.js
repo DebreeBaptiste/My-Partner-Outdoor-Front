@@ -1,14 +1,23 @@
+/* Tool */
+import { useState } from 'react';
 
 /* Component */
 import logo from 'src/assets/Mountain-adventure.png';
 import { Link } from 'react-router-dom';
-import { HeaderButton } from './HeaderButton'
+import { Button } from 'src/components/Button'
+
 
 /* Style */
 import './styles.scss';
-import { HeaderBurgerButton } from './HeaderBurgerButton';
 
 export const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleClickBurgerButton = () => {
+    setMenuOpen((prevState) => !prevState);
+  };
+
+
   return (
     <header className="header">
       <div className='header-content'>
@@ -20,16 +29,21 @@ export const Header = () => {
         <span className='header-title-text'>My Partner Outdoor</span>
       </div>
       <Link to='/home' className="header-event">Evenement</Link>
+
       <div className='header-button-container'>
-        <HeaderBurgerButton />
-        <HeaderButton className='header-button btn-transparent'>
+        <Button className="header-burger-button" onClick={handleClickBurgerButton}>
+          <span className={`header-burger-button-line-top ${menuOpen ? 'active' : ""}`} />
+          <span className={`header-burger-button-line-mid ${menuOpen ? 'active' : ""}`} />
+          <span className={`header-burger-button-line-bottom ${menuOpen ? 'active' : ""}`} />
+        </Button>
+        <Button className='header-button btn-transparent'>
 
           <Link to='/login'>Connexion</Link>
-        </HeaderButton>
-        <HeaderButton className='header-button btn-grey'>
+        </Button>
+        <Button className='header-button btn-grey'>
 
           <Link to='/register'>Inscription</Link>
-        </HeaderButton>
+        </Button>
       </div>
     </header>
   );

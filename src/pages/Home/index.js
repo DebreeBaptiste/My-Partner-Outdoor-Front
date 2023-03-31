@@ -1,7 +1,6 @@
 // == Import
 // import { NotFound } from '../../pages/NotFound';
 import './styles.css';
-import Footer from '../../components/App/Footer';
 import Events from '../../components/App/Events';
 
 // == Composant
@@ -21,7 +20,6 @@ function Home() {
       </div>
       <div className='pagination'></div>
       <Events />
-      <Footer />
     </div>
   );
 }

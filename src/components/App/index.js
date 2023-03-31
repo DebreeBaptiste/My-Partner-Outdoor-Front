@@ -1,22 +1,15 @@
 /* Tools */
+import { Route, Routes } from 'react-router-dom';
 
 /* Component */
-import { Route, Routes } from 'react-router-dom';
-import { Header } from '../Header';
-import { Landing } from '../../pages/Landing';
-/* Tools */
-
-/* Component */
-import { Route, Routes } from 'react-router-dom';
 import { Header } from '../Header';
 import { Landing } from '../../pages/Landing';
 import { NotFound } from '../../pages/NotFound';
-
-/* Style */
 import Home from '../../pages/Home';
 
 /* Style */
 import './styles.css';
+import Footer from './Footer';
 
 // == Composant
 function App() {
@@ -25,10 +18,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <h1>Composant : App</h1>
-      <Home />
+      <Footer />
+
 
 
     </div>
