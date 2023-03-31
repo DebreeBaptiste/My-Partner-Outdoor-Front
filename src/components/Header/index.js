@@ -46,6 +46,7 @@ export const Header = ({ onClick }) => {
       </div>
       <Link to='/home' className="header-event">Evenement</Link>
 
+
       <div className='header-button-container'>
         <Button className="header-burger-button" onClick={handleClickBurgerButton}>
           <span className={`header-burger-button-line-top ${menuOpen ? 'active' : ""}`} />
