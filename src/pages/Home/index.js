@@ -1,7 +1,7 @@
 // == Import
 // import { NotFound } from '../../pages/NotFound';
 import './styles.css';
-import Events from '../../components/App/Events';
+import Events from '../../components/Events';
 
 // == Composant
 function Home() {
