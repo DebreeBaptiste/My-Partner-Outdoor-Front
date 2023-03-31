@@ -3,13 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 
 /* Component */
 import { Header } from '../Header';
-import { Landing } from '../../pages/Landing';
+
 import { NotFound } from '../../pages/NotFound';
+import { Landing } from '../../pages/Landing';
 import Home from '../../pages/Home';
+import Footer from '../Footer';
 
 /* Style */
 import './styles.css';
-import Footer from './Footer';
 
 // == Composant
 function App() {
