@@ -1,6 +1,6 @@
 import { Button } from '../../components/Button';
 
-import bikeImage from 'src/assets/resource/mountain-bike.webp';
+
 import footballImage from 'src/assets/resource/football.webp';
 import pushUpImage from 'src/assets/resource/push-up.webp';
 import gymImage from 'src/assets/resource/gym.jpg';
@@ -18,14 +18,12 @@ export const Landing = () => {
     <main className="landing-page">
 
       <section className='hero-section'>
+        <div className="hero-overlay"></div>
         <div className='hero-content'>
           <h2 className='hero-content-title'>Trouver vos  partenaires pour vos activités sportives</h2>
           <p className='hero-content-subtitle'>Le réseau social des amoureux du sport</p>
-          <Button className={"landing-button btn-green"} >Lancez-vous</Button>
+          <Button className={"landing-button hero-content-button btn-green"} >Lancez-vous</Button>
           <span className='hero-content-text'>Faites le grand saut !</span>
-        </div>
-        <div className="hero-picture-container">
-          <img src={bikeImage} alt="picture of mountains" className='hero-picture' />
         </div>
       </section>
 
@@ -38,12 +36,14 @@ export const Landing = () => {
         <p className='partner-subtitle'>Vous cherchez une raison de bouger ? Notre réseau social de sport est l'endroit idéal pour commencer !</p>
       </section>
 
+      <div className='backgound-divider'> </div>
+
 
       <section className='features'>
 
-        <div className='feature'>
+        <div className='feature feature-create'>
           <div className="feature-picture-container">
-            <img src={gymImage} alt="picture of people practice gym" className='features-picture event-picture' />
+            <img src={gymImage} alt="picture of people practice gym" className='features-picture' />
           </div>
           <div className='feature-content'>
             <h4 className='feature-title'>Créer vos événements</h4>
@@ -52,20 +52,20 @@ export const Landing = () => {
           </div>
         </div>
 
-        <div className='feature'>
-          <div className='feature-content'>
+        <div className='feature feature-join'>
+          <div className='feature-content '>
             <h4 className='feature-title'>Participer aux événements</h4>
             <p className='feature-subtitle'><span className='feature-subtitle-text'>Pratiquer vos sports favoris à plusieurs</span> <span className='feature-subtitle-text'>Découvrer d’autres sports avec d’autres pratiquants</span></p>
             <Button className={"landing-button btn-green"} >Je découvre</Button>
           </div>
           <div className="feature-picture-container">
-            <img src={footballImage} alt="picture of football goalkeeper" className='features-picture join-picture' />
+            <img src={footballImage} alt="picture of football goalkeeper" className='features-picture' />
           </div>
         </div>
 
-        <div className='feature'>
+        <div className='feature feature-meet'>
           <div className="feature-picture-container">
-            <img src={pushUpImage} alt="picture of people pratice push up" className='features-picture meet-picture' />
+            <img src={pushUpImage} alt="picture of people pratice push up" className='features-picture' />
           </div>
           <div className='feature-content'>
             <h4 className='feature-title'>Faites des rencontres sportives</h4>

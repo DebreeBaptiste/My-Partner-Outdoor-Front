@@ -10,7 +10,7 @@ import Home from '../../pages/Home';
 import Footer from '../Footer';
 
 /* Style */
-import './styles.css';
+import './styles.scss';
 
 // == Composant
 function App() {
