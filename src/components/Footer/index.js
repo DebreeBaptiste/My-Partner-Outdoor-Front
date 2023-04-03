@@ -1,9 +1,9 @@
 // == Import
-import Logo from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/logoGreen.png';
-import Facebook from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/facebook.png';
-import Instagram from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/instagram.png';
-import Twitter from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/twitter.png';
-import Pinterest from '/Users/Antoine/Documents/my-partner-outdoor-front/public/image/pinterest.png';
+import Logo from '../../assets/resource/logoGreen.png';
+import Facebook from '../../assets/resource/facebook.png';
+import Instagram from '../../assets/resource/instagram.png';
+import Twitter from '../../assets/resource/twitter.png';
+import Pinterest from '../../assets/resource/pinterest.png';
 import './styles.scss';
 
 // == Composant

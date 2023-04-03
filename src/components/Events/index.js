@@ -1,9 +1,10 @@
+//  Import
+import React from 'react';
+
+
 // == Import
-import Logo from 'src/assets/resource/logoGreen.png';
-
-
 import './styles.scss';
-import Event from 'src/components/App/Events/Event/index.js';
+import Event from './Event/index.js';
 
 // == Composant
 function Events() {
@@ -25,3 +26,4 @@ function Events() {
 
 // == Export
 export default Events;
+

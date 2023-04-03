@@ -30,12 +30,23 @@
 
     &__info{
       
+
       &__place{
         display: flex;
         flex-direction: row;
+        align-items: baseline;
+        
 
-        &__picto{
+        &__iconlocationpin{
           width: var(--text-lg);
+
+          &__primary{
+            fill: var(--icon-grey);
+          }
+
+          &__secondary{
+            fill: var(--icon-black);
+          }
         }
 
         &__text{
@@ -48,11 +59,18 @@
       &__participants{
         display: flex;
         flex-direction: row;
-        vertical-align: middle;
- 
+        align-items: baseline;
 
-        &__picto{
+        &__iconusercouple{
           width: var(--text-lg);
+
+          &__primary{
+            fill: var(--icon-grey);
+          }
+
+          &__secondary{
+            fill: var(--icon-black);
+          }
         }
 
         &__text{
