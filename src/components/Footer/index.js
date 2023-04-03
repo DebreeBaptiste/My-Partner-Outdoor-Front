@@ -1,11 +1,9 @@
 // == Import
-
-// Import Image & Style
-import Logo from 'src/assets/resource/logoGreen.png';
-import Facebook from 'src/assets/resource/facebook.png';
-import Instagram from 'src/assets/resource/instagram.png';
-import Twitter from 'src/assets/resource/twitter.png';
-import Pinterest from 'src/assets/resource/pinterest.png';
+import Logo from '../../assets/resource/logoGreen.png';
+import Facebook from '../../assets/resource/facebook.png';
+import Instagram from '../../assets/resource/instagram.png';
+import Twitter from '../../assets/resource/twitter.png';
+import Pinterest from '../../assets/resource/pinterest.png';
 import './styles.scss';
 
 // == Composant

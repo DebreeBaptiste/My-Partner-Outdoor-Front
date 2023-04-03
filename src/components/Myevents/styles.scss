@@ -1,0 +1,119 @@
+.myevents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 1em auto;
+  margin-top: 0;
+  border: var(--border-sm) solid var(--light-black);
+  border-radius: var(--radius-lg);
+  padding-top: 2%;
+  padding-bottom: 2%;
+  height: auto;
+  z-index: 1;
+
+};
+
+@media (max-width: 700px) {
+  .myevents {
+    display:flex;
+    flex-direction: column;
+  }
+};
+
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+  margin-left: 3.5em ; 
+  margin-top: 2em;
+  font-family: 'Jost-Light' sans-serif;
+
+  &__button{
+    position: relative;
+    padding: 10px 20px;
+    background-color:var(--extra-light-grey);
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    text-decoration: none;
+    color: #333;
+    z-index: -1;
+    margin-right: 0.6%;
+  }
+
+}
+
+.tabs a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 20px;
+  height: 100%;
+  background-color: var(--extra-light-grey);
+  transform: skewX(20deg);
+  z-index: -1;
+  border-top:1px solid #ccc; 
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+  top: -1px;
+}
+
+.tabs a.active {
+  
+  position: relative;
+    top: 1px;
+    height: 110%;
+    padding: 10px 20px;
+    margin-right: -20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    text-decoration: none;
+    color: #333;
+    z-index: 2;
+    // margin-top: -2px;
+    
+    
+    
+}
+
+.tabs a.active:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 20px;
+  height: 105%;
+  background-color: var(--extra-light-grey);
+  transform: skewX(20deg);
+  z-index: -1;
+  border-top:1px solid #ccc; 
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+  top: -1px;
+  background-color: #ffffff;
+}
+
+
+
+
+@media (max-width: 700px) {
+  .tabs__button {
+  
+    margin-right: 2%;
+  }
+};
+
+@media (min-width: 701px) and (max-width: 1250px) {
+  .tabs__button {
+  
+    margin-right: 1%;
+  }
+};
+

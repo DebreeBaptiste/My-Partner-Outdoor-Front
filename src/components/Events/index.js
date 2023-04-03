@@ -1,10 +1,23 @@
+//  Import
+import React from 'react';
+
+
+// == Import
 import './styles.scss';
-import Event from 'src/components/Events/Event/index.js';
+import Event from './Event/index.js';
 
 // == Composant
 function Events() {
   return (
     <main className='events'>
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
+      <Event />
       <Event />
     </main>
 
@@ -13,3 +26,4 @@ function Events() {
 
 // == Export
 export default Events;
+
