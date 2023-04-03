@@ -8,11 +8,11 @@ import Myevents from '../components/Myevents';
 function Home() {
   return (
     <div className="home">
-     
+
       <div className='pagination'></div>
-      <Myevents />  
-      <Search />  
-      <Events />  
+      <Myevents />
+      <Search />
+      <Events />
     </div>
   );
 }
