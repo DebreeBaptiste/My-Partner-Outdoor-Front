@@ -1,13 +1,11 @@
+/* Component */
 import { Button } from '../../components/Button';
+import { Testimonial } from '../../components/Testimonial';
 
-
+/* Image */
 import footballImage from 'src/assets/resource/football.webp';
 import pushUpImage from 'src/assets/resource/push-up.webp';
 import gymImage from 'src/assets/resource/gym.jpg';
-import testimonialFirstImage from 'src/assets/resource/testimonial-1.png';
-import testimonialSecondImage from 'src/assets/resource/testimonial-2.png';
-import testimonialThirdImage from 'src/assets/resource/testimonial-3.png';
-
 import ArrowIcon from 'src/assets/icon-cheveron-down.svg';
 
 /* Style */
@@ -74,33 +72,9 @@ export const Landing = () => {
             <Button className={"landing-button btn-green"} >En savoir plus</Button>
           </div>
         </div>
-
       </section>
 
-      <section className='testimonials'>
-        <div className='testimonial'>
-          <div className='testimonial-card'>
-            <img src={testimonialFirstImage} alt="profil picture" className='testimonial-card-picture' />
-            <p className='testimonial-card-text'>“ J'adore cette application de rencontre sportive ! Cela m'a aidé à trouver
-              des partenaires d'entraînement incroyables “ <span className='testimonial-card-author'>Sophie Dupont</span></p>
-          </div>
-          <div className='testimonial-card'>
-            <img src={testimonialSecondImage} alt="profil picture" className='testimonial-card-picture' />
-            <p className='testimonial-card-text'>“ J'ai été impressionné par la variété d'événements sportifs proposés par cette application ” <span className='testimonial-card-author'>David Garcia</span></p>
-          </div>
-          <div className='testimonial-card'>
-            <img src={testimonialThirdImage} alt="profil picture" className='testimonial-card-picture' />
-            <p className='testimonial-card-text'>“ Enfin une application qui répond à mes besoins en tant que sportive solitaire. “ <span className='testimonial-card-author'>Laura Smith</span></p>
-          </div>
-        </div>
-
-        <div className='testimonial-button-container'>
-          <Button className='testimonial-button' />
-          <Button className='testimonial-button' />
-          <Button className='testimonial-button' />
-        </div>
-
-      </section>
+      <Testimonial />
 
       <section className='register'>
         <h3 className="register-title">Inscrivez-vous gratuitement et trouvez votre partenaire de sport idéal en quelques clics seulement</h3>

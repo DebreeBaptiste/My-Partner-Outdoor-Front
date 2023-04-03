@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 /* Component */
-import logo from 'src/assets/Mountain-adventure.png';
+import logo from 'src/assets/Mountain-adventure.svg';
 import { Link } from 'react-router-dom';
 import { Button } from 'src/components/Button'
 
