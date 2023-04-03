@@ -7,10 +7,13 @@
   background: linear-gradient(90deg, var(--medium-green), var(--dark-green));
   color: var(--extra-light-grey);
   box-shadow: var(--shadow-lg);
-  transition: background 0.2s ease-in-out;
 
   &:hover {
-    background: linear-gradient(180deg, var(--medium-green), var(--dark-green));
+    background: linear-gradient(
+      90deg,
+      var(--medium-green),
+      var(--medium-green)
+    );
   }
 }
 
