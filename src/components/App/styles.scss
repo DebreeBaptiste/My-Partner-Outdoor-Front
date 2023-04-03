@@ -4,16 +4,13 @@
 }
 
 .btn-green {
-  background: linear-gradient(90deg, var(--medium-green), var(--dark-green));
+  background-color: var(--medium-green);
   color: var(--extra-light-grey);
   box-shadow: var(--shadow-lg);
+  transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    background: linear-gradient(
-      90deg,
-      var(--medium-green),
-      var(--medium-green)
-    );
+    background-color: var(--dark-green);
   }
 }
 
