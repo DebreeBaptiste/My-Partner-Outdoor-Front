@@ -12,6 +12,23 @@
   &:hover {
     background-color: var(--dark-green);
   }
+  &:active {
+    box-shadow: none;
+  }
+}
+
+.btn-purple {
+  background-color: var(--medium-purple);
+  color: var(--extra-light-grey);
+  box-shadow: var(--shadow-lg);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--medium-green);
+  }
+  &:active {
+    box-shadow: none;
+  }
 }
 
 .btn-grey {
