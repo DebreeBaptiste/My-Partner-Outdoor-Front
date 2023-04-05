@@ -12,6 +12,7 @@ import CreateEvent from '../../pages/CreateEvent';
 
 /* Style */
 import './styles.css';
+import ForgetPassword from '../ForgetPassword';
 
 // == Composant
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/home" element={<Home />} />
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="*" element={<NotFound />} />
