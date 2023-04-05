@@ -33,10 +33,13 @@ export const Messages = () => {
   };
 
   useEffect(() => {
-
-    chatMessagesRef.current.scrollTo({ bottom: 0 })
-
-  }, [messages]);
+    if (chatMessagesRef) {
+      chatMessagesRef.current.addEventListener('DOMNodeInserted', (event) => {
+        const { currentTarget: target } = event;
+        target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
+      });
+    }
+  }, [messages])
 
   return (
     <section className='event-chat'>
