@@ -1,8 +1,7 @@
+import Error404 from '../components/Error404';
+
 export const NotFound = () => {
   return (
-    <div>
-      <h1>404</h1>
-      <p>Page not found</p>
-    </div>
+    <Error404 />
   );
 }
