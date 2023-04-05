@@ -1,4 +1,4 @@
-.forgetpassword{
+.forgetpassword {
   width: 27%;
   border: 1px solid var(--dark-black);
   margin-left: auto;
@@ -10,25 +10,24 @@
   flex-direction: column;
   border-radius: var(--radius-sm);
 
-  &__title{
+  &__title {
     padding: 2%;
     margin-bottom: 3%;
-    
   }
 
-  &__form{
+  &__form {
     padding: 2%;
     margin-bottom: 3%;
     display: flex;
     flex-direction: column;
 
-    &__text{
+    &__text {
       font-family: 'Jost-Light', sans-serif;
       font-size: var(--text-xs);
       margin-bottom: 5%;
     }
 
-    &__input{
+    &__input {
       margin-bottom: 0.5em;
       border: 1px solid var(--light-grey);
       border-radius: var(--border-base);
@@ -36,13 +35,11 @@
       margin-top: 0.5em;
       margin-right: 6%;
     }
-    &__input::placeholder{
+    &__input::placeholder {
       font-size: var(--text-xs);
-      
     }
 
-
-    &__button{
+    &__button {
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -50,41 +47,40 @@
       padding-right: 6%;
       justify-content: flex-end;
 
-      &__cancel{
-          background-color: var(--medium-purple);
-          color : white; 
-          border-radius: var(--radius-base);
-          box-shadow: 0 10px 10px var(--light-grey) ;
-          font-family: 'Jost-light', sans-serif;
-          
-          border: none;
-          padding: 2% 10%;
-        }
-          
+      &__cancel {
+        background-color: var(--medium-purple);
+        color: white;
+        border-radius: var(--radius-base);
+        box-shadow: 0 10px 10px var(--light-grey);
+        font-family: 'Jost-light', sans-serif;
 
-        &__submit{
-          background-color: white ;
-          color : var(--medium-purple); 
-          border-radius: var(--radius-base);
-          box-shadow: 0 10px 10px var(--light-grey) ;
-          font-family: 'Jost-light', sans-serif;
-          border: 1px solid var(--light-purple);
-          padding: 2% 10%;
-          margin-right: 10%;
-          
-        }
+        border: none;
+        padding: 2% 10%;
+      }
+
+      &__submit {
+        background-color: white;
+        color: var(--medium-purple);
+        border-radius: var(--radius-base);
+        box-shadow: 0 10px 10px var(--light-grey);
+        font-family: 'Jost-light', sans-serif;
+        border: 1px solid var(--light-purple);
+        padding: 2% 10%;
+        margin-right: 10%;
+      }
+    }
   }
-}};
-
+}
 
 @media (max-width: 700px) {
   .forgetpassword {
+    margin-top: 20%;
     width: 70%;
   }
-};
+}
 
 @media (min-width: 701px) and (max-width: 1250px) {
   .forgetpassword {
     width: 40%;
   }
-};
+} ;

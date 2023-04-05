@@ -1,5 +1,6 @@
 //  Import
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // == Import
 import kayak from 'src/assets/resource/kayak.jpeg';
