@@ -14,6 +14,8 @@ import ForgetPassword from '../ForgetPassword';
 import { ModalLogin } from '../ModalLogin';
 
 /* Style */
+import './styles.css';
+import ForgetPassword from '../ForgetPassword';
 import './styles.scss';
 
 // == Composant
