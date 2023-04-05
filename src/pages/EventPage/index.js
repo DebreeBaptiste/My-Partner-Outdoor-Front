@@ -1,6 +1,13 @@
+/* Tool */
+import { useEffect, useState } from 'react';
+
 /* Component */
 import { NavLink, useLocation } from 'react-router-dom';
 import { Button } from '../../components/Button';
+import { About } from '../../components/About';
+import { Messages } from '../../components/Messages';
+import { Participants } from '../../components/Participants';
+import { Notification } from '../../components/Notification';
 
 /* Image/logo */
 import eventHeaderPicture from '../../assets/resource/event-details.jpg';
@@ -8,15 +15,48 @@ import eventHeaderPicture from '../../assets/resource/event-details.jpg';
 
 /* Style */
 import './styles.scss';
-import { About } from '../../components/About';
-import { Messages } from '../../components/Messages';
+
 
 export const EventPage = () => {
 
   const { pathname } = useLocation();
 
+  // Copy to clipboard logic
+  const [copySuccessNotification, setCopySuccessNotification] = useState(false);
+
+  const copyToClip = async () => {
+    if (participateNotification) {
+      return
+    }
+
+    await navigator.clipboard.writeText(location.href);
+    setCopySuccessNotification(true);
+  }
+
+  // Participate logic
+  const [participateNotification, setParticipateNotification] = useState(false);
+
+  const handleClickParticipateNotification = () => {
+    if (copySuccessNotification) {
+      return
+    }
+    setParticipateNotification(true);
+  }
+
+  // Close notification auto after 2.5s
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCopySuccessNotification(false);
+      setParticipateNotification(false);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [copySuccessNotification, participateNotification]);
+
+
   return (
     <main className='event'>
+      <Notification message="Lien de l'évênement a été copié !" onClick={() => setCopySuccessNotification(false)} open={copySuccessNotification} />
+      <Notification message="Vous participez à l'évênement" onClick={() => setParticipateNotification(false)} open={participateNotification} />
       <header className="event-header">
         <img className='event-header-picture' src={eventHeaderPicture} />
         <div className='event-header-content'>
@@ -24,7 +64,7 @@ export const EventPage = () => {
             <p>SAMEDI 3 JUIN 2023 de 13:00 à 17:00</p>
             <p>Tour du Salagou en VTT</p>
           </div>
-          <Button className={'event-header-button btn-purple'} children={'Je participe'} />
+          <Button className={'event-header-button btn-purple'} children={'Je participe'} onClick={handleClickParticipateNotification} />
         </div>
       </header>
       <nav className='event-nav'>
@@ -32,14 +72,14 @@ export const EventPage = () => {
           <NavLink to="/event/1/" className="event-nav-link"><li className='event-nav-item active'>A propos</li></NavLink>
           <NavLink to="/event/1/chat" className="event-nav-link"><li className='event-nav-item'>Discussion</li></NavLink>
           <NavLink to="/event/1/participants" className="event-nav-link"><li className='event-nav-item'>Participants</li></NavLink>
-          <li className='event-nav-item event-nav-item-share'>Partager</li>
+          <a onClick={copyToClip}><li className='event-nav-item event-nav-item-share'>Partager</li></a>
         </ul>
       </nav>
 
       <section className='event-section'>
 
         {pathname === '/event/1/chat' && <Messages />}
-        {pathname === '/event/1/participants' && <div>Participants</div>}
+        {pathname === '/event/1/participants' && <Participants />}
         {pathname === '/event/1/' && <About />}
 
 
