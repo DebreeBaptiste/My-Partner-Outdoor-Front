@@ -54,7 +54,7 @@ export const EventPage = () => {
 
 
   return (
-    <main className='event'>
+    <main className='event-detail'>
       <Notification message="Lien de l'évênement a été copié !" onClick={() => setCopySuccessNotification(false)} open={copySuccessNotification} />
       <Notification message="Vous participez à l'évênement" onClick={() => setParticipateNotification(false)} open={participateNotification} />
       <header className="event-header">
