@@ -1,5 +1,4 @@
 /* Tools */
-import React from 'react';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -16,6 +15,7 @@ import { ModalLogin } from '../ModalLogin';
 
 /* Style */
 import './styles.scss';
+import { ModalLogin } from '../ModalLogin';
 
 // == Composant
 function App() {
