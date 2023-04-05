@@ -1,15 +1,40 @@
+/* Tool */
+import { useState } from 'react';
 
 /* Component */
-import logo from 'src/assets/Mountain-adventure.png';
+import logo from 'src/assets/Mountain-adventure.svg';
 import { Link } from 'react-router-dom';
-import { HeaderButton } from './HeaderButton'
+import { Button } from 'src/components/Button'
+
 
 /* Style */
 import './styles.scss';
-import { HeaderBurgerButton } from './HeaderBurgerButton';
 
-export const Header = () => {
-  return (
+export const Header = ({ onClick }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleClickBurgerButton = () => {
+    setMenuOpen((prevState) => !prevState);
+  };
+
+
+  return (<>
+
+
+
+    <div className={`header-menu ${menuOpen ? 'active' : ""}`} >
+      <ul className="header-menu-list">
+        <li className="header-menu-list-item">
+          <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
+        </li>
+        <li className="header-menu-list-item">
+          <a className="header-menu-login" onClick={onClick}>Connexion</a>
+        </li>
+        <li className="header-menu-list-item">
+          <Link to='/register' onClick={handleClickBurgerButton}>Inscription</Link>
+        </li>
+      </ul>
+    </div>
     <header className="header">
       <div className='header-content'>
         <h1 className="header-title">
@@ -20,18 +45,24 @@ export const Header = () => {
         <span className='header-title-text'>My Partner Outdoor</span>
       </div>
       <Link to='/home' className="header-event">Evenement</Link>
-      <div className='header-button-container'>
-        <HeaderBurgerButton />
-        <HeaderButton className='header-button btn-transparent'>
 
-          <Link to='/login'>Connexion</Link>
-        </HeaderButton>
-        <HeaderButton className='header-button btn-grey'>
+      <div className='header-button-container'>
+        <Button className="header-burger-button" onClick={handleClickBurgerButton}>
+          <span className={`header-burger-button-line-top ${menuOpen ? 'active' : ""}`} />
+          <span className={`header-burger-button-line-mid ${menuOpen ? 'active' : ""}`} />
+          <span className={`header-burger-button-line-bottom ${menuOpen ? 'active' : ""}`} />
+        </Button>
+        <Button className='header-button btn-transparent'>
+
+          <a onClick={onClick}>Connexion</a>
+        </Button>
+        <Button className='header-button btn-grey'>
 
           <Link to='/register'>Inscription</Link>
-        </HeaderButton>
+        </Button>
       </div>
     </header>
+  </>
   );
 }
 

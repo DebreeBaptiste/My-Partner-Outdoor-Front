@@ -1,0 +1,261 @@
+.landing-page {
+  display: grid;
+  grid-row-gap: 2rem;
+  width: 100%;
+}
+
+.landing-button {
+  width: max-content;
+  border-radius: var(--radius-full);
+  padding: 0.8rem 1.5rem;
+}
+
+.hero-section {
+  display: grid;
+  position: relative;
+  grid-template-rows: minmax(500px, 45vw);
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+}
+
+.hero-overlay {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  height: 100%;
+  background-image: url('src/assets/resource/yoga.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+
+  &::before {
+    grid-row: 1;
+    grid-column: 1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--extra-dark-black);
+    opacity: var(--opacity-60);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  grid-column: 1;
+  display: grid;
+  grid-row-gap: 2rem;
+  color: var(--extra-light-grey);
+  align-content: center;
+  text-align: center;
+  padding: 0 3rem;
+
+  &-title {
+    word-break: break-word;
+    line-height: 2.6rem;
+    font-size: var(--text-3xl);
+    font-family: 'Jost-Medium';
+  }
+
+  &-text {
+    font-family: 'Jost-Regular';
+    font-size: var(--text-sm);
+    padding-left: 0.5rem;
+  }
+  &-button {
+    justify-self: center;
+    margin-top: 2rem;
+  }
+}
+@media (max-width: 700px) {
+  .hero-content-title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* ARROW SECTION */
+.arrow-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.arrow-icon {
+  height: 3.5rem;
+
+  animation: scrollDown 3s infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* PARTNER SECTION */
+.partner {
+  display: grid;
+  grid-template-columns: fit-content;
+  justify-items: center;
+  grid-row-gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+  padding: 0 1.5rem;
+
+  &-title {
+    line-height: 2.5rem;
+    font-size: var(--text-3xl);
+    font-family: 'Jost-Medium';
+  }
+  &-subtitle {
+    padding: 0 6rem;
+    line-height: 1.5rem;
+    font-size: var(--text-sm);
+    font-family: 'Jost-Regular';
+  }
+}
+@media (max-width: 700px) {
+  .partner-title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* BACKGROUND-DIVIDER */
+.backgound-divider {
+  background-image: url('src/assets/resource/forest.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+  clip-path: polygon(
+    41% 3%,
+    56% 12%,
+    100% 0,
+    100% 96%,
+    52% 100%,
+    19% 90%,
+    0 94%,
+    0 0
+  );
+}
+
+/* FEATURE SECTION */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 2rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+
+  &-picture {
+    width: 100%;
+    max-width: 600px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+  }
+}
+@media (max-width: 700px) {
+  .features-picture {
+    height: auto;
+  }
+}
+
+.feature {
+  display: grid;
+  grid-column-gap: 20%;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+
+  &-create {
+    grid-template-columns: 1fr calc(1fr / 1.2);
+  }
+  &-join {
+    grid-template-columns: calc(1fr / 1.2) 1fr;
+  }
+  &-meet {
+    grid-template-columns: 1fr calc(1fr / 1.2);
+  }
+
+  &-content {
+    display: grid;
+    grid-row-gap: 1rem;
+    align-items: center;
+  }
+
+  &-title {
+    line-height: 2.5rem;
+    font-size: var(--text-2xl);
+    font-family: 'Jost-Medium';
+  }
+  &-subtitle {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5rem;
+    font-size: var(--text-sm);
+    font-family: 'Jost-Regular';
+
+    &-text {
+      display: block;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .feature {
+    grid-column-gap: 0;
+    grid-row-gap: 1.5rem;
+  }
+  .feature-create,
+  .feature-join,
+  .feature-meet {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-join .feature-content {
+    grid-row: 2 / 3;
+  }
+
+  .feature-content {
+    justify-items: center;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 2rem;
+  padding: 4rem 0;
+
+  &-title {
+    font-family: 'Jost-Medium';
+    font-size: var(--text-xl);
+    line-height: 2.5rem;
+    text-align: center;
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 700px) {
+  .register-title {
+    font-size: var(--text-lg);
+  }
+}

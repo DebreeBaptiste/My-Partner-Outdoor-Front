@@ -1,26 +1,47 @@
 /* Tools */
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 /* Component */
-import { Route, Routes } from 'react-router-dom';
 import { Header } from '../Header';
-import { Landing } from '../../pages/Landing';
 import { NotFound } from '../../pages/NotFound';
+import { Landing } from '../../pages/Landing';
+import { EventPage } from '../../pages/EventPage';
 import Home from '../../pages/Home';
+import Footer from '../Footer';
 
 /* Style */
-import './styles.css';
+import './styles.scss';
+import { ModalLogin } from '../ModalLogin';
 
 // == Composant
 function App() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = (event) => {
+    event.preventDefault();
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = (event) => {
+    event.preventDefault();
+    setModalOpen(false);
+  };
+
+
   return (
     <div className="app">
-      <h1>Composant : App</h1>
-      <Home />
-      <Header />
+      <Header onClick={handleOpenModal} />
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/event/:id/chat" element={<EventPage />} />
+        <Route path="/event/:id/participants" element={<EventPage />} />
+        <Route path="/event/:id/" element={<EventPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
+      <ModalLogin open={modalOpen} onClick={handleCloseModal} />
     </div>
   );
 }
