@@ -10,8 +10,9 @@ import Event from '../Events/Event';
 function Myevents() {
   return (
         <><div class="tabs">
-      <a className='tabs__button passé' href="#">Passé</a>
-      <a className='tabs__button avenir active' href="#" >À venir</a>
+
+      <button className='tabs__button passé' href="#">Passé</button>
+      <button className='tabs__button avenir active' href="#" >À venir</button>
     </div><div className='myevents'>
         <Event />
         <Event />
