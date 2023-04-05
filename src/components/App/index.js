@@ -8,7 +8,7 @@ import { NotFound } from '../../pages/NotFound';
 import { Landing } from '../../pages/Landing';
 import { EventPage } from '../../pages/EventPage';
 import Home from '../../pages/Home';
-import Footer from '../Footer';
+import CreateEvent from '../../pages/CreateEvent';
 
 /* Style */
 import './styles.scss';
@@ -38,6 +38,7 @@ function App() {
         <Route path="/event/:id/chat" element={<EventPage />} />
         <Route path="/event/:id/participants" element={<EventPage />} />
         <Route path="/event/:id/" element={<EventPage />} />
+        <Route path="/createevent" element={<CreateEvent />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
