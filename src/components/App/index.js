@@ -4,9 +4,6 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 /* Component */
-import { Route, Routes } from 'react-router-dom';
-
-/* Component */
 import { Header } from '../Header';
 import { NotFound } from '../../pages/NotFound';
 import { Landing } from '../../pages/Landing';
@@ -16,12 +13,11 @@ import { Landing } from '../../pages/Landing';
 import { EventPage } from '../../pages/EventPage';
 import Home from '../../pages/Home';
 import CreateEvent from '../../pages/CreateEvent';
+import ForgetPassword from '../ForgetPassword';
+import { ModalLogin } from '../ModalLogin';
 
 /* Style */
-import './styles.css';
-import ForgetPassword from '../ForgetPassword';
 import './styles.scss';
-import { ModalLogin } from '../ModalLogin';
 
 // == Composant
 function App() {
