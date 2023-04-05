@@ -21,7 +21,7 @@ function Search() {
               </div>
             <div className='search__block__form__input__place'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="search__block__form__input__place__iconlocationpin"><path className="search__block__form__input__place__iconlocationpin__primary" d="M5.64 16.36a9 9 0 1 1 12.72 0l-5.65 5.66a1 1 0 0 1-1.42 0l-5.65-5.66zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path className="search__block__form__input__place__iconlocationpin__secondary" d="M12 1a9 9 0 0 1 6.36 15.36l-5.65 5.66a1 1 0 0 1-.71.3V13a3 3 0 0 0 0-6V1z"/></svg>
-              <input className='search__block__form__input__place__text' type="text" placeholder="Saisissez une ville" />
+              <input className='search__block__form__input__place__text' type="text" placeholder="Saisissez un département" />
             </div>
             <div className='search__block__form__input__submit'>
             
