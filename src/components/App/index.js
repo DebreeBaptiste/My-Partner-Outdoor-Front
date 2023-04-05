@@ -11,6 +11,8 @@ import Home from '../../pages/Home';
 import CreateEvent from '../../pages/CreateEvent';
 
 /* Style */
+import './styles.css';
+import ForgetPassword from '../ForgetPassword';
 import './styles.scss';
 import { ModalLogin } from '../ModalLogin';
 
@@ -34,6 +36,7 @@ function App() {
       <Header onClick={handleOpenModal} />
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/home" element={<Home />} />
         <Route path="/event/:id/chat" element={<EventPage />} />
         <Route path="/event/:id/participants" element={<EventPage />} />
