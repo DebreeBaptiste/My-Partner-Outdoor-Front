@@ -59,11 +59,6 @@ export const Testimonial = () => {
     secondTestimonialObserver.observe(secondTestimonial.current);
     thirdTestimonialObserver.observe(thirdTestimonial.current);
 
-    return () => {
-      firstTestimonialObserver.unobserve(firstTestimonial.current);
-      secondTestimonialObserver.unobserve(secondTestimonial.current);
-      thirdTestimonialObserver.unobserve(thirdTestimonial.current);
-    }
   });
 
 

@@ -10,7 +10,7 @@ import { Button } from 'src/components/Button'
 /* Style */
 import './styles.scss';
 
-export const Header = () => {
+export const Header = ({ onClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleClickBurgerButton = () => {
@@ -28,7 +28,7 @@ export const Header = () => {
           <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
         </li>
         <li className="header-menu-list-item">
-          <Link to='/login' onClick={handleClickBurgerButton}>Connexion</Link>
+          <a className="header-menu-login" onClick={onClick}>Connexion</a>
         </li>
         <li className="header-menu-list-item">
           <Link to='/register' onClick={handleClickBurgerButton}>Inscription</Link>
@@ -55,7 +55,7 @@ export const Header = () => {
         </Button>
         <Button className='header-button btn-transparent'>
 
-          <Link to='/login'>Connexion</Link>
+          <a onClick={onClick}>Connexion</a>
         </Button>
         <Button className='header-button btn-grey'>
 
