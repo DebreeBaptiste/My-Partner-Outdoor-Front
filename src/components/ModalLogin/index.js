@@ -47,7 +47,7 @@ export const ModalLogin = ({ open, onClick }) => {
             <button type="submit" className="modal-login-container-form-button-submit">Se connecter</button>
           </div>
         </form>
-        <Link className="modal-login-container-link" to='/forgottenPassword' onClick={handClickModalContainer}>Mot de passe oublié ?</Link>
+        <Link className="modal-login-container-link" to='/forget-password' onClick={handClickModalContainer}>Mot de passe oublié ?</Link>
       </div>
     </dialog>
 
