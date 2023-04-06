@@ -40,7 +40,7 @@ function Event() {
             <button className='event__detail__down__priceButton__button'>Inscription</button>
           </div>
           <div className='event__detail__down__moreinfo'>
-            <Link to='/event/1'>
+            <Link to='/event/1/'>
               <p className='event__detail__down__moreinfo__text'>Plus d'informations en détails</p>
             </Link>
 
