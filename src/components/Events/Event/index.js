@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 // == Import
 import kayak from 'src/assets/resource/kayak.jpeg';
-import iconlocationpin from 'src/assets/resource/icon-location-pin.svg';
-import iconusercouple from 'src/assets/resource/icon-user-couple.svg';
 import './styles.scss';
 
 // == Composant
