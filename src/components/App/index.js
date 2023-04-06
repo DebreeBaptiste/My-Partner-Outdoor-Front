@@ -1,5 +1,5 @@
 /* Tools */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 /* Component */
@@ -18,6 +18,23 @@ import './styles.scss';
 
 // == Composant
 function App() {
+
+  const fetchData = async () => {
+    const response = await fetch('http://localhost:4000/user/1', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = (event) => {
