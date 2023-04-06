@@ -113,6 +113,12 @@
           padding: 3% 8% 3% 8%;
           margin: 10% 8% 3% 10%;
           border: none;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background-color: var(--light-green);
+          }
         }
       }
 
@@ -128,6 +134,12 @@
           text-align: center;
           color: var(--dark-black);
           border-bottom: var(--border-sm) solid var(--light-black);
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            color: var(--medium-green);
+            border-bottom: var(--border-sm) solid var(--medium-green);
+          }
         }
       }
     }
