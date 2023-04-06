@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /* Image */
 import logo from 'src/assets/mountain-adventure-green.svg';
@@ -12,6 +12,15 @@ import './styles.scss';
 export const ModalLogin = ({ open, onClick }) => {
 
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [open]);
+
 
 
   const handClickModalContainer = (event) => {
