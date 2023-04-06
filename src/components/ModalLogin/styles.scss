@@ -41,6 +41,19 @@
       }
     }
 
+    &-link-register {
+      align-self: center;
+      color: var(--medium-green);
+      text-decoration: underline;
+      font-size: var(--text-xs);
+      padding-top: 2rem;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: var(--dark-green);
+      }
+    }
+
     &-header {
       display: flex;
       flex-direction: column;

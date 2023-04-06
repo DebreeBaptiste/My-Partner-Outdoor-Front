@@ -19,38 +19,9 @@ import './styles.scss';
 // == Composant
 function App() {
 
-  const fetchData = async () => {
-    const response = await fetch('http://localhost:4000/user/1', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-  };
-
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleOpenModal = (event) => {
-    event.preventDefault();
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = (event) => {
-    event.preventDefault();
-    setModalOpen(false);
-  };
-
-
   return (
     <div className="app">
-      <Header onClick={handleOpenModal} />
+      <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
@@ -62,7 +33,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-      <ModalLogin open={modalOpen} onClick={handleCloseModal} />
+      <ModalLogin />
     </div>
   );
 }
