@@ -23,17 +23,19 @@ export const ModalLogin = ({ open, onClick }) => {
 
 
 
-  const handClickModalContainer = (event) => {
-    setTimeout(() => {
-      if (event.target.className === "modal-login active" || event.target.className === "modal-login-container-link") {
-        onClick(event);
-      }
-    }, 0);
+  const handClickModalBackdrop = (event) => {
+    if (event.target.className === "modal-login active") {
+      onClick(event);
+    }
   };
-
+  const handClickForgetPassword = (event) => {
+    setTimeout(() => {
+      onClick(event);
+    }, 0);
+  }
   return (
 
-    <dialog className={`modal-login ${open ? "active" : ""}`} open={open} onClick={handClickModalContainer}>
+    <dialog className={`modal-login ${open ? "active" : ""}`} open={open} onClick={handClickModalBackdrop}>
       <div className="modal-login-container">
         <div className="modal-login-container-header">
           <h2 className="modal-login-container-header-title">My Partner Outdoor</h2>
@@ -56,7 +58,7 @@ export const ModalLogin = ({ open, onClick }) => {
             <button type="submit" className="modal-login-container-form-button-submit">Se connecter</button>
           </div>
         </form>
-        <Link className="modal-login-container-link" to='/forget-password' onClick={handClickModalContainer}>Mot de passe oublié ?</Link>
+        <Link className="modal-login-container-link" to='/forget-password' onClick={handClickForgetPassword}>Mot de passe oublié ?</Link>
       </div>
     </dialog>
 
