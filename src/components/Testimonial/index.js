@@ -59,7 +59,7 @@ export const Testimonial = () => {
     secondTestimonialObserver.observe(secondTestimonial.current);
     thirdTestimonialObserver.observe(thirdTestimonial.current);
 
-  });
+  }, [firstTestimonial, secondTestimonial, thirdTestimonial]);
 
 
 
