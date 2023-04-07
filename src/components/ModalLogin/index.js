@@ -79,7 +79,7 @@ export const ModalLogin = ({ open, onClick }) => {
               placeholder='Email'
               className="modal-login-container-form-input"
               value={email}
-              onChange={handleChangeField}
+              onChange={(event) => handleChangeField(event.target.value, event.target.name)}
             />
 
           </div>
@@ -94,7 +94,7 @@ export const ModalLogin = ({ open, onClick }) => {
               placeholder='Mot de passe'
               className="modal-login-container-form-input"
               value={password}
-              onChange={handleChangeField}
+              onChange={(event) => handleChangeField(event.target.value, event.target.name)}
             />
 
             {!showPassword && <img src={viewIcon} className="modal-login-container-form-password-icon" onClick={() => setShowPassword(true)} />}
