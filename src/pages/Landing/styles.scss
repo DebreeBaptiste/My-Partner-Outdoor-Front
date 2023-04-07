@@ -258,7 +258,7 @@
   }
 }
 
-.register {
+.landing-register {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -275,7 +275,7 @@
   }
 }
 @media (max-width: 700px) {
-  .register-title {
+  .landing-register-title {
     font-size: var(--text-lg);
   }
 }

@@ -11,6 +11,7 @@ import Home from '../../pages/Home';
 import CreateEvent from '../../pages/CreateEvent';
 import ForgetPassword from '../ForgetPassword';
 import { ModalLogin } from '../ModalLogin';
+import { Register } from '../../pages/Register';
 
 /* Style */
 import './styles.scss';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/event/:id/participants" element={<EventPage />} />
         <Route path="/event/:id/" element={<EventPage />} />
         <Route path="/createevent" element={<CreateEvent />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
