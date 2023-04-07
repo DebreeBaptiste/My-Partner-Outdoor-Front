@@ -19,6 +19,7 @@ export const initialState = {
 };
 
 export const saveUser = createAction('user/saveUser');
+export const userLogout = createAction('user/userLogout');
 export const changeCredentialsValue = createAction('user/changeCredentialsValue');
 
 const userReducer = createReducer(initialState, (builder) => {
@@ -35,6 +36,18 @@ const userReducer = createReducer(initialState, (builder) => {
         id,
       };
       state.logged = true;
+    })
+    .addCase(userLogout, (state) => {
+      state.userDetails = {
+        pseudo: '',
+        bio: '',
+        picture: '',
+        birthday: '',
+        firstname: '',
+        lastname: '',
+        id: '',
+      };
+      state.logged = false;
     })
     .addCase(changeCredentialsValue, (state, action) => {
       const { value, name } = action.payload;

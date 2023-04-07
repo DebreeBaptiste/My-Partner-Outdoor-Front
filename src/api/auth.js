@@ -1,4 +1,4 @@
-import { saveUser } from '../store/reducers/user';
+import { saveUser, userLogout } from '../store/reducers/user';
 
 
 // eslint-disable-next-line import/prefer-default-export
@@ -28,6 +28,6 @@ export const login = () => async (dispatch, getState) => {
 };
 
 export const logout = () => (dispatch) => {
-  dispatch(saveUser({}));
+  dispatch(userLogout());
   // defaults.headers.common['Authorization'] = null;
 };

@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../store/reducers/modal';
+import { logout } from '../../api/auth';
 
 /* Component */
 import logo from 'src/assets/Mountain-adventure.svg';
@@ -32,6 +33,11 @@ export const Header = () => {
     dispatch(openModal());
   };
 
+  const handleClickLogout = () => {
+    dispatch(logout())
+  }
+
+
   return (<>
 
     <div className={`header-menu ${menuOpen ? 'active' : ""}`} >
@@ -42,7 +48,7 @@ export const Header = () => {
         {!userLogged &&
           <>
             <li className="header-menu-list-item">
-              <a className="header-menu-login" onClick={handleOpenModal}>Connexion</a>
+              <a className="header-menu-login" onClick={handleOpenModal}>Se connecter</a>
             </li>
             <li className="header-menu-list-item">
               <Link to='/register' onClick={handleClickBurgerButton}>Inscription</Link>
@@ -55,7 +61,7 @@ export const Header = () => {
               <Link to='/profil'>Profil</Link>
             </li>
 
-            <Link to="/logout"> <li className="header-menu-login">Déconnexion</li> </Link>
+            <Link to="/logout" onClick={handleClickLogout}> <li className="header-menu-login">Se déconnecter</li> </Link>
           </>
         }
 
@@ -84,7 +90,7 @@ export const Header = () => {
           <>
             <Button className='header-button btn-transparent'>
 
-              <a onClick={handleOpenModal}>Connexion</a>
+              <a onClick={handleOpenModal}>Se connecter</a>
             </Button>
             <Button className='header-button btn-grey'>
 
@@ -95,7 +101,7 @@ export const Header = () => {
         {userLogged &&
           <>
             <Button className='header-button btn-transparent'>
-              <a >Deconnexion</a>
+              <a onClick={handleClickLogout}>Se déconnecter</a>
             </Button>
             <Button className='header-button btn-grey'>
 
