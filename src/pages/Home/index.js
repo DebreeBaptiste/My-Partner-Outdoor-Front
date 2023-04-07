@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 // == Composant
 function Home() {
 
-  const userLogged = useSelector((state) => state.user).logged;
+  const userLogged = useSelector((state) => state.user.logged);
 
   return (
     <div className="home">
