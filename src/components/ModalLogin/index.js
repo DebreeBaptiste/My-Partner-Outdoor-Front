@@ -1,4 +1,4 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCredentialsValue } from 'src/store/reducers/user';
@@ -17,6 +17,8 @@ export const ModalLogin = ({ open, onClick }) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const email = useSelector((state) => state.user.credentials.email);
@@ -26,6 +28,7 @@ export const ModalLogin = ({ open, onClick }) => {
   const modalOpen = useSelector((state) => state.modal.modalOpen);
 
   useEffect(() => {
+
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
@@ -39,7 +42,7 @@ export const ModalLogin = ({ open, onClick }) => {
       dispatch(closeModal());
     }
   };
-  const handClickPageRedirect = () => {
+  const handleClickPageRedirect = () => {
     setTimeout(() => {
       dispatch(closeModal());
     }, 0);
@@ -53,12 +56,8 @@ export const ModalLogin = ({ open, onClick }) => {
     event.preventDefault();
     dispatch(login());
     dispatch(closeModal());
+    navigate('/home');
   };
-
-  if (userLogged) {
-    <Navigate to="/home" />
-  }
-
 
   return (
 
@@ -106,10 +105,11 @@ export const ModalLogin = ({ open, onClick }) => {
             <button type="submit" className="modal-login-container-form-button-submit">Se connecter</button>
           </div>
         </form>
-        <Link className="modal-login-container-link" to='/forget-password' onClick={handClickPageRedirect}>Mot de passe oublié ?</Link>
-        <Link className="modal-login-container-link-register" to='/register' onClick={handClickPageRedirect}>Vous n'avez pas encore de compte ?</Link>
+        <Link className="modal-login-container-link" to='/forget-password' onClick={handleClickPageRedirect}>Mot de passe oublié ?</Link>
+        <Link className="modal-login-container-link-register" to='/register' onClick={handleClickPageRedirect}>Vous n'avez pas encore de compte ?</Link>
       </div>
     </dialog>
+
 
   );
 };
