@@ -69,27 +69,37 @@ function CreateEventForm() {
               </div>
             </div>
             <div className='form__date'>
-              <div className='form__date__up' >
-                <label className='form__label'>Date de début :</label>
-                <input className='form__input' type="date" name="start-date"  ></input>
+              <div className='form__date__hours__up' >
+                <div className='form__hours__up' >
+                  <label className='form__label'>Heure de début :</label>
+                  <input className='form__input__time' type="time" name="start-date"  ></input>
+                </div>
+                <div className='form__date'>
+                  <div className='form__date__up' >
+                    <label className='form__label'>Date de début :</label>
+                    <input className='form__input__date' type="date" name="start-date"  ></input>
+                  </div>
+                  </div>
+              </div>
+              <div className='form__date__hours__bottom' >
+                <div className='form__hours__bottom' >
+                <label className='form__label'>Heure de début :</label>
+                <input className='form__input__time' type="time" name="start-date"  ></input>
               </div>
               <div className='form__date__bottom'>
                 <label className='form__label'>Date de fin :</label>
-                <input className='form__input' type="date" id="end-date" name="end-date" ></input>
+                <input className='form__input__date' type="date" id="end-date" name="end-date" ></input>
               </div>
+            </div>
               <div className='form__price'>
                 <label className='form__label'>Prix :</label>
-                <select className='form__input' id="price" name="price">
-                  <option value=" "></option>
-                  <option value="0">Gratuit</option>
-                  <option value="5">5 euros</option>
-                  <option value="10">10 euros</option>
-                  <option value="20">20 euros</option>
-                </select>
+                <input className='form__input' type="number"  name="price">
+                </input>
               </div>
             </div>
           </div>
-        </fieldset>
+          
+          </fieldset>
 
         <fieldset className='form__bottom'>
           <h5 className='form__title'>Informations supplémentaires</h5>
