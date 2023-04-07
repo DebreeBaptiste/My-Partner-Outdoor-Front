@@ -1,13 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducers/user';
+
+import userLoginReducer from './reducers/userLogin';
 import modalReducer from './reducers/modal';
 import messagesReducer from './reducers/messages';
+import createUserReducer from './reducers/createUser';
+import errorReducer from './reducers/error';
 
 const store = configureStore({
   reducer: {
-    user: userReducer,
+    user: userLoginReducer,
     modal: modalReducer,
     messages: messagesReducer,
+    createUser: createUserReducer,
+    error: errorReducer,
   },
 });
 

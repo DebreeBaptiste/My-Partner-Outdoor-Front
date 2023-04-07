@@ -16,6 +16,7 @@ const modalReducer = createReducer(initialState, (builder) => {
     .addCase(closeModal, (state) => {
       state.modalOpen = false;
     })
+
 });
 
 export default modalReducer;

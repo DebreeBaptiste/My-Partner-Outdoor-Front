@@ -56,7 +56,7 @@ export const EventPage = () => {
   }, [copySuccessNotification, participateNotification]);
 
   if (!userLogged && pathname === '/event/1/chat') {
-    return < Navigate to="/event/1/" replace />
+    return < Navigate to="/event/1/" />
   }
 
 

@@ -1,44 +1,40 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCredentialsValue } from 'src/store/reducers/user';
+import { changeCredentialsValue } from 'src/store/reducers/userLogin';
+import { resetCredentialsValue } from '../../store/reducers/userLogin';
+import { closeModal } from '../../store/reducers/modal';
 import { login } from 'src/api/auth';
+import PasswordLoginInput from 'src/components/Input/PasswordLoginInput';
 
 /* Image */
 import logo from 'src/assets/mountain-adventure-green.svg';
-import viewIcon from 'src/assets/icon-view-visible.svg';
-import hiddenIcon from 'src/assets/icon-view-hidden.svg';
 
 /* Style */
 import './styles.scss';
-import { closeModal } from '../../store/reducers/modal';
+import EmailLoginInput from '../Input/EmailLoginInput';
 
-export const ModalLogin = ({ open, onClick }) => {
-
-  const [showPassword, setShowPassword] = useState(false);
-
+export const ModalLogin = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   const email = useSelector((state) => state.user.credentials.email);
   const password = useSelector((state) => state.user.credentials.password);
-  const userLogged = useSelector((state) => state.user.logged);
 
   const modalOpen = useSelector((state) => state.modal.modalOpen);
 
   useEffect(() => {
-
-    if (open) {
-      document.body.style.overflow = "hidden";
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "visible";
+      document.body.style.overflow = 'visible';
     }
-  }, [open]);
-
+  }, [modalOpen]);
 
   const handClickModalBackdrop = (event) => {
-    if (event.target.className === "modal-login active") {
+    if (event.target.className === 'modal-login active') {
+      // dispatch(resetCredentialsValue());
       dispatch(closeModal());
     }
   };
@@ -46,10 +42,15 @@ export const ModalLogin = ({ open, onClick }) => {
     setTimeout(() => {
       dispatch(closeModal());
     }, 0);
-  }
+  };
 
   const handleChangeField = (value, name) => {
     dispatch(changeCredentialsValue({ value, name }));
+  };
+
+  const handlecloseModal = () => {
+    // dispatch(resetCredentialsValue());
+    dispatch(closeModal());
   };
 
   const handleSubmit = (event) => {
@@ -60,56 +61,75 @@ export const ModalLogin = ({ open, onClick }) => {
   };
 
   return (
-
-    <dialog className={`modal-login ${modalOpen ? "active" : ""}`} open={modalOpen} onClick={handClickModalBackdrop}>
+    <dialog
+      className={`modal-login ${modalOpen ? 'active' : ''}`}
+      open={modalOpen}
+      onClick={handClickModalBackdrop}
+    >
       <div className="modal-login-container">
         <div className="modal-login-container-header">
-          <h2 className="modal-login-container-header-title">My Partner Outdoor</h2>
+          <h2 className="modal-login-container-header-title">
+            My Partner Outdoor
+          </h2>
           <img src={logo} className="modal-login-container-header-logo" />
         </div>
 
-        <form action="" className="modal-login-container-form" onSubmit={handleSubmit}>
+        <form
+          action=""
+          className="modal-login-container-form"
+          onSubmit={handleSubmit}
+        >
           <div>
-            <label htmlFor="email"></label>
-
-            <input
+            <EmailLoginInput
               type="email"
               name="email"
-              id="email"
-              placeholder='Email'
-              className="modal-login-container-form-input"
+              id="login-email"
+              placeholder="Email"
+              className="modal-login-container-form"
               value={email}
-              onChange={(event) => handleChangeField(event.target.value, event.target.name)}
             />
-
           </div>
 
           <div className="modal-login-container-form-password">
-            <label htmlFor="password"></label>
-
-            <input
-              type={showPassword ? "text" : "password"}
+            <PasswordLoginInput
               name="password"
-              id="password"
-              placeholder='Mot de passe'
-              className="modal-login-container-form-input"
+              id="login-password"
+              placeholder="Mot de passe"
+              className="modal-login-container-form"
               value={password}
-              onChange={(event) => handleChangeField(event.target.value, event.target.name)}
             />
-
-            {!showPassword && <img src={viewIcon} className="modal-login-container-form-password-icon" onClick={() => setShowPassword(true)} />}
-            {showPassword && <img src={hiddenIcon} className="modal-login-container-form-password-icon" onClick={() => setShowPassword(false)} />}
           </div>
           <div className="modal-login-container-form-button">
-            <button type="button" onClick={onClick} className="modal-login-container-form-button-cancel">Annuler</button>
-            <button type="submit" className="modal-login-container-form-button-submit">Se connecter</button>
+            <button
+              type="button"
+              onClick={handlecloseModal}
+              className="modal-login-container-form-button-cancel"
+            >
+              Annuler
+            </button>
+            <button
+              type="submit"
+              className="modal-login-container-form-button-submit"
+            >
+              Se connecter
+            </button>
           </div>
         </form>
-        <Link className="modal-login-container-link" to='/forget-password' onClick={handleClickPageRedirect}>Mot de passe oublié ?</Link>
-        <Link className="modal-login-container-link-register" to='/register' onClick={handleClickPageRedirect}>Vous n'avez pas encore de compte ?</Link>
+        <Link
+          className="modal-login-container-link"
+          to="/forget-password"
+          onClick={handleClickPageRedirect}
+        >
+          Mot de passe oublié ?
+        </Link>
+        <Link
+          className="modal-login-container-link-register"
+          to="/register"
+          onClick={handleClickPageRedirect}
+        >
+          Vous n'avez pas encore de compte ?
+        </Link>
       </div>
     </dialog>
-
-
   );
 };

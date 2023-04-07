@@ -1,7 +1,6 @@
-import { saveUser, userLogout } from '../store/reducers/user';
+import { saveUser, userLogout } from '../store/reducers/userLogin';
 
 
-// eslint-disable-next-line import/prefer-default-export
 export const login = () => async (dispatch, getState) => {
   const state = getState();
 
