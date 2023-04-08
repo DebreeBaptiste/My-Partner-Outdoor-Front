@@ -1,4 +1,5 @@
 import { saveUser, userLogout } from '../store/reducers/userLogin';
+import { axiosInstance } from './axiosInstance';
 
 
 export const login = () => async (dispatch, getState) => {
@@ -7,26 +8,24 @@ export const login = () => async (dispatch, getState) => {
 
   const { email, password } = state.user.credentials;
 
-  const response = await fetch('http://localhost:4000/user/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email, password }),
+  const { data } = await axiosInstance.post('/user/login', {
+    email,
+    password
+
+
+
   });
 
+  console.log(data)
 
-  const data = await response.json();
+  dispatch(saveUser({}));
 
-
-  dispatch(saveUser(data));
-
-  // defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+  axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
 
 };
 
 export const logout = () => (dispatch) => {
   dispatch(userLogout());
-  // defaults.headers.common['Authorization'] = null;
+  axiosInstance.defaults.headers.common['Authorization'] = null;
 };

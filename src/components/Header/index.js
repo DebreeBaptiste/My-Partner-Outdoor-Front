@@ -61,7 +61,7 @@ export const Header = () => {
               <Link to='/profil'>Profil</Link>
             </li>
 
-            <Link to="/logout" onClick={handleClickLogout}> <li className="header-menu-login">Se déconnecter</li> </Link>
+            <Link to="" onClick={handleClickLogout}> <li className="header-menu-login">Se déconnecter</li> </Link>
           </>
         }
 
