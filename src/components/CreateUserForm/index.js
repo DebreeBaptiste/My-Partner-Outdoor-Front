@@ -15,7 +15,6 @@ import { register } from '../../api/register';
 
 /* Selector */
 import { isPasswordValid } from '../../store/selectors/isPasswordValid';
-import { addErrorMessage } from '../../store/reducers/error';
 import { checkSamePassword } from '../../store/selectors/checkSamePassword';
 
 /* Styles */
@@ -43,14 +42,20 @@ export const CreateUserForm = () => {
     navigate('/');
   };
 
+  if (isValid.length !== 5) {
+    submitButtonRef.current.disabled = true;
+  }
+
   // check if password and repeat_password are the same 
   useEffect(() => {
+
 
     // 3params :  target (to disable submit button ), 
     //            state (to acces password), 
     //            dispatch (to send error message to the store)
 
     checkSamePassword(credentials, dispatch, submitButtonRef.current);
+
 
   }, [credentials.repeat_password]);
 

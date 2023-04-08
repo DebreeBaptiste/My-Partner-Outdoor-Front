@@ -3,8 +3,8 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 export const initialState = {
   logged: false,
   credentials: {
-    email: 'Zidane@gmail.com',
-    password: 'Zidane13!',
+    email: 'johndoeuf@gmail.com',
+    password: 'John1234!',
   },
   userDetails: {
     pseudo: 'toto',
