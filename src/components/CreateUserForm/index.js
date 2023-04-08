@@ -8,20 +8,21 @@ import PasswordRegisterInput from '../Input/PasswordRegisterInput';
 import Input from '../Input';
 import SelectInput from '../Input/SelectInput';
 import { resetFormField } from '../../store/reducers/createUser';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 /* Api */
 import { register } from '../../api/register';
 
 /* Selector */
-import { isPasswordValid } from '../../store/selectors/isPasswordValid';
-import { checkSamePassword } from '../../store/selectors/checkSamePassword';
+import { isPasswordValidToDisplay } from '../../store/selectors/Password/isPasswordValid';
+
 
 /* Styles */
 import './styles.scss';
 
 
 export const CreateUserForm = () => {
+
 
   const submitButtonRef = useRef(null);
 
@@ -32,8 +33,9 @@ export const CreateUserForm = () => {
   const credentials = useSelector((state) => state.createUser.credentials);
   const errorMessage = useSelector((state) => state.error.message);
 
+
   // check if password is valid when password is changed it will be called in PasswordValidatorSchema
-  const isValid = isPasswordValid(credentials);
+  const isValid = isPasswordValidToDisplay(credentials);
 
   // reset form and navigate to home page
   const handleClickCancel = () => {
@@ -42,28 +44,12 @@ export const CreateUserForm = () => {
     navigate('/');
   };
 
-  if (isValid.length !== 5) {
-    submitButtonRef.current.disabled = true;
-  }
-
-  // check if password and repeat_password are the same 
-  useEffect(() => {
-
-
-    // 3params :  target (to disable submit button ), 
-    //            state (to acces password), 
-    //            dispatch (to send error message to the store)
-
-    checkSamePassword(credentials, dispatch, submitButtonRef.current);
-
-
-  }, [credentials.repeat_password]);
-
   // submit form and dispatch register to call api
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(register());
+    dispatch(register(submitButtonRef.current));
   };
+
 
   return (
     <form className='register-form' onSubmit={handleSubmit}>
@@ -134,7 +120,6 @@ export const CreateUserForm = () => {
         <button type='submit'
           className="register-form-button register-form-button-submit"
           ref={submitButtonRef}
-
         >Enregistrer</button>
       </div>
     </form>

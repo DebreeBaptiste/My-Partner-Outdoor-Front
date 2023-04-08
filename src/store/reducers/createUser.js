@@ -22,9 +22,16 @@ const createUserReducer = createReducer(initialState, (builder) => {
       state.credentials[name] = value;
     })
     .addCase(resetFormField, (state) => {
-      state.credentials = initialState.credentials;
-    });
-
+      state.credentials = {
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        repeat_password: '',
+        pseudo: '',
+        sport: '',
+      };
+    })
 
 });
 

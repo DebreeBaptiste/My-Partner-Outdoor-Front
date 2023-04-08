@@ -1,4 +1,4 @@
-export const createErrorMessage = (state) => {
+export const createEmptyFieldErrorMessage = (state) => {
 
   // check all property of state and if one is undefined or empty string return error message
   for (const property in state) {
@@ -19,7 +19,7 @@ export const createErrorMessage = (state) => {
         case 'password':
           return 'Le champ mot de passe est vide';
         case 'repeat_password':
-          return 'Le champ répéter le mot de passe est vide';
+          return 'Le champ Confirmer le mot de passe est vide';
         default:
           return;
       }

@@ -1,16 +1,14 @@
+import { resetFormField } from '../store/reducers/createUser';
 import { addErrorMessage } from '../store/reducers/error';
-import { createErrorMessage } from '../store/selectors/createErrorMessage';
+import { checkErrorBeforeCallAPI } from '../store/selectors/Password/checkErrorBeforeCallAPI';
 
 export const register = () => async (dispatch, getState) => {
 
   const state = getState();
 
-
   const { firstname, lastname, pseudo, sport, email, password, repeat_password } = state.createUser.credentials;
 
-  // check if all field are filled and send error message if not
-  if (createErrorMessage(state.createUser.credentials) !== undefined) {
-    dispatch(addErrorMessage(createErrorMessage(state.createUser.credentials)));
+  if (!checkErrorBeforeCallAPI(state, dispatch)) {
     return
   }
 
@@ -25,15 +23,21 @@ export const register = () => async (dispatch, getState) => {
     });
 
     console.log(response)
-    if (response.status === 200) {
+    if (response.status === 500) {
+      dispatch(addErrorMessage("Une erreur est survenue, veuillez réessayer ultérieurement"));
+    }
 
-      const data = await response.json();
+    if (response.status === 200) {
+      dispatch(resetFormField());
     }
 
   } catch (error) {
     console.log(error);
+    dispatch(addErrorMessage("Une erreur est survenue, veuillez réessayer ultérieurement"));
   }
-  // reset field and redirect to landing page
+
+
+
 
 
 

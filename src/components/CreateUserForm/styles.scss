@@ -96,12 +96,6 @@
       background-color: var(--light-green);
       border: var(--border-sm) solid var(--light-green);
     }
-    &-submit:disabled {
-      background-color: var(--medium-grey);
-      border: var(--border-sm) solid var(--medium-grey);
-      color: var(--dark-grey);
-      cursor: not-allowed;
-    }
   }
 }
 @media (min-width: 700px) {
