@@ -1,6 +1,7 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
+  samePassword: true,
   message: '',
 };
 
