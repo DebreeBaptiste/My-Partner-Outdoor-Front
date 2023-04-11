@@ -18,6 +18,7 @@ import { Profil } from '../../pages/Profil';
 /* Style */
 import './styles.scss';
 import { useEffect } from 'react';
+import { useEffect } from 'react';
 
 // == Composant
 function App() {
