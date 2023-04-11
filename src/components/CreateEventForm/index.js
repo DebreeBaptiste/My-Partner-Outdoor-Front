@@ -1,12 +1,22 @@
+import { useDispatch } from 'react-redux';
+
 // == Import
 import './styles.scss';
+import { postEvent } from '../../api/event';
 
 // == Composant
 function CreateEventForm() {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(event.target.value);
+    dispatch(postEvent());
+  };
   return (
     <div className='createEvent'>
       <h1 className='title'>Création de votre événement</h1>
-      <form className='form'>
+      <form onSubmit={handleSubmit} className='form'>
         <fieldset className='form__up'>
           <h5 className='form__title'>Essentiel</h5>
           <div className='form__right'>
