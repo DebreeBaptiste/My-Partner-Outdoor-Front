@@ -1,6 +1,7 @@
 //  Import
-import { useState, useEffect } from 'react';
-
+import { useSelector,useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchRandomEvents } from '../../api/event';
 
 // == Import
 import './styles.scss';
@@ -8,20 +9,17 @@ import Event from './Event/index.js';
 
 // == Composant
 function Events() {
-
-  const [events, setEvents] = useState([]);
-
-  const fetchEvents = () => {
-    fetch("http://localhost:4000/event/random")
-    .then((response) => response.json())
-    .then((data) => setEvents(data || []))
-    .catch((err) => console.log(err));
-};
+const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('ma variable est modfiée');
-    fetchEvents();
+
+    dispatch(fetchRandomEvents());
   }, []);
+
+
+  
+  const events = useSelector((state) => state.event.event);
+
 
   return (
     <main className='events'>
