@@ -16,6 +16,12 @@
     transform: translateY(0);
   }
 
+  &-error {
+    color: var(--light-red);
+    font-size: var(--text-sm);
+    margin-top: 0.5rem;
+  }
+
   &-container {
     display: flex;
     flex-direction: column;

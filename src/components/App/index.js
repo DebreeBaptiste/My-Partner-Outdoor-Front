@@ -1,5 +1,5 @@
 /* Tools */
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 /* Component */
 import { Header } from '../Header';
@@ -12,9 +12,11 @@ import CreateEvent from '../../pages/CreateEvent';
 import ForgetPassword from '../ForgetPassword';
 import { ModalLogin } from '../ModalLogin';
 import { Register } from '../../pages/Register';
+import { Notification } from '../Notification';
 
 /* Style */
 import './styles.scss';
+import { useEffect } from 'react';
 
 // == Composant
 function App() {
@@ -22,6 +24,7 @@ function App() {
 
   return (
     <div className="app">
+      <Notification />
       <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
