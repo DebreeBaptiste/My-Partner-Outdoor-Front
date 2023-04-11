@@ -13,6 +13,7 @@ import ForgetPassword from '../ForgetPassword';
 import { ModalLogin } from '../ModalLogin';
 import { Register } from '../../pages/Register';
 import { Notification } from '../Notification';
+import { Profil } from '../../pages/Profil';
 
 /* Style */
 import './styles.scss';
@@ -35,6 +36,7 @@ function App() {
         <Route path="/event/:id/" element={<EventPage />} />
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profil" element={<Profil />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
