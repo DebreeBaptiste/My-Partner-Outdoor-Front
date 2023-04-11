@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 // == Import
 import './styles.scss';
 import { postEvent } from '../../api/event';
-import { changeField , resetFormField } from '../../store/reducers/createEvent';
+import { changeField, resetFormField } from '../../store/reducers/createEvent';
 import { fetchSports } from '../../api/sports';
 
 // == Composant
@@ -16,7 +16,7 @@ function CreateEventForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+
     dispatch(postEvent(navigate));
   };
 
@@ -48,7 +48,7 @@ function CreateEventForm() {
           <div className='form__right'>
             <div className='form__labelinput'>
               <label className='form__label'>Nom de l'événement :</label>
-              <input className='form__input' type="text" id="title" name="title" value={event.title} onChange={handleChange}/>
+              <input className='form__input' type="text" id="title" name="title" value={event.title} onChange={handleChange} />
             </div>
             <div className='form__labelinput'>
               <label className='form__label'>Sport :</label>
@@ -105,7 +105,7 @@ function CreateEventForm() {
             </div>
             <div className='form__date'>
               <div className='form__date__hours__up' >
-                <div className='form__hours__up' >
+                {/* <div className='form__hours__up' >
                   <label className='form__label'>Heure de début :</label>
                   <input className='form__input__time' type="time" name="start_hour"  onChange={handleChange} ></input>
                 </div>
@@ -159,24 +159,24 @@ function CreateEventForm() {
               <label htmlFor="file" className="form__label__file">Changer photo</label>
               <input className='form__input__photo' type="file" accept="image/png, image/jpg, image/gif, image/jpeg" name="photo" value={formValues.nbParticipant} onChange={handleChange}></input>
             </div> */}
-            <div className='form__bottom__description' id="niveau">
-              <label className='form__label'>Description :</label>
-              <textarea className='form__input' id="description" name="description" rows="5" cols="40" value={event.description} onChange={handleChange}></textarea>
-            </div>
-            <div className='form__bottom__materials' id="niveau">
-              <label className='form__label'>Matériels à apporter :</label>
-              <textarea className='form__input' id="materiels" name="equipement" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
-            </div>
-            <div className='form__bottom__button' id="niveau">
-              <button  className='form__bottom__button__confirm' type="submit" value="submit">Confirmer</button>
-              <button onClick={handleClickCancel}  className='form__bottom__button__cancel' type="reset" value="annuler">Annuler</button>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  );
+                <div className='form__bottom__description' id="niveau">
+                  <label className='form__label'>Description :</label>
+                  <textarea className='form__input' id="description" name="description" rows="5" cols="40" value={event.description} onChange={handleChange}></textarea>
+                </div>
+                <div className='form__bottom__materials' id="niveau">
+                  <label className='form__label'>Matériels à apporter :</label>
+                  <textarea className='form__input' id="materiels" name="equipement" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
+                </div>
+                <div className='form__bottom__button' id="niveau">
+                  <button className='form__bottom__button__confirm' type="submit" value="submit">Confirmer</button>
+                  <button onClick={handleClickCancel} className='form__bottom__button__cancel' type="reset" value="annuler">Annuler</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        );
 };
 
-// == Export
-export default CreateEventForm ;
+        // == Export
+        export default CreateEventForm ;

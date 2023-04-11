@@ -21,9 +21,9 @@ const store = configureStore({
     modalLogin: modalLoginReducer,
     modalDelete: modalDeleteReducer,
     error: errorReducer,
-    event : eventReducer,
+    event: eventReducer,
     createEvent: createEventReducer,
-    sports : sportsReducer,
+    sports: sportsReducer,
     notification: notificationReducer,
   },
 });
