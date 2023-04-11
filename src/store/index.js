@@ -19,8 +19,6 @@ const store = configureStore({
     modalLogin: modalLoginReducer,
     modalDelete: modalDeleteReducer,
     error: errorReducer,
-    notification: notificationReducer,
-    event: eventReducer,
   },
 });
 
