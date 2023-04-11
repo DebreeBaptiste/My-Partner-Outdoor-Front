@@ -39,15 +39,14 @@ export const CreateUserForm = () => {
 
   // reset form and navigate to home page
   const handleClickCancel = () => {
-    dispatch(resetFormField())
-    window.scrollTo({ top: 0 })
+    dispatch(resetFormField());
     navigate('/');
   };
 
   // submit form and dispatch register to call api
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(register(submitButtonRef.current));
+    dispatch(register(navigate));
   };
 
 

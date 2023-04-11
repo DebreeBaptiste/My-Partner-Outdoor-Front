@@ -1,18 +1,14 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
-  logged: false,
+  logged: !!localStorage.getItem('token'),
   credentials: {
-    email: 'johndoeuf@gmail.com',
+    email: 'johndoe@gmail.com',
     password: 'John1234!',
   },
   userDetails: {
-    pseudo: 'toto',
-    bio: '',
+    pseudo: '',
     picture: 'photo',
-    birthday: '',
-    firstname: '',
-    lastname: '',
     id: '',
   },
 };
@@ -27,15 +23,10 @@ export const resetCredentialsValue = createAction('user/resetCredentialsValue');
 const userLoginReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(saveUser, (state, action) => {
-      const { pseudo, bio, picture, birthday, firstname, lastname, id } =
-        action.payload;
+      const { pseudo, picture, id } = action.payload;
       state.userDetails = {
         pseudo,
-        bio,
         picture,
-        birthday,
-        firstname,
-        lastname,
         id,
       };
       state.logged = true;
@@ -43,11 +34,7 @@ const userLoginReducer = createReducer(initialState, (builder) => {
     .addCase(userLogout, (state) => {
       state.userDetails = {
         pseudo: '',
-        bio: '',
         picture: '',
-        birthday: '',
-        firstname: '',
-        lastname: '',
         id: '',
       };
       state.logged = false;

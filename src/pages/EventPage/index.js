@@ -1,6 +1,5 @@
 /* Tool */
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 /* Component */
 import { NavLink, Navigate, useLocation } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { About } from '../../components/About';
 import { Messages } from '../../components/Messages';
 import { Participants } from '../../components/Participants';
 import { Notification } from '../../components/Notification';
+import { sendNotification } from '../../store/reducers/notification';
 
 /* Image/logo */
 import eventHeaderPicture from '../../assets/resource/event-details.jpg';
@@ -22,38 +22,30 @@ export const EventPage = () => {
 
   const { pathname } = useLocation();
 
+  const dispatch = useDispatch();
+
   const userLogged = useSelector((state) => state.user.logged);
 
-  // Copy to clipboard logic
-  const [copySuccessNotification, setCopySuccessNotification] = useState(false);
+  // Copy link logic
+  const notificationOpen = useSelector((state) => state.notification.open);
 
   const copyToClip = async () => {
-    if (participateNotification) {
+    if (notificationOpen) {
       return
     }
 
     await navigator.clipboard.writeText(location.href);
-    setCopySuccessNotification(true);
+    dispatch(sendNotification("Lien de l'évênement a été copié !"));
   }
 
-  // Participate logic
-  const [participateNotification, setParticipateNotification] = useState(false);
+
 
   const handleClickParticipateNotification = () => {
-    if (copySuccessNotification) {
+    if (notificationOpen) {
       return
     }
-    setParticipateNotification(true);
+    dispatch(sendNotification("Vous participez à l'évênement"));
   }
-
-  // Close notification auto after 2.5s
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCopySuccessNotification(false);
-      setParticipateNotification(false);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, [copySuccessNotification, participateNotification]);
 
   if (!userLogged && pathname === '/event/1/chat') {
     return < Navigate to="/event/1/" />
@@ -62,8 +54,6 @@ export const EventPage = () => {
 
   return (
     <main className='event-detail'>
-      <Notification message="Lien de l'évênement a été copié !" onClick={() => setCopySuccessNotification(false)} open={copySuccessNotification} />
-      <Notification message="Vous participez à l'évênement" onClick={() => setParticipateNotification(false)} open={participateNotification} />
       <header className="event-header">
         <img className='event-header-picture' src={eventHeaderPicture} />
         <div className='event-header-content'>

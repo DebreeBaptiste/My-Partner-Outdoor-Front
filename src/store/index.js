@@ -5,6 +5,7 @@ import modalReducer from './reducers/modal';
 import messagesReducer from './reducers/messages';
 import createUserReducer from './reducers/createUser';
 import errorReducer from './reducers/error';
+import notificationReducer from './reducers/notification';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     messages: messagesReducer,
     createUser: createUserReducer,
     error: errorReducer,
+    notification: notificationReducer,
   },
 });
 

@@ -1,5 +1,7 @@
 /* Tool */
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { closeNotification, resetNotificationMessage } from '../../store/reducers/notification';
 
 /* Icon */
 import closeIcon from '../../assets/icon-close-circle.svg';
@@ -7,21 +9,42 @@ import closeIcon from '../../assets/icon-close-circle.svg';
 /* Style */
 import './styles.scss';
 
-export const Notification = ({ message, onClick, open }) => {
+export const Notification = () => {
 
+  const dispatch = useDispatch();
+
+  const open = useSelector((state) => state.notification.open);
+  const message = useSelector((state) => state.notification.message);
+
+  const handleCloseNotification = () => {
+    dispatch(closeNotification());
+  };
+
+  // Close notification auto after 3s
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (open) {
+        handleCloseNotification();
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [open]);
+
+
+  const handleTransitionEnd = () => {
+    if (!open) {
+      dispatch(resetNotificationMessage());
+    }
+  };
 
   return (
-    <div className={`event-copy ${open ? 'active' : ""}`}>
-      <div className='event-copy-close-button' onClick={onClick}>
-        <img src={closeIcon} className="event-copy-close-icon" />
+    <div className={`notification ${open ? 'active' : ""}`} onTransitionEnd={handleTransitionEnd}>
+      <div className='notification-close-button' onClick={handleCloseNotification}>
+        <img src={closeIcon} className="notification-close-icon" />
       </div>
-      <p className="event-copy-text">{message}</p>
+      <p className="notification-text">{message}</p>
     </div>
   );
 }
 
-Notification.propTypes = {
-  message: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-};
+

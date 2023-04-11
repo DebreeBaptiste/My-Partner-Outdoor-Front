@@ -3,11 +3,11 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 export const initialState = {
   credentials: {
     firstname: 'John',
-    lastname: 'doeuf',
-    email: 'johndoeu@gmail.com',
+    lastname: 'doe',
+    email: 'johndoe@gmail.com',
     password: 'John1234!',
     repeat_password: 'John1234!',
-    pseudo: 'JohnDoeuf',
+    pseudo: 'JohnDoe',
     sport: 'FootBall',
   },
 };

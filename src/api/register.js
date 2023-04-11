@@ -1,8 +1,13 @@
+
+import { Navigate } from 'react-router-dom';
 import { resetFormField } from '../store/reducers/createUser';
 import { addErrorMessage } from '../store/reducers/error';
+import { sendNotification } from '../store/reducers/notification';
 import { checkErrorBeforeCallAPI } from '../store/selectors/Password/checkErrorBeforeCallAPI';
+import { axiosInstance } from './axiosInstance';
 
-export const register = () => async (dispatch, getState) => {
+export const register = (navigate) => async (dispatch, getState) => {
+
 
   const state = getState();
 
@@ -14,21 +19,17 @@ export const register = () => async (dispatch, getState) => {
 
   try {
 
-    const response = await fetch('http://localhost:4000/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ firstname, lastname, pseudo, sport, email, password, repeat_password }),
-    });
+    const response = await axiosInstance.post('/user', { firstname, lastname, pseudo, sport, email, password, repeat_password });
 
-    console.log(response)
     if (response.status === 500) {
       dispatch(addErrorMessage("Une erreur est survenue, veuillez réessayer ultérieurement"));
     }
 
     if (response.status === 200) {
       dispatch(resetFormField());
+      dispatch(addErrorMessage(""));
+      dispatch(sendNotification("Votre compte a bien été créé"));
+
     }
 
   } catch (error) {
@@ -36,13 +37,9 @@ export const register = () => async (dispatch, getState) => {
     dispatch(addErrorMessage("Une erreur est survenue, veuillez réessayer ultérieurement"));
   }
 
-
-
-
-
-
-
-  // defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-
+  finally {
+    window.scrollTo({ top: 0 })
+    navigate('/');
+  }
 
 };
