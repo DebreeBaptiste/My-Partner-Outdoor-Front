@@ -1,7 +1,8 @@
 import { sendNotification } from '../store/reducers/notification';
 import { closeModal } from '../store/reducers/modal';
 import { addErrorMessage } from '../store/reducers/error';
-import { saveUser, userLogout } from '../store/reducers/userLogin';
+import { userLogged, userLogout } from '../store/reducers/userLogin';
+import { saveUser } from '../store/reducers/userDetails';
 import { axiosInstance } from './axiosInstance';
 
 
@@ -22,19 +23,33 @@ export const login = (navigate) => async (dispatch, getState) => {
     });
 
     if (status === 200) {
+
+      console.log('data', data, status)
+
+
       localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.user.id);
 
       axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
       dispatch(addErrorMessage(""));
-      dispatch(saveUser({ pseudo: data.user.pseudo, id: data.user.id }));
+      dispatch(userLogged())
+      /*     dispatch(saveUser({
+            firstname: data.user.firstname,
+            lastname: data.user.lastname,
+            pseudo: data.user.pseudo,
+            id: data.user.id,
+            picture: data.user.picture,
+            email: data.user.email,
+            bio: data.user.bio,
+          })); */
       dispatch(closeModal());
       dispatch(sendNotification(`Bienvenue ${data.user.pseudo} !`));
     }
 
 
   } catch (error) {
-    if (error.response.status === 400) {
+    if (error) {
       dispatch(addErrorMessage("Veuillez vérifier vos identifiants"));
     }
   }
@@ -47,6 +62,7 @@ export const login = (navigate) => async (dispatch, getState) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem('token');
+  localStorage.removeItem('userId', data.user.id);
   axiosInstance.defaults.headers.common['Authorization'] = null;
   dispatch(userLogout());
 };
