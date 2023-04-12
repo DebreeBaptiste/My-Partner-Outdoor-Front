@@ -19,7 +19,7 @@ const dispatch = useDispatch();
 
   
   const events = useSelector((state) => state.event.event);
-
+  
 
   return (
     <main className='events'>

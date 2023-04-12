@@ -44,7 +44,7 @@ function Search() {
     }
   }
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const searchEvent = useSelector((state) => state.event.searchEvent);
 
   // const handleSubmit = (event) => {
@@ -74,9 +74,11 @@ function Search() {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    fetchSearchEvents(searchSport, searchPlace);
+    fetchSearchEvents(searchSport, searchPlace, dispatch);
     // console.log(searchSport, searchPlace);
   };
+
+  
 
   return (
     <form onSubmit={handleSubmit} className='search'>
@@ -95,7 +97,7 @@ function Search() {
             </div>
             <div className='search__block__form__input__submit'>
 
-              <button type='submit' className='search__block__form__input__submit__button'>
+              <button  type='submit' className='search__block__form__input__submit__button'>
                 <img src={iconflechedroite} className='search__block__form__input__submit__button__image'></img>
               </button>
             </div>
