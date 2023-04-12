@@ -10,11 +10,12 @@ export const fetchRandomEvents = () => async (dispatch) => {
 };
 
 // Récupération des événements en fonction de la recherche
-export const fetchSearchEvents = async (search, dept) => {
+export const fetchSearchEvents = async (search, dept, dispatch) => {
 
   try {
     const response = await axiosInstance.get(`/event/s?search=${search}&dept=${dept}`);
-    console.log(response);
+    console.log(response.data);
+    dispatch(getRandomEvents(response.data));
   } catch (error) {
     console.log(error);
   }
