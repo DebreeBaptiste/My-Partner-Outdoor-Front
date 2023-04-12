@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // == Import
 import './styles.scss';
 import { postEvent } from '../../api/event';
-import { changeField } from '../../store/reducers/event';
+import { changeField } from '../../store/reducers/createEvent';
 
 // == Composant
 function CreateEventForm() {
@@ -90,10 +90,10 @@ function CreateEventForm() {
             </div>
             <div className='form__date'>
               <div className='form__date__hours__up' >
-                {/* <div className='form__hours__up' >
+                <div className='form__hours__up' >
                   <label className='form__label'>Heure de début :</label>
-                  <input className='form__input__time' type="time" name="start-date" value={formValues.start} onChange={handleChange} ></input>
-                </div> */}
+                  <input className='form__input__time' type="time" name="start-date"  onChange={handleChange} ></input>
+                </div>
                 <div className='form__date'>
                   <div className='form__date__up' >
                     <label className='form__label'>Date de début :</label>
@@ -102,10 +102,10 @@ function CreateEventForm() {
                   </div>
               </div>
               <div className='form__date__hours__bottom' >
-                  {/* <div className='form__hours__bottom' >
+                  <div className='form__hours__bottom' >
                     <label className='form__label'>Heure de fin :</label>
-                    <input className='form__input__time' type="time" name="start-date" value={formValues.start} onChange={handleChange} ></input>
-                  </div> */}
+                    <input className='form__input__time' type="time" name="start-date"  onChange={handleChange} ></input>
+                  </div>
               <div className='form__date__bottom'>
                 <label className='form__label'>Date de fin :</label>
                 <input className='form__input__date' type="date" id="end-date" name="end-date" value={event.finish} onChange={handleChange} ></input>
@@ -142,7 +142,7 @@ function CreateEventForm() {
             {/* <div className='form__bottom__photo' id="niveau">
               <label className='form__label'>Photo :</label>
               <label htmlFor="file" className="form__label__file">Changer photo</label>
-              <input className='form__input__photo' type="file" accept="image/png, image/jpg, image/gif, image/jpeg" name="photo" value={formValues.nbParticipant} onChange={handleChange}></input>
+              <input className='form__input__photo' type="file" accept="image/png, image/jpg, image/gif, image/jpeg" name="photo"  onChange={handleChange}></input>
             </div> */}
             <div className='form__bottom__description' id="niveau">
               <label className='form__label'>Description :</label>
