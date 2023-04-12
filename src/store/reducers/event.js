@@ -1,7 +1,7 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
-  event: {
+  event: [{
     title: "Event de handball",
     description: "Faire un Basket",
     start: "2023-04-01T10:00:44.880Z",
@@ -17,25 +17,15 @@ const initialState = {
     city: "Vrellis",
     sport: "BasketBall",
     level: "Débutant"
-  },
+  }],
 };
 
 
 export const getRandomEvents = createAction('event/getRandomEvents');
-export const saveEvent = createAction('event/saveEvent');
-export const changeField = createAction('event/changeField');
 
 const eventReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(getRandomEvents, (state, action) => {
-      
-      state.event = action.payload;
-    })
-    .addCase(changeField, (state, action) => {
-      const { value, name } = action.payload;
-      state.event[name] = value;
-    })
-    .addCase(saveEvent, (state, action) => {
       
       state.event = action.payload;
     })
