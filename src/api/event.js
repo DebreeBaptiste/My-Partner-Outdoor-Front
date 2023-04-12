@@ -1,4 +1,5 @@
-import { getRandomEvents, saveEvent } from '../store/reducers/event';
+import { getRandomEvents } from '../store/reducers/event';
+import { saveSearch } from '../store/reducers/searchEvent';
 import { axiosInstance } from './axiosInstance';
 
 import { resetFormField } from '../store/reducers/createEvent';
