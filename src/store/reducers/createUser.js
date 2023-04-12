@@ -4,7 +4,7 @@ export const initialState = {
   credentials: {
     firstname: 'John',
     lastname: 'doe',
-    email: 'johndoe@gmail.com',
+    email: 'JohnDoe@gmail.com',
     password: 'John1234!',
     repeat_password: 'John1234!',
     pseudo: 'JohnDoe',

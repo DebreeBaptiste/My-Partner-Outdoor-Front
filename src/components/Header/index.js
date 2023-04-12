@@ -19,6 +19,13 @@ export const Header = () => {
   const dispatch = useDispatch()
 
   const userLogged = useSelector((state) => state.user.logged);
+  const modalOpen = useSelector((state) => state.modal.open);
+
+  useEffect(() => {
+    if (modalOpen) {
+      setMenuOpen(false);
+    }
+  }, [modalOpen]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -59,7 +66,7 @@ export const Header = () => {
         {userLogged &&
           <>
             <li className="header-menu-list-item">
-              <Link to='/profil'>Profil</Link>
+              <Link to='/profil' onClick={handleClickBurgerButton}>Profil</Link>
             </li>
             <li className="header-menu-list-item">
               <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
@@ -85,7 +92,7 @@ export const Header = () => {
         <span className='header-title-text'>My Partner Outdoor</span>
       </div>
 
-      <Link to='/createevent' className="header-event">Créer un évênement</Link>
+      {userLogged && <Link to='/createevent' className="header-event">Créer un évênement</Link>}
 
       <Link to='/home' className="header-event">Evenement</Link>
 
