@@ -2,6 +2,7 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 
 const initialState = {
+  loading: true ,
   event: [{
     id: 10,
     title: "Event de handball",
@@ -32,6 +33,7 @@ const eventReducer = createReducer(initialState, (builder) => {
     .addCase(getRandomEvents, (state, action) => {
       
       state.event = action.payload;
+      state.loading = false;
     })
 
 });

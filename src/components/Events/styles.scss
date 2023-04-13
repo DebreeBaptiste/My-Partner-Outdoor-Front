@@ -11,9 +11,22 @@
   height: auto;
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.MagnifyingGlass-wrapper {
+  margin: auto;
+}
+
 @media (max-width: 700px) {
   .events {
     display: flex;
     flex-direction: column;
+
   }
 } ;
+
