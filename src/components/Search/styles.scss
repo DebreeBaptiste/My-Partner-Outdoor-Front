@@ -103,6 +103,8 @@
     width: 20%;
     display: flex;
     justify-content: space-evenly;
+    position: relative;
+    
     &__button{
       background-color: white;
       border: 0.5px solid var(--light-grey);
@@ -111,6 +113,50 @@
       height: 100%;
       font-size: var(--text-xs);
     }    
+
+    &__select{
+      background-color: white;
+      border: 0.5px solid var(--light-grey);
+      border-radius: var(--radius-full);
+      width: 25%;
+      height: 100%;
+      font-size: var(--text-xs);
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      text-align: center;
+
+      &__active{
+        background-color: white;
+        border-radius: var(--radius-full);
+        width: 25%;
+        height: 100%;
+        font-size: var(--text-xs);
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        text-align: center;
+
+        border: 0.5px solid var(--medium-purple);
+        color: var(--medium-purple);
+      }
+    }    
+
+    &__choice{
+      position: absolute;
+      bottom: -270%;
+      right: 25%;
+      width: 35%;
+      height: 250%;
+      border: 1px solid var(--light-grey);
+      border-radius: var(--radius-base);
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      font-size: var(--text-xs);
+      padding-left: 1%;
+    }
   }
 }
 }
@@ -138,6 +184,14 @@
         display: flex;
         justify-content: flex-start;
         
+        &__choice{
+          border-radius: var(--radius-full);
+          width: 10%;
+          height: 100%;
+          padding: 1%;
+          font-size: var(--text-xs);
+          margin-right: 3%;
+        }    
 
         &__button{
           border-radius: var(--radius-full);
@@ -166,6 +220,15 @@
         margin-top: 1rem;
         display: flex;
         justify-content: flex-start;
+
+        &__choice{
+          border-radius: var(--radius-full);
+          width: 10%;
+          height: 100%;
+          padding: 1%;
+          font-size: var(--text-xs);
+          margin-right: 3%;
+        }    
         
 
         &__button{
