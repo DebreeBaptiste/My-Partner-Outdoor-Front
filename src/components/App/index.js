@@ -22,6 +22,11 @@ import { useEffect } from 'react';
 // == Composant
 function App() {
 
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [pathname])
 
   return (
     <div className="app">
