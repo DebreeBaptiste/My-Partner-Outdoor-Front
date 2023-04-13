@@ -1,0 +1,121 @@
+/* Sport color Item */
+.profil-user-sport-item {
+  position: relative;
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+
+  &-delete {
+    position: absolute;
+    top: -0.2rem;
+    right: 0;
+    height: 100%;
+    border-radius: var(--radius-full);
+    opacity: 0.8;
+    cursor: pointer;
+
+    &-icon {
+      height: 1rem;
+    }
+  }
+
+  &.add {
+    background-color: var(--extra-light-grey);
+  }
+  &.Randonnée {
+    background-color: var(--light-red);
+  }
+  &.Course-à-pied {
+    background-color: var(--extra-light-green);
+  }
+  &.Cyclisme {
+    background-color: var(--light-green);
+  }
+  &.Trail {
+    background-color: var(--extra-light-blue);
+  }
+  &.Ski {
+    background-color: var(--extra-light-orange);
+  }
+  &.Snowboard {
+    background-color: var(--light-pink);
+  }
+  &.Triathlon {
+    background-color: var(--light-yellow);
+  }
+  &.VTT {
+    background-color: var(--light-grey);
+  }
+  &.BMX {
+    background-color: var(--extra-light-red);
+  }
+  &.Escalade {
+    background-color: var(--light-purple);
+  }
+  &.Via-ferrata {
+    background-color: var(--extra-light-yellow);
+  }
+  &.Canyoning {
+    background-color: var(--extra-light-red);
+  }
+  &.Rafting {
+    background-color: var(--extra-light-green);
+  }
+  &.Stand-up-paddle {
+    background-color: var(--extra-light-blue);
+  }
+  &.Voile {
+    background-color: var(--extra-light-orange);
+  }
+  &.Airsoft {
+    background-color: var(--extra-light-pink);
+  }
+  &.Paintball {
+    background-color: var(--extra-light-red);
+  }
+  &.Plongée {
+    background-color: var(--light-green);
+  }
+  &.Parapente {
+    background-color: var(--extra-light-blue);
+  }
+  &.Tir-à-l-arc {
+    background-color: var(--extra-light-orange);
+  }
+  &.Ski-nautique {
+    background-color: var(--extra-light-pink);
+  }
+  &.Wakeboard {
+    background-color: var(--extra-light-blue);
+  }
+  &.Surf {
+    background-color: var(--light-grey);
+  }
+  &.Rugby {
+    background-color: var(--extra-light-green);
+  }
+  &.Handball {
+    background-color: var(--light-purple);
+  }
+  &.Kayak {
+    background-color: var(--light-purple);
+  }
+  &.Kite-surf {
+    background-color: var(--extra-light-yellow);
+  }
+  &.Football {
+    background-color: var(--extra-light-red);
+  }
+  &.Fitness {
+    background-color: var(--extra-light-green);
+  }
+  &.Volley-ball {
+    background-color: var(--extra-light-blue);
+  }
+  &.Basket-ball {
+    background-color: var(--extra-light-orange);
+  }
+  &.Tennis {
+    background-color: var(--extra-light-pink);
+  }
+}

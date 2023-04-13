@@ -2,7 +2,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetCredentialsValue } from '../../store/reducers/userLogin';
-import { closeModal } from '../../store/reducers/modal';
+import { closeModal } from '../../store/reducers/modalLogin';
 import { login } from 'src/api/auth';
 import PasswordLoginInput from 'src/components/Input/PasswordLoginInput';
 
@@ -25,7 +25,7 @@ export const ModalLogin = () => {
   const email = useSelector((state) => state.user.credentials.email);
   const password = useSelector((state) => state.user.credentials.password);
 
-  const modalOpen = useSelector((state) => state.modal.modalOpen);
+  const modalOpen = useSelector((state) => state.modalLogin.modalOpen);
   const errorMessage = useSelector((state) => state.error.message);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export const ModalLogin = () => {
     }, 0);
   };
 
-  const handlecloseModal = () => {
+  const handleCloseModal = () => {
     // dispatch(resetCredentialsValue());
     dispatch(addErrorMessage(''));
     dispatch(closeModal());
@@ -105,7 +105,7 @@ export const ModalLogin = () => {
           <div className="modal-login-container-form-button">
             <button
               type="button"
-              onClick={handlecloseModal}
+              onClick={handleCloseModal}
               className="modal-login-container-form-button-cancel"
             >
               Annuler

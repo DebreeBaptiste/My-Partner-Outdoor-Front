@@ -4,11 +4,11 @@ export const initialState = {
   modalOpen: false,
 };
 
-export const openModal = createAction('modal/openModal');
-export const closeModal = createAction('modal/closeModal');
+export const openModal = createAction('modalLogin/openModal');
+export const closeModal = createAction('modalLogin/closeModal');
 
 
-const modalReducer = createReducer(initialState, (builder) => {
+const modalLoginReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(openModal, (state) => {
       state.modalOpen = true;
@@ -19,4 +19,4 @@ const modalReducer = createReducer(initialState, (builder) => {
 
 });
 
-export default modalReducer;
+export default modalLoginReducer;

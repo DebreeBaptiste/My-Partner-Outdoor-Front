@@ -71,7 +71,7 @@ export const CreateUserForm = () => {
           value={credentials.sport}
           options={[
 
-            { value: 'FootBall', label: 'FootBall' },
+            { value: 'Football', label: 'Football' },
             { value: 'BasketBall', label: 'BasketBall' },
             { value: 'PingPong', label: 'PingPong' },
             { value: 'Tennis', label: 'Tennis' },

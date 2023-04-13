@@ -8,7 +8,7 @@ export const initialState = {
     password: 'John1234!',
     repeat_password: 'John1234!',
     pseudo: 'JohnDoe',
-    sport: 'FootBall',
+    sport: 'Football',
   },
 };
 
