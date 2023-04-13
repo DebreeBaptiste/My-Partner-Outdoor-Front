@@ -7,7 +7,6 @@ import createUserReducer from './reducers/createUser';
 import errorReducer from './reducers/error';
 import createEventReducer from './reducers/createEvent';
 import eventReducer from './reducers/event';
-import searchEventReducer from './reducers/searchEvent';
 
 const store = configureStore({
   reducer: {
@@ -18,7 +17,6 @@ const store = configureStore({
     error: errorReducer,
     event : eventReducer,
     createEvent: createEventReducer,
-    searchEvent: searchEventReducer,
   },
 });
 

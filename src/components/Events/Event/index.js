@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // == Import
-import kayak from 'src/assets/resource/kayak.jpeg';
 import './styles.scss';
 
 // == Composant
@@ -31,7 +30,7 @@ function Event({
 }) {
   return (
     <div className='event'>
-      <img className='event__image' src={kayak} alt='event' />
+     <img className='event__image' src={`src/assets/resource/sports/${sport}.jpg`} alt='event' />
       <div className='event__detail'>
         <div className='event__detail__up'>
           <h5 className='event__detail__up__title'>{title}</h5>

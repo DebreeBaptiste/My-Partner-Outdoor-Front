@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import iconflechedroite from 'src/assets/resource/icon-fleche-droite.png';
-import { changeSearchField  } from '../../store/reducers/searchEvent';
 import { fetchSearchEvents } from '../../api/event';
 
 
@@ -57,14 +56,14 @@ function Search() {
   //   dispatch(changeSearchField({ value: event.target.value, name: event.target.name }));
   // };
 
-  const [searchSport, setSearchSport] = useState('BasketBall');
+  const [searchSport, setSearchSport] = useState('');
 
   const handleChangeSearchSport = (event) => {
     const newValue = event.target.value;
     setSearchSport(newValue);
   };
 
-  const [searchPlace, setSearchPlace] = useState('75');
+  const [searchPlace, setSearchPlace] = useState('');
 
   const handleChangeSearchPlace = (event) => {
     const newValue = event.target.value;
@@ -103,16 +102,6 @@ function Search() {
             </div>
           </div>
         <div className='search__block__filter'>
-          <select onChange={handleSelectSport}  className={`search__block__filter__select ${isActiveSport ? 'search__block__filter__select__active' : ''}`}
-          >
-            <option value="Sport">Sport</option>
-            <option value="Football">Football</option>
-            <option value="Escalade">Escalade</option>
-            <option value="Kitesurf">Kitesurf</option>
-            <option value="Plongée Sous-marine">Plongée Sous-marine</option>
-            <option value="Pétanque">Pétanque</option>
-            <option value="Handball">Handball</option>
-          </select>
 
           <select onChange={handleSelectNiveau}  className={`search__block__filter__select ${isActiveNiveau ? 'search__block__filter__select__active' : ''}`}>
             <option value="Niveau">Niveau</option>
