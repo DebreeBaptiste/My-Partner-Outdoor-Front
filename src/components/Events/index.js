@@ -19,6 +19,17 @@ const dispatch = useDispatch();
   const loading = useSelector((state) => state.event.loading);
   
   const events = useSelector((state) => state.event.event);
+  const selectedLevel = useSelector((state) => state.event.selectedLevel); // Récupérer la valeur sélectionnée dans le state global
+
+
+  const filteredEvents = events.filter((event) => {
+    if (selectedLevel === "") { // Si aucun niveau n'est sélectionné, afficher tous les événements
+      return true;
+    } else {
+      return event.level === selectedLevel; // Filtrer les événements en fonction du niveau sélectionné
+    }
+  });
+
   if (loading) {
     return (
     <div className='loading-container'>
@@ -36,7 +47,7 @@ const dispatch = useDispatch();
   }
   return (
     <main className='events'>
-     {events.map(event => (<Event {...event} key={event.id} />))}
+     {filteredEvents.map(event => (<Event {...event} key={event.id} />))}
       
   
     </main>

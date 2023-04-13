@@ -7,8 +7,10 @@ const initialState = {
     id: 10,
     title: "Event de handball",
     description: "Faire un Basket",
-    start: "2023-04-01T10:00:44.880Z",
-    finish: "2023-04-01T15:00:44.880Z",
+    start_date: "12/05/2023",
+    finish_date: "12/05/2023",
+    start_hour: "12:00",
+    finish_hour: "15:00",
     nb_participant: 2,
     equipement: "dqsfsefefsdfs",
     price: 5,
@@ -24,9 +26,11 @@ const initialState = {
     sport: "BasketBall",
     level: "Débutant"
   }],
+  selectedLevel: "" ,
 };
 
 export const getRandomEvents = createAction('event/getRandomEvents');
+export const getFilteredEvents = createAction('event/getFilteredEvents');
 
 const eventReducer = createReducer(initialState, (builder) => {
   builder
@@ -34,6 +38,10 @@ const eventReducer = createReducer(initialState, (builder) => {
       
       state.event = action.payload;
       state.loading = false;
+    })
+    .addCase(getFilteredEvents, (state, action) => {
+      state.loading = false;
+      state.selectedLevel = action.payload;
     })
 
 });

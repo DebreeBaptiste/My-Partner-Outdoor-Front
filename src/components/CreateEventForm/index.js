@@ -1,27 +1,43 @@
 import { useDispatch, useSelector } from 'react-redux';
-
-
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 // == Import
 import './styles.scss';
 import { postEvent } from '../../api/event';
-import { changeField } from '../../store/reducers/createEvent';
+import { changeField , resetFormField } from '../../store/reducers/createEvent';
+import { fetchSports } from '../../api/sports';
 
 // == Composant
 function CreateEventForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const event = useSelector((state) => state.createEvent.createEvent);
 
   const handleSubmit = (event) => {
     event.preventDefault();
   
-    dispatch(postEvent());
+    dispatch(postEvent(navigate));
   };
 
   const handleChange = (event) => {
     dispatch(changeField({ value: event.target.value, name: event.target.name }));
   };
 
+  //Reset du formulaire et retour à la page d'accueil sur le bouton annuler
+  const handleClickCancel = () => {
+    dispatch(resetFormField())
+    window.scrollTo({ top: 0 })
+    navigate('/home');
+  };
+
+
+  useEffect(() => {
+    dispatch((fetchSports()));
+  }, []);
+
+  const sports = useSelector((state) => state.sports.sports);
+  console.log(sports);
 
   return (
     <div className='createEvent'>
@@ -38,10 +54,9 @@ function CreateEventForm() {
               <label className='form__label'>Sport :</label>
               <select className='form__input' id="sport" name="sport" value={event.sport} onChange={handleChange}>
                 <option value=" "></option>
-                <option value="football">Football</option>
-                <option value="BasketBall">BasketBall</option>
-                <option value="tennis">Tennis</option>
-                <option value="volleyball">Volleyball</option>
+                {sports.map((sport) => (
+                  <option key={sport.id} value={sport.id}>{sport.name}</option>
+                ))}
               </select>
             </div>
             <div className='form__labelinput'>
@@ -92,23 +107,23 @@ function CreateEventForm() {
               <div className='form__date__hours__up' >
                 <div className='form__hours__up' >
                   <label className='form__label'>Heure de début :</label>
-                  <input className='form__input__time' type="time" name="start-date"  onChange={handleChange} ></input>
+                  <input className='form__input__time' type="time" name="start_hour"  onChange={handleChange} ></input>
                 </div>
                 <div className='form__date'>
                   <div className='form__date__up' >
                     <label className='form__label'>Date de début :</label>
-                    <input className='form__input__date' type="date" name="start-date" value={event.start} onChange={handleChange} ></input>
+                    <input className='form__input__date' type="date" name="start_date" value={event.start} onChange={handleChange} ></input>
                   </div>
                   </div>
               </div>
               <div className='form__date__hours__bottom' >
                   <div className='form__hours__bottom' >
                     <label className='form__label'>Heure de fin :</label>
-                    <input className='form__input__time' type="time" name="start-date"  onChange={handleChange} ></input>
+                    <input className='form__input__time' type="time" name="finish_hour"  onChange={handleChange} ></input>
                   </div>
               <div className='form__date__bottom'>
                 <label className='form__label'>Date de fin :</label>
-                <input className='form__input__date' type="date" id="end-date" name="end-date" value={event.finish} onChange={handleChange} ></input>
+                <input className='form__input__date' type="date" id="end-date" name="finish_date" value={event.finish} onChange={handleChange} ></input>
               </div>
             </div>
               <div className='form__price'>
@@ -127,15 +142,15 @@ function CreateEventForm() {
             <label className='form__label'>Niveau souhaité :</label>
             <div className='form__bottom__radio' id="niveau">
               <div className='form__bottom__radio__debutant' id="niveau">
-                <input className='form__input__radio' type="radio" id="debutant" name="niveau" value={event.level}  onChange={handleChange} checked={event.level === "Débutant"}></input>
+                <input className='form__input__radio' type="radio" id="debutant" name="level" value={event.level}  onChange={handleChange} checked={event.level === "Débutant"}></input>
                 <label className='form__label__radio'>Débutant</label>
               </div>
               <div className='form__bottom__radio__debutant' id="niveau">
-                <input className='form__input__radio' type="radio" id="intermediaire" name="niveau" value={event.level}  onChange={handleChange}></input>
+                <input className='form__input__radio' type="radio" id="intermediaire" name="level" value={event.level}  onChange={handleChange}></input>
                 <label className='form__label__radio'>Intermédiaire</label>
               </div>
               <div className='form__bottom__radio__debutant' id="niveau">
-                <input className='form__input__radio' type="radio" id="confirme" name="niveau" value={event.level} onChange={handleChange}></input>
+                <input className='form__input__radio' type="radio" id="confirme" name="level" value={event.level} onChange={handleChange}></input>
                 <label className='form__label__radio'>Confirmé</label>
               </div>
             </div>
@@ -153,8 +168,8 @@ function CreateEventForm() {
               <textarea className='form__input' id="materiels" name="materiels" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
             </div>
             <div className='form__bottom__button' id="niveau">
-              <button className='form__bottom__button__confirm' type="submit" value="confirmer">Confirmer</button>
-              <button  className='form__bottom__button__cancel' type="reset" value="annuler">Annuler</button>
+              <button  className='form__bottom__button__confirm' type="submit" value="submit">Confirmer</button>
+              <button onClick={handleClickCancel}  className='form__bottom__button__cancel' type="reset" value="annuler">Annuler</button>
             </div>
           </div>
         </fieldset>

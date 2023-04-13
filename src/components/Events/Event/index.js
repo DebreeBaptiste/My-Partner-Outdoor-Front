@@ -1,7 +1,7 @@
 //  Import
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+// import image from '../../../assets/resource/sports/Escalade.jpg';
 // == Import
 import './styles.scss';
 
@@ -10,8 +10,10 @@ function Event({
   id,
   title,
   description,
-  start,
-  finish,
+  start_date,
+  finish_date,
+  start_hour,
+  finish_hour,
   nb_participant,
   equipement,
   price,
@@ -30,7 +32,7 @@ function Event({
 }) {
   return (
     <div className='event'>
-     <img className='event__image' src={`src/assets/resource/sports/${sport}.jpg`} alt='event' />
+     <img className='event__image' src={picture} alt='event' />
       <div className='event__detail'>
         <div className='event__detail__up'>
           <h5 className='event__detail__up__title'>{title}</h5>

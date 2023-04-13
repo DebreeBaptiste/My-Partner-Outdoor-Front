@@ -9,6 +9,7 @@ import errorReducer from './reducers/error';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
 import eventReducer from './reducers/event';
+import sportsReducer from './reducers/sports';
 
 const store = configureStore({
   reducer: {
@@ -21,7 +22,7 @@ const store = configureStore({
     error: errorReducer,
     event: eventReducer,
     createEvent: createEventReducer,
-    event: eventReducer,
+    sports: sportsReducer,
   },
 });
 
