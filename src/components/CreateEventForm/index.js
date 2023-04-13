@@ -157,7 +157,7 @@ function CreateEventForm() {
             {/* <div className='form__bottom__photo' id="niveau">
               <label className='form__label'>Photo :</label>
               <label htmlFor="file" className="form__label__file">Changer photo</label>
-              <input className='form__input__photo' type="file" accept="image/png, image/jpg, image/gif, image/jpeg" name="photo"  onChange={handleChange}></input>
+              <input className='form__input__photo' type="file" accept="image/png, image/jpg, image/gif, image/jpeg" name="photo" value={formValues.nbParticipant} onChange={handleChange}></input>
             </div> */}
             <div className='form__bottom__description' id="niveau">
               <label className='form__label'>Description :</label>

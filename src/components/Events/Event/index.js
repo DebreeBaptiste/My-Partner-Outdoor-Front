@@ -32,7 +32,7 @@ function Event({
 }) {
   return (
     <div className='event'>
-     <img className='event__image' src={picture} alt='event' />
+      <img className='event__image' src={picture} alt='event' />
       <div className='event__detail'>
         <div className='event__detail__up'>
           <h5 className='event__detail__up__title'>{title}</h5>
