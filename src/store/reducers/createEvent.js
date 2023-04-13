@@ -2,7 +2,6 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   createEvent: {
-    id: 10,
     title: "Event de handball",
     description: "Faire un Basket",
     start: "2023-04-01T10:00:44.880Z",
@@ -12,9 +11,6 @@ const initialState = {
     price: 5,
     picture: "/images/basket",
     organizer_id:3,
-    sport_id: 3,
-    level_id: 1,
-    address_id: 10,
     number: 24,
     street: "rue des fleurs",
     zip_code: "73045",
@@ -23,6 +19,7 @@ const initialState = {
     level: "Débutant"
   },
 };
+
 
 export const saveEvent = createAction('createEvent/saveEvent');
 export const changeField = createAction('createEvent/changeField');
