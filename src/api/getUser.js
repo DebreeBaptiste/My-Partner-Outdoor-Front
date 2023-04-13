@@ -21,6 +21,4 @@ export const getUser = () => async (dispatch) => {
       birthday: data.birthday,
     }));
   }
-
-
 }

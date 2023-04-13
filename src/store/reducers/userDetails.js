@@ -1,6 +1,7 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
+  edit: false,
   user: {
     id: '',
     firstname: '',
@@ -10,8 +11,9 @@ export const initialState = {
     picture: 'photo',
     birthday: '',
     bio: 'your bio',
-    sport: ["FootBall"],
+    sport: ["Football"],
     address: {
+      id: '',
       zip_code: '',
       city: '',
       street: '',
@@ -26,9 +28,13 @@ export const updateUserField = createAction('userDetails/updateUserField');
 
 export const saveUserAddress = createAction('userDetails/saveUserAddress');
 export const updateUserAddress = createAction('userDetails/updateUserAddress');
+export const deleteUserAddress = createAction('userDetails/deleteUserAddress');
 
 export const addSport = createAction('userDetails/addSport');
 export const removeSport = createAction('userDetails/removeSport');
+
+export const openProfilEdit = createAction('userDetails/openProfilEdit');
+export const closeProfilEdit = createAction('userDetails/closeProfilEdit');
 
 const userDetailsReducer = createReducer(initialState, (builder) => {
   builder
@@ -68,6 +74,7 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
     })
     .addCase(saveUserAddress, (state, action) => {
       state.user.address = {
+        id: action.payload[0].id,
         zip_code: action.payload[0].zip_code,
         city: action.payload[0].city,
         street: action.payload[0].street,
@@ -78,6 +85,15 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       const { value, name } = action.payload;
       state.user.address[name] = value;
     })
+    .addCase(deleteUserAddress, (state) => {
+      state.user.address = {
+        id: '',
+        zip_code: '',
+        city: '',
+        street: '',
+        number: '',
+      };
+    })
 
     .addCase(addSport, (state, action) => {
       state.user.sport.push(action.payload);
@@ -87,6 +103,16 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
         (sport) => sport !== action.payload
       );
     })
+
+    .addCase(openProfilEdit, (state) => {
+      state.edit = true;
+    })
+    .addCase(closeProfilEdit, (state) => {
+      state.edit = false;
+    });
+
+
+
 });
 
 export default userDetailsReducer;

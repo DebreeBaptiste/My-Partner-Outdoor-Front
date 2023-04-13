@@ -1,8 +1,8 @@
 import { sendNotification } from '../store/reducers/notification';
-import { closeModal } from '../store/reducers/modal';
+import { closeModal } from '../store/reducers/modalLogin';
 import { addErrorMessage } from '../store/reducers/error';
 import { userLogged, userLogout } from '../store/reducers/userLogin';
-import { saveUser } from '../store/reducers/userDetails';
+import { closeProfilEdit, saveUser } from '../store/reducers/userDetails';
 import { axiosInstance } from './axiosInstance';
 
 
@@ -24,11 +24,8 @@ export const login = (navigate) => async (dispatch, getState) => {
 
     if (status === 200) {
 
-      console.log('data', data, status)
-
-
       localStorage.setItem('token', data.token);
-      localStorage.setItem('userId', data.user.id);
+      localStorage.setItem('userId', data.id);
 
       axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
@@ -44,7 +41,7 @@ export const login = (navigate) => async (dispatch, getState) => {
             bio: data.user.bio,
           })); */
       dispatch(closeModal());
-      dispatch(sendNotification(`Bienvenue ${data.user.pseudo} !`));
+      dispatch(sendNotification(`Bienvenue ${data.pseudo} !`));
     }
 
 
@@ -52,17 +49,19 @@ export const login = (navigate) => async (dispatch, getState) => {
     if (error) {
       dispatch(addErrorMessage("Veuillez vérifier vos identifiants"));
     }
+    return
   }
+  dispatch(addErrorMessage(""));
+  navigate('/home');
+  window.scrollTo({ top: 0 });
 
-  finally {
-    navigate('/home');
-    window.scrollTo({ top: 0 });
-  }
 };
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem('token');
-  localStorage.removeItem('userId', data.user.id);
+  localStorage.removeItem('userId');
+  localStorage.removeItem('userAddressId');
   axiosInstance.defaults.headers.common['Authorization'] = null;
+  dispatch(closeProfilEdit());
   dispatch(userLogout());
 };

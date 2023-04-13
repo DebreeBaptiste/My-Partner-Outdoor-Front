@@ -1,7 +1,7 @@
 /* Tool */
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '../../store/reducers/modal';
+import { openModal } from '../../store/reducers/modalLogin';
 import { logout } from '../../api/auth';
 
 /* Component */
@@ -19,7 +19,7 @@ export const Header = () => {
   const dispatch = useDispatch()
 
   const userLogged = useSelector((state) => state.user.logged);
-  const modalOpen = useSelector((state) => state.modal.open);
+  const modalOpen = useSelector((state) => state.modalLogin.open);
 
   useEffect(() => {
     if (modalOpen) {
@@ -89,7 +89,9 @@ export const Header = () => {
             <img className="header-logo" src={logo} alt="logo My Partner Outdoor" />
           </Link>
         </h1>
-        <span className='header-title-text'>My Partner Outdoor</span>
+
+        <span className='header-title-text'><Link to='/'>My Partner Outdoor</Link></span>
+
       </div>
 
       {userLogged && <Link to='/createevent' className="header-event">Créer un évênement</Link>}
