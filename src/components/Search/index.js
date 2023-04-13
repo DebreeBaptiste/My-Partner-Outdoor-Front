@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './styles.scss';
 import iconflechedroite from 'src/assets/resource/icon-fleche-droite.png';
 import { fetchSearchEvents } from '../../api/event';
-
+import { getFilteredEvents } from '../../store/reducers/event';
 
 // == Composant
 function Search() {
@@ -77,8 +77,16 @@ function Search() {
     // console.log(searchSport, searchPlace);
   };
 
-  
 
+
+  function handleSelectChange(event) {
+    dispatch(getFilteredEvents(event.target.value)); // Stocker la valeur sélectionnée dans le state global
+  }
+
+  function handleChangeAndNiveau(event){
+    handleSelectNiveau(event);
+    handleSelectChange(event);
+  }
   return (
     <form onSubmit={handleSubmit} className='search'>
       <div className='search__title'>
@@ -103,11 +111,11 @@ function Search() {
           </div>
         <div className='search__block__filter'>
 
-          <select onChange={handleSelectNiveau}  className={`search__block__filter__select ${isActiveNiveau ? 'search__block__filter__select__active' : ''}`}>
-            <option value="Niveau">Niveau</option>
-            <option value="Football">Débutant</option>
-            <option value="Escalade">Intermediaire</option>
-            <option value="Kitesurf">Confirmé</option>
+          <select onChange={handleChangeAndNiveau}  className={`search__block__filter__select ${isActiveNiveau ? 'search__block__filter__select__active' : ''}`}>
+            <option value="">Niveau</option>
+            <option value="Débutant">Débutant</option>
+            <option value="Intermediaire">Intermediaire</option>
+            <option value="Confirmé">Confirmé</option>
           </select>
 
 
@@ -128,7 +136,7 @@ function Search() {
     
 
   );
-  }
+  };
 
 // == Export
 export default Search;

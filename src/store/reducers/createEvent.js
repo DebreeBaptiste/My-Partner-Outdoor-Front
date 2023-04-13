@@ -4,8 +4,10 @@ const initialState = {
   createEvent: {
     title: "Event de handball",
     description: "Faire un Basket",
-    start: "2023-04-01T10:00:44.880Z",
-    finish: "2023-04-01T15:00:44.880Z",
+    start_date: "12/05/2023",
+    finish_date: "12/05/2023",
+    start_hour: "12:00",
+    finish_hour: "15:00",
     nb_participant: 2,
     equipement: "dqsfsefefsdfs",
     price: 5,
@@ -23,6 +25,7 @@ const initialState = {
 
 export const saveEvent = createAction('createEvent/saveEvent');
 export const changeField = createAction('createEvent/changeField');
+export const resetFormField = createAction('createUser/resetFormField');
 
 const createEventReducer = createReducer(initialState, (builder) => {
   builder
@@ -33,6 +36,27 @@ const createEventReducer = createReducer(initialState, (builder) => {
     .addCase(saveEvent, (state, action) => {
       
       state.createEvent = action.payload;
+    })
+    .addCase(resetFormField, (state) => {
+      state.createEvent = {
+        title: " ",
+        description: " ",
+        start_date: " ",
+        finish_date: " ",
+        start_hour: " ",
+        finish_hour: " ",
+        nb_participant: 2,
+        equipement: " ",
+        price: 1,
+        picture: " ",
+        organizer_id:1,
+        number: 1,
+        street: " ",
+        zip_code: " ",
+        city: " ",
+        sport: " ",
+        level: " "
+      };
     })
 
 });
