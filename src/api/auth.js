@@ -22,20 +22,46 @@ export const login = (navigate) => async (dispatch, getState) => {
       password
     });
 
-    console.log(data)
+    if (status === 200) {
 
-    dispatch(saveUser({}));
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.id);
 
-    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
-
-  finally {
-      navigate('/home');
-      window.scrollTo({ top: 0 });
+      dispatch(addErrorMessage(""));
+      dispatch(userLogged())
+      /*     dispatch(saveUser({
+            firstname: data.user.firstname,
+            lastname: data.user.lastname,
+            pseudo: data.user.pseudo,
+            id: data.user.id,
+            picture: data.user.picture,
+            email: data.user.email,
+            bio: data.user.bio,
+          })); */
+      dispatch(closeModal());
+      dispatch(sendNotification(`Bienvenue ${data.pseudo} !`));
     }
-  };
 
-  export const logout = () => (dispatch) => {
-    dispatch(userLogout());
-    axiosInstance.defaults.headers.common['Authorization'] = null;
-  };
+
+  } catch (error) {
+    if (error) {
+      dispatch(addErrorMessage("Veuillez vérifier vos identifiants"));
+    }
+    return
+  }
+  dispatch(addErrorMessage(""));
+  navigate('/home');
+  window.scrollTo({ top: 0 });
+
+};
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('userAddressId');
+  axiosInstance.defaults.headers.common['Authorization'] = null;
+  dispatch(closeProfilEdit());
+  dispatch(userLogout());
+};
