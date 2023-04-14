@@ -38,7 +38,7 @@ export const Notification = () => {
   };
 
   return (
-    <div className={`notification ${open ? 'active' : ""}`} onTransitionEnd={handleTransitionEnd}>
+    <div className={`notification ${open ? 'notification-active' : ""}`} onTransitionEnd={handleTransitionEnd}>
       <div className='notification-close-button' onClick={handleCloseNotification}>
         <img src={closeIcon} className="notification-close-icon" />
       </div>

@@ -17,7 +17,7 @@
   transition: transform 0.3s ease-in-out;
   transform: translateY(calc(-100% - 80px));
 
-  &.active {
+  &.notification-active {
     transform: translateY(0);
   }
 
@@ -52,7 +52,7 @@
       padding: 0 2.5rem;
     }
 
-    &.active {
+    &.notification-active {
       transform: translateX(0);
     }
   }

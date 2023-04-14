@@ -7,7 +7,6 @@ import { Button } from '../../components/Button';
 import { About } from '../../components/About';
 import { Messages } from '../../components/Messages';
 import { Participants } from '../../components/Participants';
-import { Notification } from '../../components/Notification';
 import { sendNotification } from '../../store/reducers/notification';
 
 /* Image/logo */
@@ -50,30 +49,30 @@ export const EventPage = () => {
   if (!userLogged && pathname === '/event/1/chat') {
     return < Navigate to="/event/1/" />
   }
-
+  const classNameLink = ({ isActive }) => `event-detail-nav-link ${isActive ? 'active-link' : ''}`;
 
   return (
     <main className='event-detail'>
-      <header className="event-header">
-        <img className='event-header-picture' src={eventHeaderPicture} />
-        <div className='event-header-content'>
-          <div className='event-header-content-text'>
+      <header className="event-detail-detail-header">
+        <img className='event-detail-header-picture' src={eventHeaderPicture} />
+        <div className='event-detail-header-content'>
+          <div className='event-detail-header-content-text'>
             <p>SAMEDI 3 JUIN 2023 de 13:00 à 17:00</p>
             <p>Tour du Salagou en VTT</p>
           </div>
-          {userLogged && <Button className={'event-header-button btn-purple'} children={'Je participe'} onClick={handleClickParticipateNotification} />}
+          {userLogged && <Button className={'event-detail-header-button btn-purple'} children={'Je participe'} onClick={handleClickParticipateNotification} />}
         </div>
       </header>
-      <nav className='event-nav'>
-        <ul className={`${userLogged ? "event-nav-list-logged" : "event-nav-list"}`}>
-          <NavLink to="/event/1/" className="event-nav-link"><li className='event-nav-item active'>A propos</li></NavLink>
-          {userLogged && <NavLink to="/event/1/chat" className="event-nav-link"><li className='event-nav-item'>Discussion</li></NavLink>}
-          <NavLink to="/event/1/participants" className="event-nav-link"><li className='event-nav-item'>Participants</li></NavLink>
-          <a onClick={copyToClip}><li className='event-nav-item event-nav-item-share'>Partager</li></a>
+      <nav className='event-detail-nav'>
+        <ul className={`${userLogged ? "event-detail-nav-list-logged" : "event-detail-nav-list"}`}>
+          <NavLink to="/event/1/" className={classNameLink}><li className='event-detail-nav-item active-link'>A propos</li></NavLink>
+          {userLogged && <NavLink to="/event/1/chat" className={classNameLink}><li className='event-detail-nav-item'>Discussion</li></NavLink>}
+          <NavLink to="/event/1/participants" className={classNameLink}><li className='event-detail-nav-item'>Participants</li></NavLink>
+          <a onClick={copyToClip}><li className='event-detail-nav-item event-detail-nav-item-share'>Partager</li></a>
         </ul>
       </nav>
 
-      <section className='event-section'>
+      <section className='event-detail-section'>
 
         {(userLogged && pathname === '/event/1/chat') && <Messages />}
         {pathname === '/event/1/participants' && <Participants />}

@@ -8,6 +8,7 @@ import createUserReducer from './reducers/createUser';
 import errorReducer from './reducers/error';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
+import eventReducer from './reducers/event';
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     modalDelete: modalDeleteReducer,
     error: errorReducer,
     notification: notificationReducer,
+    event: eventReducer,
   },
 });
 
