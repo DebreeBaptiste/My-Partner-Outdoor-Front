@@ -165,7 +165,7 @@ function CreateEventForm() {
             </div>
             <div className='form__bottom__materials' id="niveau">
               <label className='form__label'>Matériels à apporter :</label>
-              <textarea className='form__input' id="materiels" name="materiels" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
+              <textarea className='form__input' id="materiels" name="equipement" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
             </div>
             <div className='form__bottom__button' id="niveau">
               <button  className='form__bottom__button__confirm' type="submit" value="submit">Confirmer</button>
