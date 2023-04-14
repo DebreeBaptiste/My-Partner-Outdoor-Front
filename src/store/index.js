@@ -8,7 +8,6 @@ import createUserReducer from './reducers/createUser';
 import errorReducer from './reducers/error';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
-import eventReducer from './reducers/event';
 import sportsReducer from './reducers/sports';
 
 const store = configureStore({
@@ -23,6 +22,8 @@ const store = configureStore({
     event: eventReducer,
     createEvent: createEventReducer,
     sports: sportsReducer,
+    notification: notificationReducer,
+    event: eventReducer,
   },
 });
 
