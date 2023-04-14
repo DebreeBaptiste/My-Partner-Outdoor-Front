@@ -13,11 +13,10 @@ import { ModalDeleteUser } from '../../components/ModalDeleteUser';
 
 /* Api */
 import { getUser } from '../../api/getUser';
-import { getUserSport } from '../../api/getUserSports';
+import { addUserSport, deleteUserSport, getUserSport } from '../../api/userSports';
 import { getUserAddress } from '../../api/userAddress.js';
 
 /* Image et logo */
-import userPicture from 'src/assets/resource/fake-avatar.png';
 import editIcon from 'src/assets/icon-edit.svg';
 
 
@@ -25,6 +24,7 @@ import editIcon from 'src/assets/icon-edit.svg';
 /* Style */
 import './styles.scss';
 import { EditUserProfilForm } from '../../components/EditUserProfilForm';
+import { fetchSports } from '../../api/sports';
 
 
 export const Profil = () => {
@@ -37,6 +37,7 @@ export const Profil = () => {
   const user = useSelector((state) => state.userDetails.user);
   const userLogged = useSelector((state) => state.user.logged);
   const edit = useSelector((state) => state.userDetails.edit);
+  const sports = useSelector((state) => state.sports.sports);
 
   useEffect(() => {
     if (!userLogged) {
@@ -47,6 +48,7 @@ export const Profil = () => {
       dispatch(getUser());
       dispatch(getUserSport());
       dispatch(getUserAddress());
+      dispatch(fetchSports());
 
     }
 
@@ -59,13 +61,15 @@ export const Profil = () => {
   };
 
   const handleChangeSportValue = (event) => {
-    const newSport = user.sport.includes(event.target.value);
+    const newSport = user.sport.find((sport) => sport.name === event.target.value);
     if (newSport) {
       return
     }
 
     if (!newSport) {
-      dispatch(addSport(event.target.value));
+      const sportToAdd = sports.find((sport) => sport.name === event.target.value)
+      dispatch(addUserSport(sportToAdd.id));
+      dispatch(addSport({ sport_id: sportToAdd.id, name: sportToAdd.name }));
     }
 
     if (user.sport.length >= 1) {
@@ -74,14 +78,17 @@ export const Profil = () => {
   };
 
 
-
   const handleClickDelete = (event) => {
     if (user.sport.length === 1) {
       dispatch(addErrorMessage("Vous devez avoir au moins un sport"))
       return
     }
 
-    dispatch(removeSport(event.target.closest('.profil-user-sport-item').textContent));
+    const sportToDelete = user.sport.find((sport) => sport.name === event.target.closest('.profil-user-sport-item').textContent)
+
+    dispatch(deleteUserSport(sportToDelete.sport_id));
+    const deleteUserSportToState = user.sport.filter((sport) => sport.sport_id !== sportToDelete.sport_id);
+    dispatch(removeSport(deleteUserSportToState));
   };
 
 
@@ -96,7 +103,7 @@ export const Profil = () => {
         <div className='profil-content'>
           <div className='profil-user-container'>
             <div className='profil-user-picture-name-container'>
-              <img src={userPicture} className='profil-user-picture' />
+              <img src={user.picture} className='profil-user-picture' />
             </div>
 
           </div>
@@ -112,20 +119,14 @@ export const Profil = () => {
             <ul className='profil-user-sport-list'>
               {
                 user.sport.map((sport) => (
-                  <UserSport sport={sport} key={sport} edit={edit} deleteSport={handleClickDelete} />))
+                  <UserSport sport={sport} key={`sportId-${sport.sport_id}`} edit={edit} deleteSport={handleClickDelete} />))
               }
 
               {edit && <select className='profil-user-sport-item add' onChange={handleChangeSportValue}>
-                <option value="">Ajouter un sport</option>
-                <option value="Randonnée">Randonnée</option>
-                <option value="Course-à-pied">Course à pied</option>
-                <option value="Trail">Trail</option>
-                <option value="Triathlon">Triathlon</option>
-                <option value="VTT">VTT</option>
-                <option value="Cyclisme">Cyclisme</option>
-                <option value="Football">Football</option>
-                <option value="Handball">Handball</option>
-                <option value="Basket-ball">Basket-ball</option>
+                <option key="empty" value="">Ajouter un sport</option>
+                {sports.map((sport) => (
+                  <option key={sport.id} value={sport.name}>{sport.name}</option>
+                ))}
               </select>}
             </ul>
           </div>

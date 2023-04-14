@@ -28,18 +28,13 @@ export const register = (navigate) => async (dispatch, getState) => {
     if (response.status === 200) {
       dispatch(resetFormField());
       dispatch(addErrorMessage(""));
+      navigate('/');
+      window.scrollTo({ top: 0 })
       dispatch(sendNotification("Votre compte a bien été créé"));
-
     }
 
   } catch (error) {
     console.log(error);
-    dispatch(addErrorMessage("Une erreur est survenue, veuillez réessayer ultérieurement"));
+    dispatch(addErrorMessage("Cette adresse email est déjà utilisée"));
   }
-
-  finally {
-    window.scrollTo({ top: 0 })
-    navigate('/');
-  }
-
 };

@@ -24,7 +24,7 @@ export const editUser = () => async (dispatch, getState) => {
         lastname,
         pseudo,
         email,
-        picture: "photo",
+        picture,
         bio,
         birthday,
         zip_code,
@@ -51,7 +51,7 @@ export const editUser = () => async (dispatch, getState) => {
         lastname,
         pseudo,
         email,
-        picture: "photo",
+        picture,
         bio,
         birthday,
       });

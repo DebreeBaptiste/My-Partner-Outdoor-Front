@@ -10,15 +10,30 @@ export const getUser = () => async (dispatch) => {
   })
 
   if (status === 200) {
-    dispatch(saveUser({
-      firstname: data.firstname,
-      lastname: data.lastname,
-      pseudo: data.pseudo,
-      id: data.id,
-      picture: data.picture,
-      email: data.email,
-      bio: data.bio,
-      birthday: data.birthday,
-    }));
+
+    if (data.birthday === null) {
+      dispatch(saveUser({
+        firstname: data.firstname,
+        lastname: data.lastname,
+        pseudo: data.pseudo,
+        id: data.id,
+        picture: data.picture,
+        email: data.email,
+        bio: data.bio,
+        birthday: '',
+      }));
+
+      if (data.bio === null) {
+        dispatch(saveUser({
+          firstname: data.firstname,
+          lastname: data.lastname,
+          pseudo: data.pseudo,
+          id: data.id,
+          picture: data.picture,
+          email: data.email,
+          bio: '',
+        }));
+      }
+    }
   }
 }
