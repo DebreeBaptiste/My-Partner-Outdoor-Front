@@ -102,31 +102,31 @@ function Search() {
             </button>
 
           </div>
-        <div className='search__block__filter'>
+          <div className='search__block__filter'>
 
 
-          <select onChange={handleChangeAndNiveau} className={`search__block__filter__select ${isActiveNiveau ? 'search__block__filter__select__active' : ''}`}>
+            <select onChange={handleChangeAndNiveau} className={`search__block__filter__select ${isActiveNiveau ? 'search__block__filter__select__active' : ''}`}>
 
-            <option value="">Niveau</option>
-            <option value="Débutant">Débutant</option>
-            <option value="Intermediaire">Intermediaire</option>
-            <option value="Confirmé">Confirmé</option>
-          </select>
+              <option value="">Niveau</option>
+              <option value="Débutant">Débutant</option>
+              <option value="Intermediaire">Intermediaire</option>
+              <option value="Confirmé">Confirmé</option>
+            </select>
 
 
-          <select onChange={handleSelectPrice} className={`search__block__filter__select ${isActivePrice ? 'search__block__filter__select__active' : ''}`}>
-            <option value="">Prix</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-            <option value="60">60</option>
-          </select>
+            <select onChange={handleSelectPrice} className={`search__block__filter__select ${isActivePrice ? 'search__block__filter__select__active' : ''}`}>
+              <option value="">Prix</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="60">60</option>
+            </select>
 
+          </div>
         </div>
       </div>
-
     </form>
 
 

@@ -14,6 +14,7 @@ import userDetailsReducer from './reducers/userDetails';
 
 
 
+
 const store = configureStore({
   reducer: {
     user: userLoginReducer,
@@ -27,6 +28,7 @@ const store = configureStore({
     createEvent: createEventReducer,
     sports: sportsReducer,
     notification: notificationReducer,
+
   },
 });
 
