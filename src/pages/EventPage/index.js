@@ -53,8 +53,11 @@ export const EventPage = () => {
 
   return (
     <main className='event-detail'>
-      <header className="event-detail-detail-header">
-        <img className='event-detail-header-picture' src={eventHeaderPicture} />
+      <header className="event-detail-header">
+        <div className="event-detail-header-picture-container">
+          <img className='event-detail-header-picture' src={eventHeaderPicture} />
+
+        </div>
         <div className='event-detail-header-content'>
           <div className='event-detail-header-content-text'>
             <p>SAMEDI 3 JUIN 2023 de 13:00 à 17:00</p>

@@ -1,7 +1,7 @@
 .event-detail {
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 1rem;
+
   width: 100%;
 }
 
@@ -10,10 +10,20 @@
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
+  background-color: var(--extra-light-grey);
+  padding-bottom: 0.8rem;
+
+  &-picture-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2% 5%;
+  }
 
   &-picture {
     width: 100%;
-    height: 45vw;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,10 +32,8 @@
   &-content {
     display: grid;
     grid-template-columns: 1fr max-content;
-    margin-top: 1rem;
     width: 100%;
-    background-color: #fff;
-    padding: 0 1.5rem;
+    padding: 1rem 6%;
 
     &-text {
       display: grid;
@@ -37,7 +45,7 @@
 }
 @media (min-width: 700px) {
   .event-detail-header-content {
-    padding: 1rem 3rem;
+    padding: 1rem 10%;
   }
 
   .event-detail-header-content-text {
@@ -155,5 +163,5 @@
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
