@@ -1,5 +1,5 @@
 /* Tools */
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 /* Component */
 import { Header } from '../Header';
@@ -17,17 +17,11 @@ import { Profil } from '../../pages/Profil';
 
 /* Style */
 import './styles.scss';
-import { useEffect } from 'react';
+
 
 
 // == Composant
 function App() {
-
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, [pathname])
 
   return (
     <div className="app">
