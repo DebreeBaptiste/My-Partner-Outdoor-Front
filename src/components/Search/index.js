@@ -51,6 +51,7 @@ function Search() {
     setSearchSport(newValue);
   };
 
+
   const [searchPlace, setSearchPlace] = useState('');
 
   const handleChangeSearchPlace = (event) => {
@@ -67,11 +68,14 @@ function Search() {
 
 
 
+
   function handleSelectChange(event) {
     dispatch(getFilteredEvents(event.target.value)); // Stocker la valeur sélectionnée dans le state global
   }
 
+
   function handleChangeAndNiveau(event) {
+
     handleSelectNiveau(event);
     handleSelectChange(event);
   }
@@ -80,6 +84,7 @@ function Search() {
       <div className='search__title'>
         <h3 className='search__title__text'>Recherche</h3>
       </div>
+
       <div className='search__block'>
         <div className='search__block__form'>
           <div className='search__block__form__input__sport'>
@@ -95,11 +100,13 @@ function Search() {
             <button type='submit' className='search__block__form__input__submit__button'>
               <img src={iconflechedroite} className='search__block__form__input__submit__button__image'></img>
             </button>
+
           </div>
-        </div>
         <div className='search__block__filter'>
 
+
           <select onChange={handleChangeAndNiveau} className={`search__block__filter__select ${isActiveNiveau ? 'search__block__filter__select__active' : ''}`}>
+
             <option value="">Niveau</option>
             <option value="Débutant">Débutant</option>
             <option value="Intermediaire">Intermediaire</option>
@@ -123,8 +130,10 @@ function Search() {
     </form>
 
 
+
   );
 };
+
 
 // == Export
 export default Search;

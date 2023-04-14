@@ -1,7 +1,9 @@
 //  Import
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 // import image from 'http://localhost:4000/images/29.jpg';
+
 // == Import
 import './styles.scss';
 
@@ -32,7 +34,9 @@ function Event({
 }) {
   return (
     <div className='event'>
+
       <img className='event__image' src={picture} alt='event' />
+
       <div className='event__detail'>
         <div className='event__detail__up'>
           <h5 className='event__detail__up__title'>{title}</h5>

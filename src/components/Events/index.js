@@ -6,7 +6,9 @@ import { fetchRandomEvents } from '../../api/event';
 // == Import
 import './styles.scss';
 import Event from './Event/index.js';
+
 import { MagnifyingGlass } from 'react-loader-spinner'
+
 // == Composant
 function Events() {
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ function Events() {
 
   if (loading) {
     return (
+
       <div className='loading-container'>
         <MagnifyingGlass
           visible={loading}
@@ -48,6 +51,7 @@ function Events() {
   return (
     <main className='events'>
       {filteredEvents.map(event => (<Event {...event} key={event.id} />))}
+
 
 
     </main>

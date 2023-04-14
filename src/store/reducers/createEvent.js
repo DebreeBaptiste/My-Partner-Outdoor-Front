@@ -12,7 +12,9 @@ const initialState = {
     equipement: "dqsfsefefsdfs",
     price: 5,
     picture: "/images/basket",
+
     organizer_id: 3,
+
     number: 24,
     street: "rue des fleurs",
     zip_code: "73045",
@@ -49,7 +51,9 @@ const createEventReducer = createReducer(initialState, (builder) => {
         equipement: " ",
         price: 1,
         picture: " ",
+
         organizer_id: 1,
+
         number: 1,
         street: " ",
         zip_code: " ",
@@ -61,4 +65,6 @@ const createEventReducer = createReducer(initialState, (builder) => {
 
 });
 
+
 export default createEventReducer;
+
