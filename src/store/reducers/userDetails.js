@@ -2,6 +2,7 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
   edit: false,
+  editPictureModal: false,
   user: {
     id: '',
     firstname: '',
@@ -36,6 +37,10 @@ export const removeSport = createAction('userDetails/removeSport');
 
 export const openProfilEdit = createAction('userDetails/openProfilEdit');
 export const closeProfilEdit = createAction('userDetails/closeProfilEdit');
+export const toggleProfilEdit = createAction('userDetails/toggleProfilEdit');
+
+export const openProfilPictureEdit = createAction('userDetails/openProfilPictureEdit');
+export const closeProfilPictureEdit = createAction('userDetails/closeProfilPictureEdit');
 
 const userDetailsReducer = createReducer(initialState, (builder) => {
   builder
@@ -125,13 +130,23 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       state.user.sport = action.payload;
     })
 
+
     .addCase(openProfilEdit, (state) => {
       state.edit = true;
     })
     .addCase(closeProfilEdit, (state) => {
       state.edit = false;
-    });
+    })
+    .addCase(toggleProfilEdit, (state) => {
+      state.edit = !state.edit;
+    })
 
+    .addCase(openProfilPictureEdit, (state) => {
+      state.editPictureModal = true;
+    })
+    .addCase(closeProfilPictureEdit, (state) => {
+      state.editPictureModal = false;
+    })
 
 
 });

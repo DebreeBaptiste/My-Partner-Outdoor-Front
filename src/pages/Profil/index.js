@@ -1,13 +1,12 @@
 /* Tools */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSport, openProfilEdit, removeSport } from '../../store/reducers/userDetails';
+import { addSport, openProfilEdit, openProfilPictureEdit, removeSport, toggleProfilEdit } from '../../store/reducers/userDetails';
 import { addErrorMessage } from '../../store/reducers/error';
 import { useNavigate } from 'react-router-dom';
 
 /* Component */
 import { UserSport } from '../../components/UserSport/UserSport';
-
 import { ModalDeleteUser } from '../../components/ModalDeleteUser';
 
 
@@ -18,6 +17,7 @@ import { getUserAddress } from '../../api/userAddress.js';
 
 /* Image et logo */
 import editIcon from 'src/assets/icon-edit.svg';
+import editPictureIcon from 'src/assets/icon-camera.svg';
 
 
 
@@ -25,6 +25,7 @@ import editIcon from 'src/assets/icon-edit.svg';
 import './styles.scss';
 import { EditUserProfilForm } from '../../components/EditUserProfilForm';
 import { fetchSports } from '../../api/sports';
+import { ModalEditUserPicture } from '../../components/ModalEditUserPicture';
 
 
 export const Profil = () => {
@@ -55,9 +56,9 @@ export const Profil = () => {
   }, [userLogged]);
 
 
-  const handleClickEdit = () => {
+  const handleClickToggleEdit = () => {
     window.scrollTo(0, 0);
-    dispatch(openProfilEdit());
+    dispatch(toggleProfilEdit());
   };
 
   const handleChangeSportValue = (event) => {
@@ -91,9 +92,11 @@ export const Profil = () => {
     dispatch(removeSport(deleteUserSportToState));
   };
 
-
-
   const errorMessage = useSelector((state) => state.error.message);
+
+  const handleClickOpenEditPictureModal = () => {
+    dispatch(openProfilPictureEdit());
+  };
 
   return (
     <main className='profil-page'>
@@ -102,20 +105,23 @@ export const Profil = () => {
         <h2 className='profil-title'>Mon Profil</h2>
         <div className='profil-content'>
           <div className='profil-user-container'>
-            <div className='profil-user-picture-name-container'>
-              <img src={user.picture} className='profil-user-picture' />
+            <div className='profil-user-picture-container'>
+              <div className='profil-user-picture-wrapper'>
+                <img src={user.picture} className='profil-user-picture' />
+                {edit && <img src={editPictureIcon} alt="edit picture button" className='profil-user-picture-edit' onClick={handleClickOpenEditPictureModal} />}
+              </div>
             </div>
 
           </div>
-          {!edit && <button className='profil-user-edit' onClick={handleClickEdit}>
+          <button className='profil-user-edit' onClick={handleClickToggleEdit}>
             <img src={editIcon} className='profil-user-edit-icon' />
             <span>Modifier</span>
-          </button>}
+          </button>
           <div className='profil-user-info'>
             <p className='profil-user-pseudo'>{user.pseudo}</p>
 
             <p className='profil-user-ville'>{user.address.city}</p>
-            <p className='profil-user-error'>{errorMessage}</p>
+            {edit && <p className='profil-user-error'>{errorMessage}</p>}
             <ul className='profil-user-sport-list'>
               {
                 user.sport.map((sport) => (
@@ -140,7 +146,7 @@ export const Profil = () => {
           </>}
 
         </div>
-
+        <ModalEditUserPicture />
         <ModalDeleteUser />
 
       </section>
