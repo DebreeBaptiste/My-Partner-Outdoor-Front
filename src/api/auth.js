@@ -65,5 +65,4 @@ export const logout = () => (dispatch) => {
   dispatch(closeProfilEdit());
   dispatch(userDetailsLogout());
   dispatch(userLogout());
-  dispatch(sendNotification("Vous êtes déconnecté"));
 };
