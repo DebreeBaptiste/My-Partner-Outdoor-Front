@@ -104,7 +104,7 @@
   background-color: var(--extra-light-grey);
   transition: all 0.3s ease;
 
-  &.active {
+  &.menu-open {
     transform: translateY(11px) rotate(45deg);
   }
 }
@@ -118,7 +118,7 @@
   transition: all 0.3s ease;
   transform: translate(0, -50%);
 
-  &.active {
+  &.menu-open {
     opacity: 0;
   }
 }
@@ -131,7 +131,7 @@
   background-color: var(--extra-light-grey);
   transition: all 0.3s ease;
 
-  &.active {
+  &.menu-open {
     transform: translateY(-11px) rotate(-45deg);
   }
 }
@@ -155,7 +155,7 @@
   font-family: 'Jost-regular';
   font-size: var(--text-2xl);
 
-  &.active {
+  &.menu-open {
     transform: translateY(0);
   }
 }
