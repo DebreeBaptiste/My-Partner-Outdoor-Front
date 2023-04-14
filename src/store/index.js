@@ -6,11 +6,13 @@ import modalDeleteReducer from './reducers/modalDelete';
 import messagesReducer from './reducers/messages';
 import createUserReducer from './reducers/createUser';
 import errorReducer from './reducers/error';
+import createEventReducer from './reducers/createEvent';
+import eventReducer from './reducers/event';
+import sportsReducer from './reducers/sports';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
-import sportsReducer from './reducers/sports';
-import eventReducer from './reducers/event';
-import createEventReducer from './reducers/createEvent';
+
+
 
 const store = configureStore({
   reducer: {
@@ -25,7 +27,6 @@ const store = configureStore({
     createEvent: createEventReducer,
     sports: sportsReducer,
     notification: notificationReducer,
-    event: eventReducer,
   },
 });
 
