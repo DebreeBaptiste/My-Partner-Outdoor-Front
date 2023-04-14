@@ -89,57 +89,60 @@ export const Profil = () => {
   const errorMessage = useSelector((state) => state.error.message);
 
   return (
-    <section className="profil">
-      <h2 className='profil-title'>Mon Profil</h2>
-      <div className='profil-content'>
-        <div className='profil-user-container'>
-          <div className='profil-user-picture-name-container'>
-            <img src={userPicture} className='profil-user-picture' />
+    <main className='profil-page'>
+
+      <section className="profil">
+        <h2 className='profil-title'>Mon Profil</h2>
+        <div className='profil-content'>
+          <div className='profil-user-container'>
+            <div className='profil-user-picture-name-container'>
+              <img src={userPicture} className='profil-user-picture' />
+            </div>
+
           </div>
+          {!edit && <button className='profil-user-edit' onClick={handleClickEdit}>
+            <img src={editIcon} className='profil-user-edit-icon' />
+            <span>Modifier</span>
+          </button>}
+          <div className='profil-user-info'>
+            <p className='profil-user-pseudo'>{user.pseudo}</p>
+
+            <p className='profil-user-ville'>{user.address.city}</p>
+            <p className='profil-user-error'>{errorMessage}</p>
+            <ul className='profil-user-sport-list'>
+              {
+                user.sport.map((sport) => (
+                  <UserSport sport={sport} key={sport} edit={edit} deleteSport={handleClickDelete} />))
+              }
+
+              {edit && <select className='profil-user-sport-item add' onChange={handleChangeSportValue}>
+                <option value="">Ajouter un sport</option>
+                <option value="Randonnée">Randonnée</option>
+                <option value="Course-à-pied">Course à pied</option>
+                <option value="Trail">Trail</option>
+                <option value="Triathlon">Triathlon</option>
+                <option value="VTT">VTT</option>
+                <option value="Cyclisme">Cyclisme</option>
+                <option value="Football">Football</option>
+                <option value="Handball">Handball</option>
+                <option value="Basket-ball">Basket-ball</option>
+              </select>}
+            </ul>
+          </div>
+          {!edit && <div className='profil-user-description'>
+            <h6 className='profil-user-description-title'>Bio</h6>
+            <p className='profil-user-description-text'>{user.bio}</p>
+          </div>}
+
+          {edit && <>
+            <EditUserProfilForm />
+          </>}
 
         </div>
-        {!edit && <button className='profil-user-edit' onClick={handleClickEdit}>
-          <img src={editIcon} className='profil-user-edit-icon' />
-          <span>Modifier</span>
-        </button>}
-        <div className='profil-user-info'>
-          <p className='profil-user-pseudo'>{user.pseudo}</p>
 
-          <p className='profil-user-ville'>{user.address.city}</p>
-          <p className='profil-user-error'>{errorMessage}</p>
-          <ul className='profil-user-sport-list'>
-            {
-              user.sport.map((sport) => (
-                <UserSport sport={sport} key={sport} edit={edit} deleteSport={handleClickDelete} />))
-            }
+        <ModalDeleteUser />
 
-            {edit && <select className='profil-user-sport-item add' onChange={handleChangeSportValue}>
-              <option value="">Ajouter un sport</option>
-              <option value="Randonnée">Randonnée</option>
-              <option value="Course-à-pied">Course à pied</option>
-              <option value="Trail">Trail</option>
-              <option value="Triathlon">Triathlon</option>
-              <option value="VTT">VTT</option>
-              <option value="Cyclisme">Cyclisme</option>
-              <option value="Football">Football</option>
-              <option value="Handball">Handball</option>
-              <option value="Basket-ball">Basket-ball</option>
-            </select>}
-          </ul>
-        </div>
-        {!edit && <div className='profil-user-description'>
-          <h6 className='profil-user-description-title'>Bio</h6>
-          <p className='profil-user-description-text'>{user.bio}</p>
-        </div>}
-
-        {edit && <>
-          <EditUserProfilForm />
-        </>}
-
-      </div>
-
-      <ModalDeleteUser />
-
-    </section>
+      </section>
+    </main>
   );
 };
