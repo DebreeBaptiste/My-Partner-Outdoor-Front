@@ -1,45 +1,48 @@
-.error{
-  padding: 5%;
-  padding-bottom: 0;
+.error {
+  padding: 5% 5% 2% 5%;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
-  &__title{
+
+  &__title {
     font-family: 'Jost-Regular', sans-serif;
     font-size: var(--text-6xl);
     text-align: center;
     margin: 0;
   }
 
-  &__text{
+  &__text {
     font-family: 'Jost-Light', sans-serif;
     font-size: var(--text-lg);
     text-align: center;
     margin: 0;
   }
 
-  &__img{
+  &__img {
     width: 65%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
     bottom: -15px;
+    cursor: pointer;
+  }
 }
-}
-
 
 @media (max-width: 700px) {
+  .error {
+    padding: 5%;
+  }
   .error__title {
     font-size: var(--text-4xl);
   }
   .error__text {
     font-size: var(--text-sm);
   }
-};
+}
 
 @media (min-width: 701px) and (max-width: 1250px) {
   .event {
     width: 40%;
   }
-};
+} ;
