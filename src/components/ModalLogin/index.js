@@ -1,9 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCredentialsValue } from 'src/store/reducers/userLogin';
 import { resetCredentialsValue } from '../../store/reducers/userLogin';
-import { closeModal } from '../../store/reducers/modal';
+import { closeModal } from '../../store/reducers/modalLogin';
 import { login } from 'src/api/auth';
 import PasswordLoginInput from 'src/components/Input/PasswordLoginInput';
 
@@ -13,8 +12,12 @@ import logo from 'src/assets/mountain-adventure-green.svg';
 /* Style */
 import './styles.scss';
 import EmailLoginInput from '../Input/EmailLoginInput';
+import { addErrorMessage } from '../../store/reducers/error';
 
 export const ModalLogin = () => {
+
+
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -22,7 +25,8 @@ export const ModalLogin = () => {
   const email = useSelector((state) => state.user.credentials.email);
   const password = useSelector((state) => state.user.credentials.password);
 
-  const modalOpen = useSelector((state) => state.modal.modalOpen);
+  const modalOpen = useSelector((state) => state.modalLogin.modalOpen);
+  const errorMessage = useSelector((state) => state.error.message);
 
   useEffect(() => {
     if (modalOpen) {
@@ -35,29 +39,26 @@ export const ModalLogin = () => {
   const handClickModalBackdrop = (event) => {
     if (event.target.className === 'modal-login active') {
       // dispatch(resetCredentialsValue());
+      dispatch(addErrorMessage(''));
       dispatch(closeModal());
     }
   };
   const handleClickPageRedirect = () => {
     setTimeout(() => {
       dispatch(closeModal());
+      dispatch(addErrorMessage(''));
     }, 0);
   };
 
-  const handleChangeField = (value, name) => {
-    dispatch(changeCredentialsValue({ value, name }));
-  };
-
-  const handlecloseModal = () => {
+  const handleCloseModal = () => {
     // dispatch(resetCredentialsValue());
+    dispatch(addErrorMessage(''));
     dispatch(closeModal());
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(login());
-    dispatch(closeModal());
-    navigate('/home');
+    dispatch(login(navigate));
   };
 
   return (
@@ -73,7 +74,7 @@ export const ModalLogin = () => {
           </h2>
           <img src={logo} className="modal-login-container-header-logo" />
         </div>
-
+        <p className='modal-login-error'>{errorMessage}</p>
         <form
           action=""
           className="modal-login-container-form"
@@ -104,7 +105,7 @@ export const ModalLogin = () => {
           <div className="modal-login-container-form-button">
             <button
               type="button"
-              onClick={handlecloseModal}
+              onClick={handleCloseModal}
               className="modal-login-container-form-button-cancel"
             >
               Annuler

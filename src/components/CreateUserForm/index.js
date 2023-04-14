@@ -39,15 +39,14 @@ export const CreateUserForm = () => {
 
   // reset form and navigate to home page
   const handleClickCancel = () => {
-    dispatch(resetFormField())
-    window.scrollTo({ top: 0 })
+    dispatch(resetFormField());
     navigate('/');
   };
 
   // submit form and dispatch register to call api
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(register(submitButtonRef.current));
+    dispatch(register(navigate));
   };
 
 
@@ -72,7 +71,7 @@ export const CreateUserForm = () => {
           value={credentials.sport}
           options={[
 
-            { value: 'FootBall', label: 'FootBall' },
+            { value: 'Football', label: 'Football' },
             { value: 'BasketBall', label: 'BasketBall' },
             { value: 'PingPong', label: 'PingPong' },
             { value: 'Tennis', label: 'Tennis' },

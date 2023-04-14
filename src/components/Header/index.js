@@ -1,7 +1,7 @@
 /* Tool */
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '../../store/reducers/modal';
+import { openModal } from '../../store/reducers/modalLogin';
 import { logout } from '../../api/auth';
 
 /* Component */
@@ -19,6 +19,13 @@ export const Header = () => {
   const dispatch = useDispatch()
 
   const userLogged = useSelector((state) => state.user.logged);
+  const modalOpen = useSelector((state) => state.modalLogin.open);
+
+  useEffect(() => {
+    if (modalOpen) {
+      setMenuOpen(false);
+    }
+  }, [modalOpen]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -42,11 +49,12 @@ export const Header = () => {
 
     <div className={`header-menu ${menuOpen ? 'active' : ""}`} >
       <ul className="header-menu-list">
-        <li className="header-menu-list-item">
-          <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
-        </li>
         {!userLogged &&
           <>
+            <li className="header-menu-list-item">
+              <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
+            </li>
+
             <li className="header-menu-list-item">
               <a className="header-menu-login" onClick={handleOpenModal}>Se connecter</a>
             </li>
@@ -58,10 +66,17 @@ export const Header = () => {
         {userLogged &&
           <>
             <li className="header-menu-list-item">
-              <Link to='/profil'>Profil</Link>
+              <Link to='/profil' onClick={handleClickBurgerButton}>Profil</Link>
             </li>
-
-            <Link to="" onClick={handleClickLogout}> <li className="header-menu-login">Se déconnecter</li> </Link>
+            <li className="header-menu-list-item">
+              <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
+            </li>
+            <li className="header-menu-list-item">
+              <Link to='/createevent' onClick={handleClickBurgerButton}>Créer un évênement</Link>
+            </li>
+            <li className="header-menu-list-item">
+              <Link to="" onClick={handleClickLogout}>Se déconnecter</Link>
+            </li>
           </>
         }
 
@@ -74,8 +89,13 @@ export const Header = () => {
             <img className="header-logo" src={logo} alt="logo My Partner Outdoor" />
           </Link>
         </h1>
-        <span className='header-title-text'>My Partner Outdoor</span>
+
+        <span className='header-title-text'><Link to='/'>My Partner Outdoor</Link></span>
+
       </div>
+
+      {userLogged && <Link to='/createevent' className="header-event">Créer un évênement</Link>}
+
       <Link to='/home' className="header-event">Evenement</Link>
 
 

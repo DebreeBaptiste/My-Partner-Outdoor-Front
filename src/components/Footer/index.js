@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 // == Import
 import Logo from '../../assets/resource/logoGreen.png';
 import Facebook from '../../assets/resource/facebook.png';
@@ -17,8 +18,8 @@ function Footer() {
 
         </div>
         <div className='footer__pages'>
-          <a className='footer__pages__team'>L'équipe</a>
-          <a className='footer__pages__landing'>Présentation</a>
+          <Link className='footer__pages__team' to='/team'>L'équipe</Link>
+          <Link className='footer__pages__landing' to='/' onClick={window.scrollTo({ top: 0, behavior: 'smooth' })}>Présentation</Link>
         </div>
       </div>
       <div className='footer__bottom'>
