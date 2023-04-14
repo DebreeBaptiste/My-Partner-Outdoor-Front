@@ -9,22 +9,10 @@ import { getFilteredEvents } from '../../store/reducers/event';
 // == Composant
 function Search() {
 
-  const [isActiveSport, setIsActiveSport] = useState(false);
-
-  function handleSelectSport(event) {
-    if (event.target.value === 'Sport') {
-      setIsActiveSport(false);
-    } else {
-      setIsActiveSport(true);
-    }
-    console.log(event.target.value);
-  }
-
-
   const [isActiveNiveau, setIsActiveNiveau] = useState(false);
 
   function handleSelectNiveau(event) {
-    if (event.target.value === 'Niveau') {
+    if (event.target.value === '') {
       setIsActiveNiveau(false);
     } else {
       setIsActiveNiveau(true);
@@ -36,7 +24,7 @@ function Search() {
   const [isActivePrice, setIsActivePrice] = useState(false);
 
   function handleSelectPrice(event) {
-    if (event.target.value === 'Prix') {
+    if (event.target.value === '') {
       setIsActivePrice(false);
     } else {
       setIsActivePrice(true);
@@ -120,7 +108,7 @@ function Search() {
 
 
           <select onChange={handleSelectPrice}  className={`search__block__filter__select ${isActivePrice ? 'search__block__filter__select__active' : ''}`}>
-            <option value="Prix">Prix</option>
+            <option value="">Prix</option>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -141,20 +129,3 @@ function Search() {
 // == Export
 export default Search;
 
-
-{/* <button className=' search__block__filter__button'>Niveau</button>
-          <div className='search__block__filter__choice hidden'>
-              <div className='search__block__filter__choice__sport '>
-                <input className='search__block__filter__choice__sport__input' type='checkbox' name='Débutant'></input>
-                <label className='search__block__filter__choice__sport__label'>Débutant</label>
-              </div>
-              <div className='search__block__filter__choice__sport'>
-                <input className='search__block__filter__choice__sport__input' type='checkbox' name='Intermediaire'></input>
-                <label className='search__block__filter__choice__sport__label'>Intermédiaire</label>
-              </div>
-              <div className='search__block__filter__choice__sport'>
-                <input className='search__block__filter__choice__sport__input' type='checkbox' name='Confirme'></input>
-                <label className='search__block__filter__choice__sport__label'>Confirmé</label>
-              </div>
-            </div>
-          </div> */}

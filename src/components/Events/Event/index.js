@@ -1,7 +1,7 @@
 //  Import
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import image from '../../../assets/resource/sports/Escalade.jpg';
+// import image from 'http://localhost:4000/images/29.jpg';
 // == Import
 import './styles.scss';
 

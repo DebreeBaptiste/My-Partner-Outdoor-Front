@@ -55,7 +55,7 @@ function CreateEventForm() {
               <select className='form__input' id="sport" name="sport" value={event.sport} onChange={handleChange}>
                 <option value=" "></option>
                 {sports.map((sport) => (
-                  <option key={sport.id} value={sport.id}>{sport.name}</option>
+                  <option key={sport.id} value={sport.name}>{sport.name}</option>
                 ))}
               </select>
             </div>
@@ -165,7 +165,7 @@ function CreateEventForm() {
             </div>
             <div className='form__bottom__materials' id="niveau">
               <label className='form__label'>Matériels à apporter :</label>
-              <textarea className='form__input' id="materiels" name="materiels" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
+              <textarea className='form__input' id="materiels" name="equipement" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
             </div>
             <div className='form__bottom__button' id="niveau">
               <button  className='form__bottom__button__confirm' type="submit" value="submit">Confirmer</button>
