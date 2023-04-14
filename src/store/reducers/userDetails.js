@@ -8,10 +8,10 @@ export const initialState = {
     lastname: '',
     email: '',
     pseudo: '',
-    picture: 'photo',
+    picture: '',
     birthday: '',
-    bio: 'your bio',
-    sport: ["Football"],
+    bio: '',
+    sport: [],
     address: {
       id: '',
       zip_code: '',
@@ -25,6 +25,7 @@ export const initialState = {
 export const saveUser = createAction('userDetails/saveUser');
 export const updateUserDetails = createAction('userDetails/updateUserDetails');
 export const updateUserField = createAction('userDetails/updateUserField');
+export const userDetailsLogout = createAction('userDetails/userDetailsLogout');
 
 export const saveUserAddress = createAction('userDetails/saveUserAddress');
 export const updateUserAddress = createAction('userDetails/updateUserAddress');
@@ -72,6 +73,28 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       const { value, name } = action.payload;
       state.user[name] = value;
     })
+
+    .addCase(userDetailsLogout, (state) => {
+      state.user = {
+        id: '',
+        firstname: '',
+        lastname: '',
+        email: '',
+        pseudo: '',
+        picture: '',
+        birthday: '',
+        bio: '',
+        sport: [],
+        address: {
+          id: '',
+          zip_code: '',
+          city: '',
+          street: '',
+          number: '',
+        },
+      };
+    })
+
     .addCase(saveUserAddress, (state, action) => {
       state.user.address = {
         id: action.payload[0].id,
@@ -99,9 +122,7 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       state.user.sport.push(action.payload);
     })
     .addCase(removeSport, (state, action) => {
-      state.user.sport = state.user.sport.filter(
-        (sport) => sport !== action.payload
-      );
+      state.user.sport = action.payload;
     })
 
     .addCase(openProfilEdit, (state) => {

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../store/reducers/modalLogin';
 import { logout } from '../../api/auth';
+import { addErrorMessage } from '../../store/reducers/error';
 
 /* Component */
 import logo from 'src/assets/Mountain-adventure.svg';
@@ -37,6 +38,7 @@ export const Header = () => {
 
   const handleOpenModal = (event) => {
     event.preventDefault();
+    dispatch(addErrorMessage(''));
     dispatch(openModal());
   };
 

@@ -24,8 +24,8 @@ export const SelectInput = ({
     >
       <option value=''>Sport</option>
       {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
+        <option key={option.id} value={option.name}>
+          {option.name}
         </option>
       ))}
     </select>
