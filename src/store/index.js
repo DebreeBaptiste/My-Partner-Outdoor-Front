@@ -11,9 +11,8 @@ import eventReducer from './reducers/event';
 import sportsReducer from './reducers/sports';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
-import sportsReducer from './reducers/sports';
-import eventReducer from './reducers/event';
-import createEventReducer from './reducers/createEvent';
+
+
 
 const store = configureStore({
   reducer: {

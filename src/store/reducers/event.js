@@ -31,6 +31,9 @@ const initialState = {
 
 export const getRandomEvents = createAction('event/getRandomEvents');
 export const getFilteredEvents = createAction('event/getFilteredEvents');
+export const changeField = createAction('event/changeField');
+export const saveEvent = createAction('event/saveEvent');
+
 
 const eventReducer = createReducer(initialState, (builder) => {
   builder
@@ -51,10 +54,6 @@ const eventReducer = createReducer(initialState, (builder) => {
 
       state.event = action.payload;
       state.loading = false;
-    })
-    .addCase(getFilteredEvents, (state, action) => {
-      state.loading = false;
-      state.selectedLevel = action.payload;
     })
 
 });
