@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react';
 
 /* Compnent */
 import { TeamCard } from '../../components/TeamCard';
@@ -10,6 +10,11 @@ import teamPicture1 from 'src/assets/resource/fake-team.jpg';
 import './styles.scss';
 
 export const Team = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
     <div className="team">
       <header className="team-header">
