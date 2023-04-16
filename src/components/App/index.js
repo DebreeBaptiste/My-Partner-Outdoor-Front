@@ -14,6 +14,7 @@ import { ModalLogin } from '../ModalLogin';
 import { Register } from '../../pages/Register';
 import { Notification } from '../Notification';
 import { Profil } from '../../pages/Profil';
+import { Team } from '../../pages/Team';
 
 /* Style */
 import './styles.scss';
@@ -37,6 +38,8 @@ function App() {
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profil" element={<Profil />} />
+        <Route path="/profil/:id" element={<Profil />} />
+        <Route path="/team" element={<Team />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
