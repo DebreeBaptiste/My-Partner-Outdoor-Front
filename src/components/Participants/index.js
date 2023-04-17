@@ -1,70 +1,48 @@
-/* Image and icon */
-import avatarIcon from 'src/assets/icon-user-circle.svg';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+
+/* Api */
+import { getEventUsers } from '../../api/eventUsers';
 
 /* Style */
 import './styles.scss';
 
-
 export const Participants = () => {
+
+  const eventId = useParams().id
+
+  const dispatch = useDispatch();
+
+  const eventUsers = useSelector((state) => state.eventParticipant.participants);
+  const eventOrganizerId = useSelector((state) => state.eventDetails.event.organizer_id);
+
+  useEffect(() => {
+    dispatch(getEventUsers(eventId));
+  }, []);
+
+
+
   return (
     <section className="event-participants">
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar event-participants-organizer' />
-        <p className='event-participants-name event-participants-organizer-name'>Organisateur</p>
-      </div>
+      {eventUsers.map((user) => (
+        <div
+          className={`event-participants-content 
+          ${eventOrganizerId === user.userid ? "event-participants-content-organizer" : ""}`
+          }
+          key={user.userid}>
 
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
-      <div className='event-participants-content'>
-        <img src={avatarIcon} className='event-participants-avatar' />
-        <p className='event-participants-name'>Axel</p>
-      </div>
+          <Link to={`/profil/${user.userid}`}>
+            <img src={user.picture} className={`event-participants-avatar 
+          ${eventOrganizerId === user.userid ? "event-participants-organizer" : ""}`}
+            />
+          </Link>
+
+          <p className='event-participants-name'>{user.pseudo}</p>
+
+        </div>
+      ))}
+
     </section>
   );
 }

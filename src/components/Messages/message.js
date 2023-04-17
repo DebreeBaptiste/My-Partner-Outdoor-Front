@@ -7,8 +7,8 @@ export const Message = ({ message }) => {
       <img src={message.picture} className='event-chat-message-avatar' />
 
       <div className="event-chat-message-content">
-        <p className='event-chat-message-content-author'>{message.user}</p>
-        <p className='event-chat-message-content-text'>{message.message}</p>
+        <p className='event-chat-message-content-author'>{message.pseudo}</p>
+        <p className='event-chat-message-content-text'>{message.content}</p>
       </div>
 
     </div>
@@ -17,8 +17,8 @@ export const Message = ({ message }) => {
 
 Message.propTypes = {
   message: PropTypes.shape({
-    message: PropTypes.string.isRequired,
-    user: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    pseudo: PropTypes.string.isRequired,
     picture: PropTypes.string.isRequired,
   }).isRequired,
 

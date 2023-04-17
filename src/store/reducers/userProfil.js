@@ -56,8 +56,7 @@ const userProfilReducer = createReducer(initialState, (builder) => {
       };
     })
     .addCase(saveOtherUserSport, (state, action) => {
-      const { sport } = action.payload;
-      state.user.sport = sport;
+      state.user.sport = action.payload;
     });
 });
 

@@ -2,6 +2,7 @@ import { getRandomEvents } from '../store/reducers/event';
 import { axiosInstance } from './axiosInstance';
 
 import { resetFormField } from '../store/reducers/createEvent';
+import { saveEvent } from '../store/reducers/eventDetails';
 
 // Récupération des événements aléatoires
 export const fetchRandomEvents = () => async (dispatch) => {
@@ -61,4 +62,16 @@ export const postEvent = (navigate) => async (dispatch, getState) => {
   }
 
 };
+
+// Récupération d'un événement en fonction de son id
+export const getOneEvent = (eventId) => async (dispatch) => {
+  try {
+    const response = await axiosInstance.get(`/event/${eventId}`);
+
+    dispatch(saveEvent(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+
+}
 

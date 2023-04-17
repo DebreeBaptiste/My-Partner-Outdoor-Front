@@ -1,5 +1,5 @@
 import { axiosInstance } from './axiosInstance'
-import { addSport } from '../store/reducers/userDetails'
+import { saveSport } from '../store/reducers/userDetails'
 import { saveOtherUserSport } from '../store/reducers/userProfil'
 
 export const getUserSport = () => async (dispatch) => {
@@ -11,10 +11,7 @@ export const getUserSport = () => async (dispatch) => {
   })
 
   if (status === 200) {
-
-    data.map((sport) => {
-      dispatch(addSport(sport))
-    })
+    dispatch(saveSport(data));
   }
 }
 
@@ -49,9 +46,6 @@ export const getOtherUserSport = (userId) => async (dispatch) => {
   const { data, status } = await axiosInstance.get(`/user/${userId}/sports`)
 
   if (status === 200) {
-
-    data.map((sport) => {
-      dispatch(saveOtherUserSport(sport))
-    })
+    dispatch(saveOtherUserSport(data));
   }
 }

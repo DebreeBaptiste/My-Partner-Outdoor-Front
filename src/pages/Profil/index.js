@@ -16,7 +16,7 @@ export const Profil = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.userDetails.user);
+  const user = useSelector((state) => state.otherUser.user);
 
   const userLogged = useSelector((state) => state.user.logged);
 
@@ -26,9 +26,9 @@ export const Profil = () => {
       navigate('/')
     }
 
-    if (parseInt(userId, 10) === JSON.parse(localStorage.getItem('userId'))) {
-      navigate('/profil')
-    }
+    /*  if (parseInt(userId, 10) === JSON.parse(localStorage.getItem('userId'))) {
+       navigate('/profil')
+     } */
 
     if (userLogged) {
       dispatch(getOtherUser(userId));

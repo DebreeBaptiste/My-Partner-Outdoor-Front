@@ -43,7 +43,6 @@ export const deleteUserAddress = () => async (dispatch) => {
 }
 
 /* Other users */
-
 export const getOtherUserAddress = (userId) => async (dispatch) => {
 
   try {

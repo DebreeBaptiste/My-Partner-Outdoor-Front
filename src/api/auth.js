@@ -12,8 +12,6 @@ export const login = (navigate) => async (dispatch, getState) => {
 
   const state = getState();
 
-
-
   const { email, password } = state.user.credentials;
 
   try {

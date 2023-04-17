@@ -33,9 +33,9 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/event/:id/chat" element={<EventPage />} />
+        <Route path="/event/:id/messages" element={<EventPage />} />
         <Route path="/event/:id/participants" element={<EventPage />} />
-        <Route path="/event/:id/" element={<EventPage />} />
+        <Route path="/event/:id/about" element={<EventPage />} />
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profil" element={<MyProfil />} />
