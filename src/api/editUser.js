@@ -1,6 +1,6 @@
 import { axiosInstance } from './axiosInstance';
 import { sendNotification } from '../store/reducers/notification';
-import { closeProfilEdit, saveUserAddress, updateUserDetails } from '../store/reducers/userDetails';
+import { closeProfilEdit, closeProfilPictureEdit, saveProfilePicture, saveUserAddress, updatePictureDate, updateUserDetails } from '../store/reducers/userDetails';
 
 
 
@@ -68,6 +68,25 @@ export const editUser = () => async (dispatch, getState) => {
     }
   }
 
+}
+
+export const editUserPicture = (picture) => async (dispatch, getState) => {
+
+  const userDataId = JSON.parse(localStorage.getItem('userId'));
+
+  try {
+
+    const { data, status } = await axiosInstance.patch(`/user/${userDataId}/upload`, picture);
+
+    if (status === 200) {
+      dispatch(saveProfilePicture(data.picture));
+      dispatch(updatePictureDate(data.updated_at));
+      dispatch(closeProfilPictureEdit());
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 

@@ -1,5 +1,6 @@
 import { axiosInstance } from './axiosInstance'
 import { addSport } from '../store/reducers/userDetails'
+import { saveOtherUserSport } from '../store/reducers/userProfil'
 
 export const getUserSport = () => async (dispatch) => {
   const userDataId = JSON.parse(localStorage.getItem('userId'))
@@ -29,7 +30,7 @@ export const addUserSport = (id) => async (dispatch) => {
 
 }
 
-export const deleteUserSport = (id) => async (dispatch) => {
+export const deleteUserSport = (id) => async () => {
   const userDataId = JSON.parse(localStorage.getItem('userId'))
 
   try {
@@ -39,4 +40,18 @@ export const deleteUserSport = (id) => async (dispatch) => {
     console.log(error);
   }
 
+}
+
+/* Other User */
+
+export const getOtherUserSport = (userId) => async (dispatch) => {
+
+  const { data, status } = await axiosInstance.get(`/user/${userId}/sports`)
+
+  if (status === 200) {
+
+    data.map((sport) => {
+      dispatch(saveOtherUserSport(sport))
+    })
+  }
 }
