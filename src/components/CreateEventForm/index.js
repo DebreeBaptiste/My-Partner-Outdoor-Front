@@ -19,7 +19,6 @@ function CreateEventForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
     dispatch(postEvent(navigate));
   };
 
@@ -38,6 +37,9 @@ function CreateEventForm() {
   useEffect(() => {
     dispatch((fetchSports()));
   }, []);
+
+
+
 
   const sports = useSelector((state) => state.sports.sports);
 

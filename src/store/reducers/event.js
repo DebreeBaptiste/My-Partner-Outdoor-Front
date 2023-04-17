@@ -18,7 +18,7 @@ const initialState = {
     price: 5,
     picture: "/images/basket",
 
-    organizer_id: 3,
+    organizer_id : 3,
 
     sport_id: 3,
     level_id: 1,

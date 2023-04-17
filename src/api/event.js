@@ -1,7 +1,8 @@
 import { getRandomEvents } from '../store/reducers/event';
+import { getEventsWithID } from '../store/reducers/myEvent';
 import { axiosInstance } from './axiosInstance';
 
-import { resetFormField } from '../store/reducers/createEvent';
+
 
 // Récupération des événements aléatoires
 export const fetchRandomEvents = () => async (dispatch) => {
@@ -27,7 +28,8 @@ export const postEvent = (navigate) => async (dispatch, getState) => {
 
   const state = getState();
   console.log(state);
-  const { title, description, start_date, finish_date, start_hour, finish_hour, nb_participant, equipement, price, picture, organizer_id, number, street, zip_code, city, sport, level } = state.createEvent.createEvent;
+  const { title, description, start_date, finish_date, start_hour, finish_hour, nb_participant, organizer_id, equipement, price, picture, number, street, zip_code, city, sport, level } = state.createEvent.createEvent;
+
   try {
     const response = await axiosInstance.post('/event', {
       title,
@@ -62,3 +64,16 @@ export const postEvent = (navigate) => async (dispatch, getState) => {
 
 };
 
+// Récupération des événements en fonction d'un user id 
+const organizer_id = JSON.parse(localStorage.getItem('userId'));
+
+export const fetchMyEvents = () => async (dispatch) => {
+  try {
+    const response = await axiosInstance.get(`user/4/events`);
+    console.log(response.data);
+    dispatch(getEventsWithID(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+
+};

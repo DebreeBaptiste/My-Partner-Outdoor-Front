@@ -13,7 +13,7 @@ const initialState = {
     price: 5,
     picture: "images/",
 
-    organizer_id: 3,
+    organizer_id : JSON.parse(localStorage.getItem('userId')),
 
     number: "",
     street: "",
