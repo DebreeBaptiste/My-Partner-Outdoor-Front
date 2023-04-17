@@ -1,4 +1,7 @@
 .event-chat {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 900px;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   padding: 2rem;
@@ -49,6 +52,12 @@
     display: none;
   }
 }
+@media (min-width: 700px) {
+  .event-chat-messages {
+    row-gap: 2rem;
+    padding: 1rem 2rem;
+  }
+}
 
 /* Message */
 .event-chat-message {
@@ -69,7 +78,6 @@
 }
 @media (min-width: 700px) {
   .event-chat-message {
-    margin: 0 auto;
     max-width: 60vw;
   }
 }
@@ -84,6 +92,8 @@
     font-size: var(--text-base);
   }
   &-text {
+    width: fit-content;
+    word-wrap: break-word;
     padding: 1.5rem;
     border-radius: var(--radius-xl);
     background-color: #e3f9e5;

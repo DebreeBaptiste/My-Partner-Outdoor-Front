@@ -27,7 +27,6 @@ import './styles.scss';
 
 export const MyProfil = () => {
 
-
   const dispatch = useDispatch();
 
   const navigate = useNavigate();

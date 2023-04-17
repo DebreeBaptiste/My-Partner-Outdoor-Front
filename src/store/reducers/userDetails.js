@@ -33,6 +33,7 @@ export const saveUserAddress = createAction('userDetails/saveUserAddress');
 export const updateUserAddress = createAction('userDetails/updateUserAddress');
 export const deleteUserAddress = createAction('userDetails/deleteUserAddress');
 
+export const saveSport = createAction('userDetails/saveUserSport');
 export const addSport = createAction('userDetails/addSport');
 export const removeSport = createAction('userDetails/removeSport');
 
@@ -126,6 +127,9 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       };
     })
 
+    .addCase(saveSport, (state, action) => {
+      state.user.sport = action.payload;
+    })
     .addCase(addSport, (state, action) => {
       state.user.sport.push(action.payload);
     })

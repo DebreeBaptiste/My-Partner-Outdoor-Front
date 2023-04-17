@@ -1,4 +1,5 @@
 import { saveUser } from '../store/reducers/userDetails';
+import { saveOtherUser } from '../store/reducers/userProfil';
 import { axiosInstance } from './axiosInstance';
 
 /* User logged */
@@ -52,7 +53,7 @@ export const getOtherUser = (userId) => async (dispatch) => {
 
   if (status === 200) {
 
-    dispatch(saveUser({
+    dispatch(saveOtherUser({
       firstname: data.firstname,
       lastname: data.lastname,
       pseudo: data.pseudo,

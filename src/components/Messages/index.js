@@ -1,27 +1,40 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewMessage, createNewMessage } from '../../store/reducers/messages';
+
+/* Component */
 import { Message } from './message';
 
+/* Api */
+import { getEventMessages, postNewMessage } from '../../api/eventMessages';
+
 /* image */
-import avatar from 'src/assets/resource/fake-avatar.png';
 import buttonIcon from 'src/assets/icon-cheveron-right-circle.svg';
 
 
 /* Style */
 import './styles.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { addNewMessage, createNewMessage } from '../../store/reducers/messages';
+import { useParams } from 'react-router-dom';
+import { getUser } from '../../api/getUser';
 
 export const Messages = () => {
 
   const newMessage = useSelector((state) => state.messages.newMessage);
   const messages = useSelector((state) => state.messages.messages);
 
-  const user = useSelector((state) => state.user.userDetails);
-
+  const user = useSelector((state) => state.userDetails.user);
 
   const dispatch = useDispatch()
 
+  const eventId = useParams().id;
+
   const chatMessagesRef = useRef(null)
+
+
+  useEffect(() => {
+    dispatch(getEventMessages(eventId));
+    dispatch(getUser());
+  }, []);
 
   const handleChangeValue = (event) => {
     const { value } = event.target;
@@ -33,7 +46,8 @@ export const Messages = () => {
     if (newMessage === '') {
       return;
     }
-    dispatch(addNewMessage({ message: newMessage, user: user.pseudo, picture: user.picture }));
+    dispatch(postNewMessage(eventId));
+    dispatch(addNewMessage({ content: newMessage, pseudo: user.pseudo, picture: user.picture }));
     dispatch(createNewMessage(''));
   };
 

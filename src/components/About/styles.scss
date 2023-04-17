@@ -15,6 +15,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 0.8rem;
+    align-items: flex-start;
   }
 
   &-icon {
@@ -60,6 +61,7 @@
     width: 100%;
 
     &-text {
+      justify-self: flex-start;
       line-height: 1.4rem;
       font-family: 'Jost-light';
     }
