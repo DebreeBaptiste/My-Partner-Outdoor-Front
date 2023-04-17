@@ -27,7 +27,7 @@ function CreateEventForm() {
     dispatch(changeField({ value: event.target.value, name: event.target.name }));
   };
 
-  //Reset du formulaire et retour à la page d'accueil sur le bouton annuler
+  // Reset du formulaire et retour à la page d'accueil sur le bouton annuler
   const handleClickCancel = () => {
     dispatch(resetFormField())
     window.scrollTo({ top: 0 })
@@ -40,7 +40,6 @@ function CreateEventForm() {
   }, []);
 
   const sports = useSelector((state) => state.sports.sports);
-  console.log(sports);
 
   return (
     <div className='createEvent'>
@@ -115,13 +114,14 @@ function CreateEventForm() {
                 <div className='form__hours__up' >
                   <label className='form__label'>Heure de début :</label>
 
-                  <input className='form__input__time' type="time" name="start_hour" onChange={handleChange} ></input>
+                  <input className='form__input__time' type="time" name="start_hour" value={event.start_hour} onChange={handleChange} ></input>
+                  {console.log(event.start_date)}
 
                 </div>
                 <div className='form__date'>
                   <div className='form__date__up' >
                     <label className='form__label'>Date de début :</label>
-                    <input className='form__input__date' type="date" name="start_date" value={event.start} onChange={handleChange} ></input>
+                    <input className='form__input__date' type="date" name="start_date" value={event.start_date} onChange={handleChange} ></input>
 
                   </div>
                 </div>
@@ -130,11 +130,11 @@ function CreateEventForm() {
 
                 <div className='form__hours__bottom' >
                   <label className='form__label'>Heure de fin :</label>
-                  <input className='form__input__time' type="time" name="finish_hour" onChange={handleChange} ></input>
+                  <input className='form__input__time' type="time" name="finish_hour" value={event.finish_hour} onChange={handleChange} ></input>
                 </div>
                 <div className='form__date__bottom'>
                   <label className='form__label'>Date de fin :</label>
-                  <input className='form__input__date' type="date" id="end-date" name="finish_date" value={event.finish} onChange={handleChange} ></input>
+                  <input className='form__input__date' type="date" id="end-date" name="finish_date" value={event.finish_date} onChange={handleChange} ></input>
                 </div>
 
               </div>

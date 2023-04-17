@@ -2,24 +2,24 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   createEvent: {
-    title: "Event de handball",
-    description: "Faire un Basket",
-    start_date: "12/05/2023",
-    finish_date: "12/05/2023",
+    title: "",
+    description: "",
+    start_date: "",
+    finish_date: "",
     start_hour: "12:00",
     finish_hour: "15:00",
     nb_participant: 2,
-    equipement: "dqsfsefefsdfs",
+    equipement: "",
     price: 5,
-    picture: "/images/basket",
+    picture: "images/",
 
     organizer_id: 3,
 
-    number: 24,
-    street: "rue des fleurs",
-    zip_code: "73045",
-    city: "Vrellis",
-    sport: "BasketBall",
+    number: "",
+    street: "",
+    zip_code: "",
+    city: "",
+    sport: "",
     level: "Débutant"
   },
 };
@@ -41,25 +41,25 @@ const createEventReducer = createReducer(initialState, (builder) => {
     })
     .addCase(resetFormField, (state) => {
       state.createEvent = {
-        title: " ",
-        description: " ",
-        start_date: " ",
-        finish_date: " ",
-        start_hour: " ",
-        finish_hour: " ",
+        title: "",
+        description: "",
+        start_date: "",
+        finish_date: "",
+        start_hour: "12:00",
+        finish_hour: "15:00",
         nb_participant: 2,
-        equipement: " ",
-        price: 1,
-        picture: " ",
-
-        organizer_id: 1,
-
-        number: 1,
-        street: " ",
-        zip_code: " ",
-        city: " ",
-        sport: " ",
-        level: " "
+        equipement: "",
+        price: 5,
+        picture: "images/",
+    
+        organizer_id: 3,
+    
+        number: "",
+        street: "",
+        zip_code: "",
+        city: "",
+        sport: "",
+        level: "Débutant"
       };
     })
 
