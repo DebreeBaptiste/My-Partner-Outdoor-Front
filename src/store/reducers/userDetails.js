@@ -3,6 +3,7 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 export const initialState = {
   edit: false,
   editPictureModal: false,
+  updatePicture: Date.now(),
   user: {
     id: '',
     firstname: '',
@@ -41,6 +42,8 @@ export const toggleProfilEdit = createAction('userDetails/toggleProfilEdit');
 
 export const openProfilPictureEdit = createAction('userDetails/openProfilPictureEdit');
 export const closeProfilPictureEdit = createAction('userDetails/closeProfilPictureEdit');
+export const saveProfilePicture = createAction('userDetails/saveProfilePicture');
+export const updatePictureDate = createAction('userDetails/updatePictureDate');
 
 const userDetailsReducer = createReducer(initialState, (builder) => {
   builder
@@ -147,6 +150,14 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
     .addCase(closeProfilPictureEdit, (state) => {
       state.editPictureModal = false;
     })
+    .addCase(saveProfilePicture, (state, action) => {
+      state.user.picture = action.payload;
+    })
+
+    .addCase(updatePictureDate, (state, action) => {
+      state.updatePicture = action.payload;
+    });
+
 
 
 });

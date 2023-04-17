@@ -11,6 +11,7 @@ import eventReducer from './reducers/event';
 import sportsReducer from './reducers/sports';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
+import userProfilReducer from './reducers/userProfil';
 
 
 
@@ -19,6 +20,7 @@ const store = configureStore({
   reducer: {
     user: userLoginReducer,
     userDetails: userDetailsReducer,
+    otherUser: userProfilReducer,
     createUser: createUserReducer,
     messages: messagesReducer,
     modalLogin: modalLoginReducer,
