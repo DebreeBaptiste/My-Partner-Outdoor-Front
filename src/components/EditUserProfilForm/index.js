@@ -119,7 +119,7 @@ export const EditUserProfilForm = () => {
           <div className="profil-user-form-input-container">
             <label htmlFor="user-birthday"></label>
             <input
-              type="text"
+              type="date"
               name="birthday"
               id="user-birthday"
               placeholder="Date de naissance"

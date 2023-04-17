@@ -2,16 +2,17 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
   edit: false,
+  editPictureModal: false,
   user: {
     id: '',
     firstname: '',
     lastname: '',
     email: '',
     pseudo: '',
-    picture: 'photo',
+    picture: '',
     birthday: '',
-    bio: 'your bio',
-    sport: ["Football"],
+    bio: '',
+    sport: [],
     address: {
       id: '',
       zip_code: '',
@@ -25,6 +26,7 @@ export const initialState = {
 export const saveUser = createAction('userDetails/saveUser');
 export const updateUserDetails = createAction('userDetails/updateUserDetails');
 export const updateUserField = createAction('userDetails/updateUserField');
+export const userDetailsLogout = createAction('userDetails/userDetailsLogout');
 
 export const saveUserAddress = createAction('userDetails/saveUserAddress');
 export const updateUserAddress = createAction('userDetails/updateUserAddress');
@@ -35,6 +37,10 @@ export const removeSport = createAction('userDetails/removeSport');
 
 export const openProfilEdit = createAction('userDetails/openProfilEdit');
 export const closeProfilEdit = createAction('userDetails/closeProfilEdit');
+export const toggleProfilEdit = createAction('userDetails/toggleProfilEdit');
+
+export const openProfilPictureEdit = createAction('userDetails/openProfilPictureEdit');
+export const closeProfilPictureEdit = createAction('userDetails/closeProfilPictureEdit');
 
 const userDetailsReducer = createReducer(initialState, (builder) => {
   builder
@@ -72,6 +78,28 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       const { value, name } = action.payload;
       state.user[name] = value;
     })
+
+    .addCase(userDetailsLogout, (state) => {
+      state.user = {
+        id: '',
+        firstname: '',
+        lastname: '',
+        email: '',
+        pseudo: '',
+        picture: '',
+        birthday: '',
+        bio: '',
+        sport: [],
+        address: {
+          id: '',
+          zip_code: '',
+          city: '',
+          street: '',
+          number: '',
+        },
+      };
+    })
+
     .addCase(saveUserAddress, (state, action) => {
       state.user.address = {
         id: action.payload[0].id,
@@ -99,18 +127,26 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       state.user.sport.push(action.payload);
     })
     .addCase(removeSport, (state, action) => {
-      state.user.sport = state.user.sport.filter(
-        (sport) => sport !== action.payload
-      );
+      state.user.sport = action.payload;
     })
+
 
     .addCase(openProfilEdit, (state) => {
       state.edit = true;
     })
     .addCase(closeProfilEdit, (state) => {
       state.edit = false;
-    });
+    })
+    .addCase(toggleProfilEdit, (state) => {
+      state.edit = !state.edit;
+    })
 
+    .addCase(openProfilPictureEdit, (state) => {
+      state.editPictureModal = true;
+    })
+    .addCase(closeProfilPictureEdit, (state) => {
+      state.editPictureModal = false;
+    })
 
 
 });

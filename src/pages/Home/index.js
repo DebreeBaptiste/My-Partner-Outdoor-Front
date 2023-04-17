@@ -1,11 +1,14 @@
-import { useSelector } from 'react-redux';
 // == Import
+import { useSelector } from 'react-redux';
+
+// == Composant
 import Events from '../../components/Events';
 import Search from '../../components/Search';
 import Myevents from '../../components/Myevents';
 
+import './styles.scss';
 
-// == Composant
+
 function Home() {
 
   const userLogged = useSelector((state) => state.user.logged);

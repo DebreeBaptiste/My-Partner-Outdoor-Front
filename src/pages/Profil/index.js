@@ -1,30 +1,31 @@
 /* Tools */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addSport, openProfilEdit, removeSport } from '../../store/reducers/userDetails';
+import { addSport, openProfilEdit, openProfilPictureEdit, removeSport, toggleProfilEdit } from '../../store/reducers/userDetails';
 import { addErrorMessage } from '../../store/reducers/error';
 import { useNavigate } from 'react-router-dom';
 
 /* Component */
 import { UserSport } from '../../components/UserSport/UserSport';
-
 import { ModalDeleteUser } from '../../components/ModalDeleteUser';
 
 
 /* Api */
 import { getUser } from '../../api/getUser';
-import { getUserSport } from '../../api/getUserSports';
+import { addUserSport, deleteUserSport, getUserSport } from '../../api/userSports';
 import { getUserAddress } from '../../api/userAddress.js';
 
 /* Image et logo */
-import userPicture from 'src/assets/resource/fake-avatar.png';
 import editIcon from 'src/assets/icon-edit.svg';
+import editPictureIcon from 'src/assets/icon-camera.svg';
 
 
 
 /* Style */
 import './styles.scss';
 import { EditUserProfilForm } from '../../components/EditUserProfilForm';
+import { fetchSports } from '../../api/sports';
+import { ModalEditUserPicture } from '../../components/ModalEditUserPicture';
 
 
 export const Profil = () => {
@@ -37,6 +38,7 @@ export const Profil = () => {
   const user = useSelector((state) => state.userDetails.user);
   const userLogged = useSelector((state) => state.user.logged);
   const edit = useSelector((state) => state.userDetails.edit);
+  const sports = useSelector((state) => state.sports.sports);
 
   useEffect(() => {
     if (!userLogged) {
@@ -47,25 +49,28 @@ export const Profil = () => {
       dispatch(getUser());
       dispatch(getUserSport());
       dispatch(getUserAddress());
+      dispatch(fetchSports());
 
     }
 
   }, [userLogged]);
 
 
-  const handleClickEdit = () => {
+  const handleClickToggleEdit = () => {
     window.scrollTo(0, 0);
-    dispatch(openProfilEdit());
+    dispatch(toggleProfilEdit());
   };
 
   const handleChangeSportValue = (event) => {
-    const newSport = user.sport.includes(event.target.value);
+    const newSport = user.sport.find((sport) => sport.name === event.target.value);
     if (newSport) {
       return
     }
 
     if (!newSport) {
-      dispatch(addSport(event.target.value));
+      const sportToAdd = sports.find((sport) => sport.name === event.target.value)
+      dispatch(addUserSport(sportToAdd.id));
+      dispatch(addSport({ sport_id: sportToAdd.id, name: sportToAdd.name }));
     }
 
     if (user.sport.length >= 1) {
@@ -74,72 +79,77 @@ export const Profil = () => {
   };
 
 
-
   const handleClickDelete = (event) => {
     if (user.sport.length === 1) {
       dispatch(addErrorMessage("Vous devez avoir au moins un sport"))
       return
     }
 
-    dispatch(removeSport(event.target.closest('.profil-user-sport-item').textContent));
+    const sportToDelete = user.sport.find((sport) => sport.name === event.target.closest('.profil-user-sport-item').textContent)
+
+    dispatch(deleteUserSport(sportToDelete.sport_id));
+    const deleteUserSportToState = user.sport.filter((sport) => sport.sport_id !== sportToDelete.sport_id);
+    dispatch(removeSport(deleteUserSportToState));
   };
-
-
 
   const errorMessage = useSelector((state) => state.error.message);
 
+  const handleClickOpenEditPictureModal = () => {
+    dispatch(openProfilPictureEdit());
+  };
+
   return (
-    <section className="profil">
-      <h2 className='profil-title'>Mon Profil</h2>
-      <div className='profil-content'>
-        <div className='profil-user-container'>
-          <div className='profil-user-picture-name-container'>
-            <img src={userPicture} className='profil-user-picture' />
+    <main className='profil-page'>
+
+      <section className="profil">
+        <h2 className='profil-title'>Mon Profil</h2>
+        <div className='profil-content'>
+          <div className='profil-user-container'>
+            <div className='profil-user-picture-container'>
+              <div className='profil-user-picture-wrapper'>
+                <img src={user.picture} className='profil-user-picture' />
+                {edit && <img src={editPictureIcon} alt="edit picture button" className='profil-user-picture-edit' onClick={handleClickOpenEditPictureModal} />}
+              </div>
+            </div>
+
           </div>
+          <button className='profil-user-edit' onClick={handleClickToggleEdit}>
+            <img src={editIcon} className='profil-user-edit-icon' />
+            <span>Modifier</span>
+          </button>
+          <div className='profil-user-info'>
+            <p className='profil-user-pseudo'>{user.pseudo}</p>
+
+            <p className='profil-user-ville'>{user.address.city}</p>
+            {edit && <p className='profil-user-error'>{errorMessage}</p>}
+            <ul className='profil-user-sport-list'>
+              {
+                user.sport.map((sport) => (
+                  <UserSport sport={sport} key={`sportId-${sport.sport_id}`} edit={edit} deleteSport={handleClickDelete} />))
+              }
+
+              {edit && <select className='profil-user-sport-item add' onChange={handleChangeSportValue}>
+                <option key="empty" value="">Ajouter un sport</option>
+                {sports.map((sport) => (
+                  <option key={sport.id} value={sport.name}>{sport.name}</option>
+                ))}
+              </select>}
+            </ul>
+          </div>
+          {!edit && <div className='profil-user-description'>
+            <h6 className='profil-user-description-title'>Bio</h6>
+            <p className='profil-user-description-text'>{user.bio}</p>
+          </div>}
+
+          {edit && <>
+            <EditUserProfilForm />
+          </>}
 
         </div>
-        {!edit && <button className='profil-user-edit' onClick={handleClickEdit}>
-          <img src={editIcon} className='profil-user-edit-icon' />
-          <span>Modifier</span>
-        </button>}
-        <div className='profil-user-info'>
-          <p className='profil-user-pseudo'>{user.pseudo}</p>
+        <ModalEditUserPicture />
+        <ModalDeleteUser />
 
-          <p className='profil-user-ville'>{user.address.city}</p>
-          <p className='profil-user-error'>{errorMessage}</p>
-          <ul className='profil-user-sport-list'>
-            {
-              user.sport.map((sport) => (
-                <UserSport sport={sport} key={sport} edit={edit} deleteSport={handleClickDelete} />))
-            }
-
-            {edit && <select className='profil-user-sport-item add' onChange={handleChangeSportValue}>
-              <option value="">Ajouter un sport</option>
-              <option value="Randonnée">Randonnée</option>
-              <option value="Course-à-pied">Course à pied</option>
-              <option value="Trail">Trail</option>
-              <option value="Triathlon">Triathlon</option>
-              <option value="VTT">VTT</option>
-              <option value="Cyclisme">Cyclisme</option>
-              <option value="Football">Football</option>
-              <option value="Handball">Handball</option>
-              <option value="Basket-ball">Basket-ball</option>
-            </select>}
-          </ul>
-        </div>
-        {!edit && <div className='profil-user-description'>
-          <h6 className='profil-user-description-title'>Bio</h6>
-          <p className='profil-user-description-text'>{user.bio}</p>
-        </div>}
-
-        {edit && <>
-          <EditUserProfilForm />
-        </>}
-
-      </div>
-
-      <ModalDeleteUser />
-
-    </section>
+      </section>
+    </main>
   );
 };

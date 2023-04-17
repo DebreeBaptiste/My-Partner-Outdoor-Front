@@ -2,7 +2,9 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 
 const initialState = {
-  loading: true ,
+
+  loading: true,
+
   event: [{
     id: 10,
     title: "Event de handball",
@@ -15,7 +17,9 @@ const initialState = {
     equipement: "dqsfsefefsdfs",
     price: 5,
     picture: "/images/basket",
-    organizer_id:3,
+
+    organizer_id: 3,
+
     sport_id: 3,
     level_id: 1,
     address_id: 10,
@@ -26,22 +30,38 @@ const initialState = {
     sport: "BasketBall",
     level: "Débutant"
   }],
-  selectedLevel: "" ,
+
+  selectedLevel: "",
+
 };
 
 export const getRandomEvents = createAction('event/getRandomEvents');
 export const getFilteredEvents = createAction('event/getFilteredEvents');
 
+export const changeField = createAction('event/changeField');
+export const saveEvent = createAction('event/saveEvent');
+
+
 const eventReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(getRandomEvents, (state, action) => {
-      
+
       state.event = action.payload;
       state.loading = false;
     })
     .addCase(getFilteredEvents, (state, action) => {
       state.loading = false;
       state.selectedLevel = action.payload;
+    })
+    .addCase(changeField, (state, action) => {
+      const { value, name } = action.payload;
+      state.event[name] = value;
+    })
+    .addCase(saveEvent, (state, action) => {
+
+      state.event = action.payload;
+      state.loading = false;
+
     })
 
 });

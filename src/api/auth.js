@@ -2,7 +2,7 @@ import { sendNotification } from '../store/reducers/notification';
 import { closeModal } from '../store/reducers/modalLogin';
 import { addErrorMessage } from '../store/reducers/error';
 import { userLogged, userLogout } from '../store/reducers/userLogin';
-import { closeProfilEdit, saveUser } from '../store/reducers/userDetails';
+import { closeProfilEdit, saveUser, userDetailsLogout } from '../store/reducers/userDetails';
 import { axiosInstance } from './axiosInstance';
 
 
@@ -63,5 +63,6 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem('userAddressId');
   axiosInstance.defaults.headers.common['Authorization'] = null;
   dispatch(closeProfilEdit());
+  dispatch(userDetailsLogout());
   dispatch(userLogout());
 };

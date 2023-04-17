@@ -12,6 +12,9 @@ import sportsReducer from './reducers/sports';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
 
+
+
+
 const store = configureStore({
   reducer: {
     user: userLoginReducer,
@@ -21,10 +24,11 @@ const store = configureStore({
     modalLogin: modalLoginReducer,
     modalDelete: modalDeleteReducer,
     error: errorReducer,
-    event : eventReducer,
+    event: eventReducer,
     createEvent: createEventReducer,
-    sports : sportsReducer,
+    sports: sportsReducer,
     notification: notificationReducer,
+
   },
 });
 

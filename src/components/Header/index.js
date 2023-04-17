@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../store/reducers/modalLogin';
 import { logout } from '../../api/auth';
+import { addErrorMessage } from '../../store/reducers/error';
 
 /* Component */
 import logo from 'src/assets/Mountain-adventure.svg';
@@ -37,6 +38,7 @@ export const Header = () => {
 
   const handleOpenModal = (event) => {
     event.preventDefault();
+    dispatch(addErrorMessage(''));
     dispatch(openModal());
   };
 
@@ -47,7 +49,7 @@ export const Header = () => {
 
   return (<>
 
-    <div className={`header-menu ${menuOpen ? 'active' : ""}`} >
+    <div className={`header-menu ${menuOpen ? 'menu-open' : ""}`} >
       <ul className="header-menu-list">
         {!userLogged &&
           <>
@@ -101,9 +103,9 @@ export const Header = () => {
 
       <div className='header-button-container'>
         <Button className="header-burger-button" onClick={handleClickBurgerButton}>
-          <span className={`header-burger-button-line-top ${menuOpen ? 'active' : ""}`} />
-          <span className={`header-burger-button-line-mid ${menuOpen ? 'active' : ""}`} />
-          <span className={`header-burger-button-line-bottom ${menuOpen ? 'active' : ""}`} />
+          <span className={`header-burger-button-line-top ${menuOpen ? 'menu-open' : ""}`} />
+          <span className={`header-burger-button-line-mid ${menuOpen ? 'menu-open' : ""}`} />
+          <span className={`header-burger-button-line-bottom ${menuOpen ? 'menu-open' : ""}`} />
         </Button>
 
         {!userLogged &&

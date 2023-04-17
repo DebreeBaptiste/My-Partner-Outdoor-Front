@@ -18,6 +18,7 @@ export const Landing = () => {
 
   const navigate = useNavigate();
 
+
   const handleClickRegister = () => {
     window.scrollTo({ top: 0 });
     navigate('/register');

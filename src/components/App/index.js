@@ -1,5 +1,5 @@
 /* Tools */
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 /* Component */
 import { Header } from '../Header';
@@ -14,20 +14,15 @@ import { ModalLogin } from '../ModalLogin';
 import { Register } from '../../pages/Register';
 import { Notification } from '../Notification';
 import { Profil } from '../../pages/Profil';
+import { Team } from '../../pages/Team';
 
 /* Style */
 import './styles.scss';
-import { useEffect } from 'react';
+
 
 
 // == Composant
 function App() {
-
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, [pathname])
 
   return (
     <div className="app">
@@ -43,6 +38,8 @@ function App() {
         <Route path="/createevent" element={<CreateEvent />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profil" element={<Profil />} />
+        <Route path="/profil/:id" element={<Profil />} />
+        <Route path="/team" element={<Team />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

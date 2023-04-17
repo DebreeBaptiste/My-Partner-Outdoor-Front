@@ -1,3 +1,7 @@
+.profil-page {
+  min-height: calc(100vh - 200px);
+}
+
 .profil {
   display: grid;
   grid-template-columns: 1fr;
@@ -22,7 +26,7 @@
   &-user-container {
     display: grid;
   }
-  &-user-picture-name-container {
+  &-user-picture-container {
     grid-column: 1 / 2;
     grid-row: 1 / 3;
     display: grid;
@@ -31,6 +35,17 @@
     gap: 0.5rem;
     justify-items: center;
     text-align: center;
+  }
+  &-user-picture-wrapper {
+    position: relative;
+    width: fit-content;
+  }
+  &-user-picture-edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 1.6rem;
+    cursor: pointer;
   }
   &-user-picture {
     width: 100px;
@@ -117,7 +132,7 @@
       margin: 0 auto;
     }
 
-    &-user-picture-name-container {
+    &-user-picture-container {
       grid-column: 1 / 2;
       grid-row: 1 / 3;
       display: grid;
@@ -125,6 +140,14 @@
       gap: 0.5rem;
       justify-items: center;
       text-align: center;
+    }
+    &-user-picture-edit {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      height: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
     }
     &-user-picture {
       width: 160px;

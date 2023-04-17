@@ -8,7 +8,7 @@ import PasswordRegisterInput from '../Input/PasswordRegisterInput';
 import Input from '../Input';
 import SelectInput from '../Input/SelectInput';
 import { resetFormField } from '../../store/reducers/createUser';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 /* Api */
 import { register } from '../../api/register';
@@ -19,6 +19,7 @@ import { isPasswordValidToDisplay } from '../../store/selectors/Password/isPassw
 
 /* Styles */
 import './styles.scss';
+import { fetchSports } from '../../api/sports';
 
 
 export const CreateUserForm = () => {
@@ -32,6 +33,12 @@ export const CreateUserForm = () => {
 
   const credentials = useSelector((state) => state.createUser.credentials);
   const errorMessage = useSelector((state) => state.error.message);
+
+  const sports = useSelector((state) => state.sports.sports);
+
+  useEffect(() => {
+    dispatch(fetchSports());
+  }, []);
 
 
   // check if password is valid when password is changed it will be called in PasswordValidatorSchema
@@ -69,15 +76,7 @@ export const CreateUserForm = () => {
           id="register-sport"
           className='register-form-field-select'
           value={credentials.sport}
-          options={[
-
-            { value: 'Football', label: 'Football' },
-            { value: 'BasketBall', label: 'BasketBall' },
-            { value: 'PingPong', label: 'PingPong' },
-            { value: 'Tennis', label: 'Tennis' },
-            { value: 'Velo', label: 'Velo' },
-            { value: 'Badminton', label: 'Badminton' }
-          ]}
+          options={sports}
         />
       </div>
 
