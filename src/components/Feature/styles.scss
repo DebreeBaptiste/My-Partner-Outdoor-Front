@@ -1,0 +1,105 @@
+.feature {
+  display: grid;
+  grid-column-gap: 20%;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+
+  &-create {
+    grid-template-columns: 1fr calc(1fr / 1.2);
+  }
+  &-join {
+    grid-template-columns: calc(1fr / 1.2) 1fr;
+  }
+  &-meet {
+    grid-template-columns: 1fr calc(1fr / 1.2);
+  }
+
+  &-content {
+    display: grid;
+    grid-row-gap: 1rem;
+    align-items: center;
+    opacity: var(--opacity-0);
+    transition: opacity 0.4s ease-in-out;
+
+    &.visible {
+      opacity: var(--opacity-100);
+    }
+    &.visible .feature-title {
+      transition-delay: 0.2s;
+      opacity: var(--opacity-100);
+    }
+    &.visible .feature-subtitle {
+      transition-delay: 0.5s;
+      opacity: var(--opacity-100);
+    }
+    &.visible .feature-button {
+      transition-delay: 0.9s;
+      opacity: var(--opacity-100);
+    }
+  }
+  &-picture-container {
+    opacity: var(--opacity-0);
+    transition: opacity 0.4s ease-in-out;
+
+    &.visible {
+      opacity: var(--opacity-100);
+    }
+  }
+
+  &-title {
+    line-height: 2.5rem;
+    font-size: var(--text-2xl);
+    font-family: 'Jost-Medium';
+    opacity: var(--opacity-0);
+    transition: opacity 0.4s ease-in-out;
+  }
+  &-subtitle {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5rem;
+    font-size: var(--text-sm);
+    font-family: 'Jost-Regular';
+    opacity: var(--opacity-0);
+    transition: opacity 0.4s ease-in-out;
+
+    &-text {
+      display: block;
+    }
+  }
+  &-button {
+    opacity: var(--opacity-0);
+    transition: opacity 0.4s ease-in-out;
+    background-color: var(--medium-green);
+    color: var(--extra-light-grey);
+    box-shadow: var(--shadow-lg);
+
+    &:hover {
+      background-color: var(--dark-green);
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .feature {
+    grid-column-gap: 0;
+    grid-row-gap: 1.5rem;
+  }
+  .feature-create,
+  .feature-join,
+  .feature-meet {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-join .feature-content {
+    grid-row: 2 / 3;
+  }
+
+  .feature-content {
+    justify-items: center;
+    text-align: center;
+    width: 100%;
+  }
+}
