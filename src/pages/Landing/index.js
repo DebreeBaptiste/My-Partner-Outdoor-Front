@@ -13,6 +13,8 @@ import ArrowIcon from 'src/assets/icon-cheveron-down.svg';
 
 /* Style */
 import './styles.scss';
+import { Feature } from '../../components/Feature';
+import { FeatureReverse } from '../../components/Feature/FeatureReverse';
 
 export const Landing = () => {
 
@@ -56,39 +58,37 @@ export const Landing = () => {
 
       <section className='features'>
 
-        <div className='feature feature-create'>
-          <div className="feature-picture-container">
-            <img src={gymImage} alt="picture of people practice gym" className='features-picture' />
-          </div>
-          <div className='feature-content'>
-            <h4 className='feature-title'>Créer vos événements</h4>
-            <p className='feature-subtitle'><span className='feature-subtitle-text'>Engagez vous dans la communauté My Partner Outdoor</span><span className='feature-subtitle-text'>Expert ou débutant, partager vos envies et ne faites plus vos activités seules</span></p>
-            <Button className={"landing-button btn-green"} onClick={handleClickRegister}>Je me lance</Button>
-          </div>
-        </div>
+        <Feature
+          className="feature-create"
+          title="Créer vos événements"
+          primaryText="Engagez vous dans la communauté My Partner Outdoor"
+          secondaryText="Expert ou débutant, partager vos envie et ne faites plus vos activités seules"
+          button="Je me lance"
+          onClick={handleClickRegister}
+          image={gymImage}
+          alt="picture of people practice gym"
+        />
 
-        <div className='feature feature-join'>
-          <div className='feature-content '>
-            <h4 className='feature-title'>Participer aux événements</h4>
-            <p className='feature-subtitle'><span className='feature-subtitle-text'>Pratiquer vos sports favoris à plusieurs</span> <span className='feature-subtitle-text'>Découvrer d’autres sports avec d’autres pratiquants</span></p>
-            <Button className={"landing-button btn-green"} onClick={handleClickEvent}>Je découvre</Button>
-          </div>
-          <div className="feature-picture-container">
-            <img src={footballImage} alt="picture of football goalkeeper" className='features-picture' />
-          </div>
-        </div>
+        <FeatureReverse
+          className="feature-join"
+          title="Participer aux événements"
+          primaryText="Pratiquer vos sports favoris à plusieurs"
+          secondaryText="Découvrer d’autres sports avec d’autres pratiquants"
+          button="Je découvre"
+          onClick={handleClickEvent}
+          image={footballImage}
+          alt="picture of football goalkeeper"
+        />
 
-        <div className='feature feature-meet'>
-          <div className="feature-picture-container">
-            <img src={pushUpImage} alt="picture of people pratice push up" className='features-picture' />
-          </div>
-          <div className='feature-content'>
-            <h4 className='feature-title'>Faites des rencontres sportives</h4>
-            <p className='feature-subtitle'>Connectez-vous avec des personnes partageant les mêmes intérêts
-              sportifs que vous.</p>
-            <Button className={"landing-button btn-green"} onClick={handleClickEvent}>En savoir plus</Button>
-          </div>
-        </div>
+        <Feature
+          className="feature-meet"
+          title="Faites des rencontres sportives"
+          primaryText="Connectez-vous avec des personnes partageant les mêmes intérêts sportifs que vous."
+          button="En savoir plus"
+          onClick={handleClickEvent}
+          image={pushUpImage}
+          alt="picture of people pratice push up"
+        />
       </section>
 
       <Testimonial />
