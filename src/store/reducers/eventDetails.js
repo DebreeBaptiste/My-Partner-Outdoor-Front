@@ -2,7 +2,9 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 
 const initialState = {
-
+  edit: false,
+  editPictureModal: false,
+  updatePicture: Date.now(),
   event: {
     id: "",
     title: "",
@@ -29,6 +31,16 @@ const initialState = {
 };
 
 export const saveEvent = createAction('eventDetails/saveEvent');
+
+export const openEventEdit = createAction('eventDetails/openEventEdit');
+export const closeEventEdit = createAction('eventDetails/closeEventEdit');
+export const toggleEventEdit = createAction('eventDetails/toggleEventEdit');
+
+export const openEventPictureEdit = createAction('eventDetails/openEventPictureEdit');
+export const closeEventPictureEdit = createAction('eventDetails/closeEventPictureEdit');
+export const saveEventPicture = createAction('eventDetails/saveEventPicture');
+
+export const updateEventPictureDate = createAction('eventDetails/updateEventPictureDate');
 
 
 const eventDetailsReducer = createReducer(initialState, (builder) => {
@@ -81,6 +93,30 @@ const eventDetailsReducer = createReducer(initialState, (builder) => {
         sport,
         level
       };
+    })
+
+    .addCase(openEventEdit, (state) => {
+      state.edit = true;
+    })
+    .addCase(closeEventEdit, (state) => {
+      state.edit = false;
+    })
+    .addCase(toggleEventEdit, (state) => {
+      state.edit = !state.edit;
+    })
+
+    .addCase(openEventPictureEdit, (state) => {
+      state.editPictureModal = true;
+    })
+    .addCase(closeEventPictureEdit, (state) => {
+      state.editPictureModal = false;
+    })
+    .addCase(saveEventPicture, (state, action) => {
+      state.event.picture = action.payload;
+    })
+
+    .addCase(updateEventPictureDate, (state, action) => {
+      state.updatePicture = action.payload;
     });
 
 });

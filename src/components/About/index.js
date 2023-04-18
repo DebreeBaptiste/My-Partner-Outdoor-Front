@@ -18,7 +18,7 @@ export const About = () => {
 
       <div className='event-about-location event-about-item'>
         <img src={locationLogo} className='event-about-icon' />
-        <span>{`${event.street}, ${event.zip_code} ${event.city}`}</span>
+        <span>{`${event.number} ${event.street}, ${event.zip_code} ${event.city}`}</span>
       </div>
       <div className='event-about-organizer event-about-item'>
         <img src={organizerLogo} className='event-about-icon' />
@@ -37,7 +37,7 @@ export const About = () => {
     <div className='event-about-col-2'>
       <div className='event-about-price event-about-item'>
         <img src={priceLogo} className='event-about-icon' />
-        <span>{`${event.price} euros de participation demandé`}</span>
+        <span>{`${event.price === '0.00' ? "Gratuit" : event.price + ' euros de participation demandé'}`}</span>
       </div>
       <div className='event-about-equipement'>
         <img src={equipementLogo} className='event-about-icon' />

@@ -57,6 +57,7 @@ export const getOtherUserAddress = (userId) => async (dispatch) => {
       if (data.length === 0) {
         return;
       }
+      
       dispatch(saveOtherUserAddress(data));
     }
 

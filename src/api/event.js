@@ -2,7 +2,7 @@ import { getRandomEvents } from '../store/reducers/event';
 import { axiosInstance } from './axiosInstance';
 
 import { resetFormField } from '../store/reducers/createEvent';
-import { saveEvent } from '../store/reducers/eventDetails';
+import { closeEventPictureEdit, saveEvent, saveEventPicture, updateEventPictureDate } from '../store/reducers/eventDetails';
 
 // Récupération des événements aléatoires
 export const fetchRandomEvents = () => async (dispatch) => {
@@ -69,9 +69,32 @@ export const getOneEvent = (eventId) => async (dispatch) => {
     const response = await axiosInstance.get(`/event/${eventId}`);
 
     dispatch(saveEvent(response.data));
+    console.log(response.data);
   } catch (error) {
     console.log(error);
   }
 
+}
+
+// Modification de la photo de l'evevénement
+export const editEventPicture = (picture) => async (dispatch, getState) => {
+
+  const state = getState();
+  const eventId = state.eventDetails.event.id;
+
+  try {
+
+    const { data, status } = await axiosInstance.patch(`/event/${eventId}/upload`, picture);
+
+    if (status === 200) {
+
+      dispatch(saveEventPicture(data.picture));
+      dispatch(updateEventPictureDate(data.updated_at));
+      dispatch(closeEventPictureEdit());
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
