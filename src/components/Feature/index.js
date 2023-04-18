@@ -27,7 +27,7 @@ export const Feature = ({
 
     const intersectionHandler = function (entries) {
       entries.forEach((entry) => {
-        if (entry.intersectionRatio > 0.01) {
+        if (entry.intersectionRatio > 0) {
           entry.target.classList.add('visible');
         }
       })

@@ -1,13 +1,7 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
-  messages: [
-    {
-      content: '',
-      pseudo: '',
-      picture: '',
-    },
-  ],
+  messages: [],
   newMessage: '',
 };
 
