@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '../Button';
 
 /* Image */
-import testimonialFirstImage from 'src/assets/resource/testimonial-1.png';
-import testimonialSecondImage from 'src/assets/resource/testimonial-2.png';
-import testimonialThirdImage from 'src/assets/resource/testimonial-3.png';
+import testimonialFirstImage from 'src/assets/resource/testimonial-1.webp';
+import testimonialSecondImage from 'src/assets/resource/testimonial-2.webp';
+import testimonialThirdImage from 'src/assets/resource/testimonial-3.webp';
 
 /* style */
 import './styles.scss';

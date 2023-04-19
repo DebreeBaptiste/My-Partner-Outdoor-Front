@@ -14,17 +14,23 @@ import buttonIcon from 'src/assets/icon-cheveron-right-circle.svg';
 
 /* Style */
 import './styles.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getUser } from '../../api/getUser';
 
-export const Messages = () => {
+export const Messages = ({ userLogged }) => {
 
   const newMessage = useSelector((state) => state.messages.newMessage);
   const messages = useSelector((state) => state.messages.messages);
 
+  const participants = useSelector((state) => state.eventParticipants.participants);
+
+  const isEventParticipant = participants.some((participant) => participant.userid === parseInt(localStorage.getItem('userId'), 10));
+
   const user = useSelector((state) => state.userDetails.user);
 
   const dispatch = useDispatch()
+
+  const navigate = useNavigate();
 
   const eventId = useParams().id;
 
@@ -32,9 +38,14 @@ export const Messages = () => {
 
 
   useEffect(() => {
+
+    if (!userLogged || !isEventParticipant) {
+      navigate(`/event/${eventId}/about`);
+    }
+
     dispatch(getEventMessages(eventId));
     dispatch(getUser());
-  }, []);
+  }, [isEventParticipant]);
 
   const handleChangeValue = (event) => {
     const { value } = event.target;

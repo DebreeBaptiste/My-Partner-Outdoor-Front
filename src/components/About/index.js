@@ -6,12 +6,24 @@ import participantsLogo from '../../assets/icon-user-couple.svg';
 import levelLogo from '../../assets/icon-trending-up.svg';
 import priceLogo from '../../assets/icon-currency-euro.svg';
 import equipementLogo from '../../assets/icon-security-important.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getEventUsers } from '../../api/eventUsers';
+import { useParams } from 'react-router-dom';
 
 
-export const About = () => {
+export const About = ({ event }) => {
 
-  const event = useSelector((state) => state.eventDetails.event);
+  const eventId = useParams().id;
+  const dispatch = useDispatch();
+
+  const participants = useSelector((state) => state.eventParticipants.participants);
+
+
+  useEffect(() => {
+    dispatch(getEventUsers(eventId));
+  }, [])
+
 
   return (<div className='event-about'>
     <div className='event-about-col-1'>
@@ -22,7 +34,12 @@ export const About = () => {
       </div>
       <div className='event-about-organizer event-about-item'>
         <img src={organizerLogo} className='event-about-icon' />
-        <span>Patrick Poitou</span>
+        {participants.map((participant) => {
+          if (participant.userid === event.organizer_id) {
+            return <span key={participant.userid}>{`${participant.firstname}  ${participant.lastname}`}</span>
+          }
+        }
+        )}
       </div>
       <div className='event-about-participants-max event-about-item'>
         <img src={participantsLogo} className='event-about-icon' />
@@ -41,7 +58,7 @@ export const About = () => {
       </div>
       <div className='event-about-equipement'>
         <img src={equipementLogo} className='event-about-icon' />
-        <span>Vous devez ramaner :</span>
+        <span>Vous devez ramener :</span>
         <ul className="event-about-equipement-list">
           <li className="event-about-equipement-item">{event.equipement}</li>
         </ul>

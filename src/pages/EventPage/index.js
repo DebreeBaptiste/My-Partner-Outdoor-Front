@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
-import { changeEventField } from '../../store/reducers/eventDetails';
+import { changeEventField, closeEventEdit } from '../../store/reducers/eventDetails';
 import { openModal } from '../../store/reducers/modalDelete';
 
 /* Component */
@@ -18,6 +18,7 @@ import { ModalDeleteEvent } from '../../components/ModalDeleteEvent';
 
 /* Api */
 import { editEvent, getOneEvent } from '../../api/event';
+
 
 /* Style */
 import './styles.scss';
@@ -41,6 +42,7 @@ export const EventPage = () => {
   const event = useSelector((state) => state.eventDetails.event);
   const eventDetails = useSelector((state) => state.eventDetails);
   const edit = useSelector((state) => state.eventDetails.edit);
+
 
   const isEventOrganizer = parseInt(localStorage.getItem('userId'), 10) === event.organizer_id;
 
@@ -80,9 +82,9 @@ export const EventPage = () => {
 
         <section className='event-detail-section'>
 
-          {(userLogged && pathname === `/event/${eventId}/messages`) && <Messages />}
+          {(userLogged && pathname === `/event/${eventId}/messages`) && <Messages userLogged={userLogged} />}
           {pathname === `/event/${eventId}/participants` && <Participants />}
-          {pathname === `/event/${eventId}/about` && <About />}
+          {pathname === `/event/${eventId}/about` && <About event={event} />}
 
 
         </section>
