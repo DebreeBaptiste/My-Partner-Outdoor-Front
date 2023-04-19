@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 
 
 export const Message = ({ message }) => {
+
+  const participantId = parseInt(localStorage.getItem('userId'), 10);
+
   return (
     <div className='event-chat-message'>
       <img src={message.picture} className='event-chat-message-avatar' />
@@ -9,6 +12,7 @@ export const Message = ({ message }) => {
       <div className="event-chat-message-content">
         <p className='event-chat-message-content-author'>{message.pseudo}</p>
         <p className='event-chat-message-content-text'>{message.content}</p>
+        {message.userid === participantId && <img src='' className='event-chat-message-delete' />}
       </div>
 
     </div>
