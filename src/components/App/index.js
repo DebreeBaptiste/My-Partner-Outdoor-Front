@@ -20,8 +20,6 @@ import { Team } from '../../pages/Team';
 /* Style */
 import './styles.scss';
 
-
-
 // == Composant
 function App() {
 

@@ -6,29 +6,29 @@ const initialState = {
   loading: true,
 
   event: [{
-    id: 10,
-    title: "Event de handball",
-    description: "Faire un Basket",
-    start_date: "12/05/2023",
-    finish_date: "12/05/2023",
-    start_hour: "12:00",
-    finish_hour: "15:00",
+    id: 1,
+    title: "",
+    description: "",
+    start_date: "",
+    finish_date: "",
+    start_hour: "",
+    finish_hour: "",
     nb_participant: 2,
-    equipement: "dqsfsefefsdfs",
+    equipement: "",
     price: 5,
     picture: "/images/basket",
 
-    organizer_id : 3,
+    organizer_id: 3,
 
     sport_id: 3,
     level_id: 1,
     address_id: 10,
     number: 24,
-    street: "rue des fleurs",
-    zip_code: "73045",
-    city: "Vrellis",
-    sport: "BasketBall",
-    level: "Débutant"
+    street: "",
+    zip_code: "",
+    city: "",
+    sport: "",
+    level: ""
   }],
 
   selectedLevel: "",

@@ -12,15 +12,13 @@ const initialState = {
     equipement: "",
     price: 5,
     picture: "images/",
-
-    organizer_id : JSON.parse(localStorage.getItem('userId')),
-
+    organizer_id: JSON.parse(localStorage.getItem('userId')),
     number: "",
     street: "",
     zip_code: "",
     city: "",
     sport: "",
-    level: "Débutant"
+    level: ""
   },
 };
 
@@ -51,9 +49,9 @@ const createEventReducer = createReducer(initialState, (builder) => {
         equipement: "",
         price: 5,
         picture: "images/",
-    
+
         organizer_id: 3,
-    
+
         number: "",
         street: "",
         zip_code: "",
