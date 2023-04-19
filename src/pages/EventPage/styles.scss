@@ -13,3 +13,13 @@
   width: 100%;
   padding: 2rem 1rem;
 }
+.event-detail-edit-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
