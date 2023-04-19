@@ -25,6 +25,19 @@ export const fetchSearchEvents = async (search, dept, dispatch) => {
 
 };
 
+export const fetchMyEvents = () => async (dispatch) => {
+  const organizer_id = JSON.parse(localStorage.getItem('userId'));
+
+  try {
+    const response = await axiosInstance.get(`user/${organizer_id}/events`);
+    console.log(response.data);
+    dispatch(getEventsWithID(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+
+};
+
 // Création d'un événement
 export const postEvent = (navigate) => async (dispatch, getState) => {
 
