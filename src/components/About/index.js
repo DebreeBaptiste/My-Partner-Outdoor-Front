@@ -21,6 +21,7 @@ export const About = ({ event }) => {
 
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getEventUsers(eventId));
   }, [])
 
