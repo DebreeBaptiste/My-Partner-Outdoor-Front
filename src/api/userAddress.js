@@ -1,7 +1,10 @@
 import { sendNotification } from '../store/reducers/notification';
 import { closeProfilEdit, saveUserAddress } from '../store/reducers/userDetails';
+import { saveOtherUserAddress } from '../store/reducers/userProfil';
 import { axiosInstance } from './axiosInstance';
 
+
+/* User logged */
 export const getUserAddress = () => async (dispatch) => {
   const userDataId = JSON.parse(localStorage.getItem('userId'))
 
@@ -36,5 +39,29 @@ export const deleteUserAddress = () => async (dispatch) => {
     dispatch(deleteUserAddress());
     dispatch(closeProfilEdit());
     dispatch(sendNotification('Votre adresse a bien été supprimée'));
+  }
+}
+
+/* Other users */
+export const getOtherUserAddress = (userId) => async (dispatch) => {
+
+  try {
+
+    const { data, status } = await axiosInstance.get(`/user/${userId}/address`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+
+    if (status === 200) {
+      if (data.length === 0) {
+        return;
+      }
+      
+      dispatch(saveOtherUserAddress(data));
+    }
+
+  } catch (error) {
+
   }
 }

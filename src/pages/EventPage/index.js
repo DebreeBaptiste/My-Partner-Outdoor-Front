@@ -1,88 +1,155 @@
 /* Tool */
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
+import { changeEventField, closeEventEdit } from '../../store/reducers/eventDetails';
+import { openModal } from '../../store/reducers/modalDelete';
 
 /* Component */
-import { NavLink, Navigate, useLocation } from 'react-router-dom';
-import { Button } from '../../components/Button';
 import { About } from '../../components/About';
+import { AboutEdit } from '../../components/AboutEdit';
 import { Messages } from '../../components/Messages';
 import { Participants } from '../../components/Participants';
-import { sendNotification } from '../../store/reducers/notification';
+import { EventHeader } from '../../components/EventHeader';
+import { EventNav } from '../../components/EventNav';
+import { EventHeaderEdit } from '../../components/EventHeaderEdit';
+import { ModalEditEventPicture } from '../../components/ModalEditEventPicture';
+import { ModalDeleteEvent } from '../../components/ModalDeleteEvent';
 
-/* Image/logo */
-import eventHeaderPicture from '../../assets/resource/event-details.jpg';
+/* Api */
+import { editEvent, getOneEvent } from '../../api/event';
 
 
 /* Style */
 import './styles.scss';
 
 
+
 export const EventPage = () => {
+
+  const eventId = useParams().id
 
   const { pathname } = useLocation();
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getOneEvent(eventId));
+  }, []);
+
+
   const userLogged = useSelector((state) => state.user.logged);
+  const event = useSelector((state) => state.eventDetails.event);
+  const eventDetails = useSelector((state) => state.eventDetails);
+  const edit = useSelector((state) => state.eventDetails.edit);
 
-  // Copy link logic
-  const notificationOpen = useSelector((state) => state.notification.open);
 
-  const copyToClip = async () => {
-    if (notificationOpen) {
-      return
-    }
+  const isEventOrganizer = parseInt(localStorage.getItem('userId'), 10) === event.organizer_id;
 
-    await navigator.clipboard.writeText(location.href);
-    dispatch(sendNotification("Lien de l'évênement a été copié !"));
+
+  if (!userLogged && pathname === `/event/${eventId}/messages`) {
+    return < Navigate to={`/event/${eventId}`} />
   }
 
+  const handleClickDeleteEvent = (event) => {
+    event.preventDefault();
+    dispatch(openModal());
+  };
 
+  const handleClickCloseEdit = (event) => {
+    dispatch(closeEventEdit());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-  const handleClickParticipateNotification = () => {
-    if (notificationOpen) {
-      return
-    }
-    dispatch(sendNotification("Vous participez à l'évênement"));
-  }
+  const handleChangeInputValue = (event) => {
+    const { name, value } = event.target;
+    dispatch(changeEventField({ name, value }));
+  };
 
-  if (!userLogged && pathname === '/event/1/chat') {
-    return < Navigate to="/event/1/" />
-  }
-  const classNameLink = ({ isActive }) => `event-detail-nav-link ${isActive ? 'active-link' : ''}`;
+  const handleSubmitEventForm = (event) => {
+    event.preventDefault();
+    dispatch(editEvent(eventId));
+  };
+
 
   return (
     <main className='event-detail'>
-      <header className="event-detail-header">
-        <div className="event-detail-header-picture-container">
-          <img className='event-detail-header-picture' src={eventHeaderPicture} />
 
-        </div>
-        <div className='event-detail-header-content'>
-          <div className='event-detail-header-content-text'>
-            <p>SAMEDI 3 JUIN 2023 de 13:00 à 17:00</p>
-            <p>Tour du Salagou en VTT</p>
-          </div>
-          {userLogged && <Button className={'event-detail-header-button btn-purple'} children={'Je participe'} onClick={handleClickParticipateNotification} />}
-        </div>
-      </header>
-      <nav className='event-detail-nav'>
-        <ul className={`${userLogged ? "event-detail-nav-list-logged" : "event-detail-nav-list"}`}>
-          <NavLink to="/event/1/" className={classNameLink}><li className='event-detail-nav-item active-link'>A propos</li></NavLink>
-          {userLogged && <NavLink to="/event/1/chat" className={classNameLink}><li className='event-detail-nav-item'>Discussion</li></NavLink>}
-          <NavLink to="/event/1/participants" className={classNameLink}><li className='event-detail-nav-item'>Participants</li></NavLink>
-          <a onClick={copyToClip}><li className='event-detail-nav-item event-detail-nav-item-share'>Partager</li></a>
-        </ul>
-      </nav>
+      {!edit && <>
 
-      <section className='event-detail-section'>
+        <EventHeader event={event} userLogged={userLogged} isEventOrganizer={isEventOrganizer} eventDetails={eventDetails} />
+        <EventNav userLogged={userLogged} />
 
-        {(userLogged && pathname === '/event/1/chat') && <Messages />}
-        {pathname === '/event/1/participants' && <Participants />}
-        {pathname === '/event/1/' && <About />}
+        <section className='event-detail-section'>
+
+          {(userLogged && pathname === `/event/${eventId}/messages`) && <Messages userLogged={userLogged} />}
+          {pathname === `/event/${eventId}/participants` && <Participants />}
+          {pathname === `/event/${eventId}/about` && <About event={event} />}
 
 
-      </section>
+        </section>
+      </>
+      }
+
+
+      {edit && <>
+
+        <form onSubmit={handleSubmitEventForm}>
+
+          <EventHeaderEdit
+            event={event}
+            userLogged={userLogged}
+            isEventOrganizer={isEventOrganizer}
+            eventDetails={eventDetails}
+            onChange={handleChangeInputValue}
+          />
+
+          <section className='event-detail-edit-section'>
+
+            <AboutEdit
+              event={event}
+              onChange={handleChangeInputValue}
+
+            />
+            <div className="event-about-edit-button-container">
+              <button
+                type="button"
+                className="event-about-edit-button event-about-edit-button-cancel"
+                onClick={handleClickCloseEdit}
+
+              >
+                Annuler
+              </button>
+              <button
+                type="submit"
+                className="event-about-edit-button event-about-edit-button-submit"
+              >
+                Enregister
+              </button>
+            </div>
+
+            <div className='event-about-edit-delete-container'>
+              <button
+                type="button"
+                className="event-about-edit-button event-about-edit-button-delete"
+                onClick={handleClickDeleteEvent}
+              >
+                Supprimer l'évênement
+              </button>
+            </div>
+
+          </section>
+        </form>
+
+
+        <ModalEditEventPicture />
+        <ModalDeleteEvent />
+      </>
+      }
+
+
+
+
     </main>
   );
 }

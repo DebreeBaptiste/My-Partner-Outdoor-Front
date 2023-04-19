@@ -3,6 +3,7 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 export const initialState = {
   edit: false,
   editPictureModal: false,
+  updatePicture: Date.now(),
   user: {
     id: '',
     firstname: '',
@@ -32,6 +33,7 @@ export const saveUserAddress = createAction('userDetails/saveUserAddress');
 export const updateUserAddress = createAction('userDetails/updateUserAddress');
 export const deleteUserAddress = createAction('userDetails/deleteUserAddress');
 
+export const saveSport = createAction('userDetails/saveUserSport');
 export const addSport = createAction('userDetails/addSport');
 export const removeSport = createAction('userDetails/removeSport');
 
@@ -41,6 +43,8 @@ export const toggleProfilEdit = createAction('userDetails/toggleProfilEdit');
 
 export const openProfilPictureEdit = createAction('userDetails/openProfilPictureEdit');
 export const closeProfilPictureEdit = createAction('userDetails/closeProfilPictureEdit');
+export const saveProfilePicture = createAction('userDetails/saveProfilePicture');
+export const updatePictureDate = createAction('userDetails/updatePictureDate');
 
 const userDetailsReducer = createReducer(initialState, (builder) => {
   builder
@@ -123,6 +127,9 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       };
     })
 
+    .addCase(saveSport, (state, action) => {
+      state.user.sport = action.payload;
+    })
     .addCase(addSport, (state, action) => {
       state.user.sport.push(action.payload);
     })
@@ -147,6 +154,14 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
     .addCase(closeProfilPictureEdit, (state) => {
       state.editPictureModal = false;
     })
+    .addCase(saveProfilePicture, (state, action) => {
+      state.user.picture = action.payload;
+    })
+
+    .addCase(updatePictureDate, (state, action) => {
+      state.updatePicture = action.payload;
+    });
+
 
 
 });

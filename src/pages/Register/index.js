@@ -1,10 +1,15 @@
 /* Tools */
+import { useEffect } from 'react';
 import { CreateUserForm } from '../../components/CreateUserForm';
 
 /* Styles */
 import './styles.scss';
 
 export const Register = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className='register'>
