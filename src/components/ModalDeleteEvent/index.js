@@ -5,14 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 /* Component */
 import { closeModal } from '../../store/reducers/modalDelete';
 
-// import { deleteEvent } from '../../api/deleteUser';
+/* Api */
+import { deleteEvent } from '../../api/event';
 
 /* Style */
 import './styles.scss';
+import { useNavigate } from 'react-router-dom';
 
 export const ModalDeleteEvent = () => {
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const modalOpen = useSelector((state) => state.modalDelete.modalOpen);
 
@@ -34,9 +38,9 @@ export const ModalDeleteEvent = () => {
     dispatch(closeModal());
   };
 
-  /* const handleClickDeleteEvent = () => {
-    dispatch(deleteEvent());
-  }; */
+  const handleClickDeleteEvent = () => {
+    dispatch(deleteEvent(navigate));
+  };
 
   return (
     <dialog
@@ -56,7 +60,7 @@ export const ModalDeleteEvent = () => {
             onClick={handleCloseModal}
           >Annuler
           </button>
-          <button className="event-delete-modal-button event-delete-modal-button-delete" /* onClick={handleClickDeleteEvent} */>Supprimer</button>
+          <button className="event-delete-modal-button event-delete-modal-button-delete" onClick={handleClickDeleteEvent} >Supprimer</button>
         </div>
       </div>
     </dialog>

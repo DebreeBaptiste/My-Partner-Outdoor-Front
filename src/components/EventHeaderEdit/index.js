@@ -1,6 +1,6 @@
 /* Tool */
-import { useDispatch, useSelector } from 'react-redux';
-import { sendNotification } from '../../store/reducers/notification';
+import { useDispatch } from 'react-redux';
+
 import { openEventPictureEdit, toggleEventEdit } from '../../store/reducers/eventDetails';
 import { useLocation, useParams } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ import editPictureIcon from 'src/assets/icon-camera.svg';
 /* Style */
 import './styles.scss';
 
-export const EventHeaderEdit = ({ event, userLogged, isEventOrganizer, eventDetails }) => {
+export const EventHeaderEdit = ({ event, userLogged, isEventOrganizer, eventDetails, onChange }) => {
 
   const eventId = useParams().id
 
@@ -61,24 +61,56 @@ export const EventHeaderEdit = ({ event, userLogged, isEventOrganizer, eventDeta
 
           <div className='event-detail-header-edit-input-container'>
             <label>Date de début :</label>
-            <input className='event-detail-header-edit-form-input' type="date" name="start_date" value={eventStartDateFormated} ></input>
+            <input
+              className='event-detail-header-edit-form-input'
+              type="date"
+              name="start_date"
+              value={eventStartDateFormated}
+              onChange={onChange}
+            />
+
           </div>
           <div className='event-detail-header-edit-input-container'>
             <label>Heure de début :</label>
-            <input className='event-detail-header-edit-form-input' type="time" name="start_hour" value={event.start_hour} ></input>
+            <input
+              className='event-detail-header-edit-form-input'
+              type="time"
+              name="start_hour"
+              value={event.start_hour}
+              onChange={onChange}
+            />
           </div>
 
           <div className='event-detail-header-edit-input-container'>
             <label>Date de fin :</label>
-            <input className='event-detail-header-edit-form-input' type="date" name="finish_date" value={eventFinishDateFormated} ></input>
+            <input
+              className='event-detail-header-edit-form-input'
+              type="date"
+              name="finish_date"
+              value={eventFinishDateFormated}
+              onChange={onChange}
+            />
           </div>
           <div className='event-detail-header-edit-input-container'>
             <label>Heure de fin :</label>
-            <input className='event-detail-header-edit-form-input' type="time" name="finish_hour" value={event.finish_hour} ></input>
+            <input
+              className='event-detail-header-edit-form-input'
+              type="time"
+              name="finish_hour"
+              value={event.finish_hour}
+              onChange={onChange}
+            />
           </div>
           <div className='event-detail-header-edit-input-container'>
             <label>Nom de l'événement :</label>
-            <input className='event-detail-header-edit-form-input' type="text" id="event-title" name="title" value={event.title} />
+            <input
+              className='event-detail-header-edit-form-input'
+              type="text"
+              id="event-title"
+              name="title"
+              value={event.title}
+              onChange={onChange}
+            />
           </div>
 
         </div>

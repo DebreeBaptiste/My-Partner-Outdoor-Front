@@ -31,6 +31,7 @@ const initialState = {
 };
 
 export const saveEvent = createAction('eventDetails/saveEvent');
+export const changeEventField = createAction('eventDetails/changeEventField');
 
 export const openEventEdit = createAction('eventDetails/openEventEdit');
 export const closeEventEdit = createAction('eventDetails/closeEventEdit');
@@ -93,6 +94,10 @@ const eventDetailsReducer = createReducer(initialState, (builder) => {
         sport,
         level
       };
+    })
+    .addCase(changeEventField, (state, action) => {
+      const { name, value } = action.payload;
+      state.event[name] = value;
     })
 
     .addCase(openEventEdit, (state) => {
