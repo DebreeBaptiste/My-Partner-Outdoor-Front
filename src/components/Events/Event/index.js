@@ -19,6 +19,7 @@ function Event({
   street,
   zip_code,
   city,
+
 }) {
 
   const userId = parseInt(localStorage.getItem('userId'), 10);
@@ -30,12 +31,11 @@ function Event({
   const participants = useSelector((state) => state.eventParticipants.participants);
   const userLogged = useSelector((state) => state.user.logged);
 
-  const isEventParticipant = participants.some((participant) => participant.userid === parseInt(localStorage.getItem('userId'), 10));
-
 
 
   const isOrganizer = organizer_id === userId;
 
+  const isEventParticipant = participants.some((participant) => participant.userid === userId);
 
   useEffect(() => {
 
@@ -80,10 +80,10 @@ function Event({
               <p className='event__detail__down__priceButton__price__text'>par personne</p>
 
             </div>
-            {!userLogged && <button className='event__detail__down__priceButton__button'><Link to="/register">Inscription</Link></button>}
-            {isOrganizer && <button className='event__detail__down__priceButton__button'><Link to={`/event/${id}/about`}>Modifier</Link></button>}
-            {userLogged && !isEventParticipant && !isOrganizer && <button className='event__detail__down__priceButton__button' onClick={handleClickEventSubscribe}>Inscription</button>}
-            {isEventParticipant && !isOrganizer && <button className='event__detail__down__priceButton__button btn-red' onClick={handleClickEventUnsubscribe}>Se désinscrire</button>}
+            {!userLogged && <button type="button" className='event__detail__down__priceButton__button'><Link to="/register">Inscription</Link></button>}
+            {isOrganizer && <button type="button" className='event__detail__down__priceButton__button'><Link to={`/event/${id}/about`}>Modifier</Link></button>}
+            {userLogged && !isEventParticipant && !isOrganizer && <button type="button" className='event__detail__down__priceButton__button' onClick={handleClickEventSubscribe}>Inscription</button>}
+            {userLogged && isEventParticipant && !isOrganizer && <button type="button" className='event__detail__down__priceButton__button btn-red' onClick={handleClickEventUnsubscribe}>Se désinscrire</button>}
 
           </div>
           <div className='event__detail__down__moreinfo'>

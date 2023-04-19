@@ -8,6 +8,7 @@ import './styles.scss';
 import Event from './Event/index.js';
 
 import { MagnifyingGlass } from 'react-loader-spinner'
+import { getEventUsers } from '../../api/eventUsers';
 
 // == Composant
 function Events() {
@@ -21,8 +22,10 @@ function Events() {
   const loading = useSelector((state) => state.event.loading);
 
   const events = useSelector((state) => state.event.event);
-  const selectedLevel = useSelector((state) => state.event.selectedLevel); // Récupérer la valeur sélectionnée dans le state global
 
+
+
+  const selectedLevel = useSelector((state) => state.event.selectedLevel); // Récupérer la valeur sélectionnée dans le state global
 
   const filteredEvents = events.filter((event) => {
     if (selectedLevel === "") { // Si aucun niveau n'est sélectionné, afficher tous les événements
@@ -51,9 +54,6 @@ function Events() {
   return (
     <main className='events'>
       {filteredEvents.map(event => (<Event {...event} key={event.id} />))}
-
-
-
     </main>
 
   );
