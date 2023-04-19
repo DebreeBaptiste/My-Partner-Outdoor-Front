@@ -41,7 +41,6 @@
   }
   &-picture-container {
     opacity: var(--opacity-0);
-
     transition: opacity 0.4s ease-in-out;
 
     &.visible {

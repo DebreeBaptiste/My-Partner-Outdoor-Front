@@ -59,6 +59,7 @@ export const MyProfil = () => {
   const handleClickToggleEdit = () => {
     window.scrollTo(0, 0);
     dispatch(toggleProfilEdit());
+    dispatch(addErrorMessage(""));
   };
 
   const handleChangeSportValue = (event) => {
