@@ -31,6 +31,8 @@ function Myevents() {
 
   });
 
+
+
   const pastEvents = myEvents.filter(event => {
     const eventDate = new Date(event.start_date.split("/").reverse().join("-"));
     return eventDate < currentdate;
