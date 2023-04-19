@@ -8,6 +8,7 @@ function Myevents() {
   const dispatch = useDispatch();
   const [activeButton, setActiveButton] = useState("upcoming");
   const myEvents = useSelector((state) => state.myEvent.myEvent);
+  console.log(myEvents);
 
   useEffect(() => {
     dispatch(fetchMyEvents());
@@ -21,21 +22,27 @@ function Myevents() {
     setActiveButton('past');
   }; 
 
-  const currentDate = new Date();
+
+
+
+  const currentdate = new Date();
 
   const upcomingEvents = myEvents.filter(event => {
-    const eventDate = new Date(event.start_date);
-    return eventDate >= currentDate;
+    const eventDate = new Date(event.start_date.split("/").reverse().join("-"));
+    console.log(eventDate);
+    return eventDate >= currentdate;
+    
   });
 
   console.log(upcomingEvents);
 
   const pastEvents = myEvents.filter(event => {
-    const eventDate = new Date(event.start_date);
-    return eventDate < currentDate;
+    const eventDate = new Date(event.start_date.split("/").reverse().join("-"));
+    return eventDate < currentdate;
   });
 
   const eventsToShow = activeButton === "upcoming" ? upcomingEvents : pastEvents;
+  console.log(eventsToShow);
 
   return (
     <>

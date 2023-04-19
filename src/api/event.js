@@ -1,6 +1,7 @@
 import { getRandomEvents } from '../store/reducers/event';
 import { getEventsWithID } from '../store/reducers/myEvent';
 import { axiosInstance } from './axiosInstance';
+import { resetFormField } from '../store/reducers/createEvent';
 
 
 

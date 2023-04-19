@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { format } from 'date-fns';
 // == Import
 import './styles.scss';
 import { postEvent } from '../../api/event';
@@ -42,6 +43,9 @@ function CreateEventForm() {
 
 
   const sports = useSelector((state) => state.sports.sports);
+
+
+  const today = format(new Date(), 'yyyy-MM-dd');
 
   return (
     <div className='createEvent'>
@@ -123,7 +127,7 @@ function CreateEventForm() {
                 <div className='form__date'>
                   <div className='form__date__up' >
                     <label className='form__label'>Date de début :</label>
-                    <input className='form__input__date' type="date" name="start_date" value={event.start_date} onChange={handleChange} ></input>
+                    <input className='form__input__date' type="date" id="start_date" name="start_date" value={event.start_date} onChange={handleChange} min={today} />
 
                   </div>
                 </div>
@@ -136,7 +140,7 @@ function CreateEventForm() {
                 </div>
                 <div className='form__date__bottom'>
                   <label className='form__label'>Date de fin :</label>
-                  <input className='form__input__date' type="date" id="end-date" name="finish_date" value={event.finish_date} onChange={handleChange} ></input>
+                  <input className='form__input__date' type="date" id="end_date" name="end_date" value={event.end_date} onChange={handleChange} min={today} />
                 </div>
 
               </div>
