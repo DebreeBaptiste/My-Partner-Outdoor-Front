@@ -1,11 +1,13 @@
 //  Import
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 // import image from 'http://localhost:4000/images/29.jpg';
 
 // == Import
 import './styles.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { eventUserSubscribe, eventUserUnsubscribe, getEventUsers } from '../../../api/eventUsers';
 
 // == Composant
 function Event({
@@ -32,6 +34,36 @@ function Event({
   sport,
   level,
 }) {
+
+  const userId = parseInt(localStorage.getItem('userId'), 10);
+
+
+  const dispatch = useDispatch();
+
+
+  const participants = useSelector((state) => state.eventParticipants.participants);
+  const userLogged = useSelector((state) => state.user.logged);
+
+  const isEventParticipant = participants.some((participant) => participant.userid === parseInt(localStorage.getItem('userId'), 10));
+
+
+
+  const isOrganizer = organizer_id === userId;
+
+
+  useEffect(() => {
+
+    dispatch(getEventUsers(parseInt(id, 10)));
+  }, []);
+
+  const handleClickEventSubscribe = () => {
+    dispatch(eventUserSubscribe(parseInt(id, 10)));
+  };
+
+  const handleClickEventUnsubscribe = () => {
+    dispatch(eventUserUnsubscribe(parseInt(id, 10)));
+  };
+
   return (
     <div className='event'>
 
@@ -61,17 +93,21 @@ function Event({
               <p className='event__detail__down__priceButton__price__text'>par personne</p>
 
             </div>
-            <button className='event__detail__down__priceButton__button'>Inscription</button>
+            {!userLogged && <button className='event__detail__down__priceButton__button'><Link to="/register">Inscription</Link></button>}
+            {isOrganizer && <button className='event__detail__down__priceButton__button'><Link to={`/event/${id}/about`}>Modifier</Link></button>}
+            {userLogged && !isEventParticipant && !isOrganizer && <button className='event__detail__down__priceButton__button' onClick={handleClickEventSubscribe}>Inscription</button>}
+            {userLogged && isEventParticipant && !isOrganizer && <button className='event__detail__down__priceButton__button btn-red' onClick={handleClickEventUnsubscribe}>Se désinscrire</button>}
+
           </div>
           <div className='event__detail__down__moreinfo'>
-            <Link to='/event/1/about'>
+            <Link to={`/event/${id}/about`}>
               <p className='event__detail__down__moreinfo__text'>Plus d'informations en détails</p>
             </Link>
 
           </div>
         </div>
       </div>
-    </div>
+    </div >
 
 
   );

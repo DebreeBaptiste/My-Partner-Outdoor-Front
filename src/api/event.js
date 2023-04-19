@@ -30,7 +30,7 @@ export const fetchMyEvents = () => async (dispatch) => {
 
   try {
     const response = await axiosInstance.get(`user/${organizer_id}/events`);
-    console.log(response.data);
+
     dispatch(getEventsWithID(response.data));
   } catch (error) {
     console.log(error);
@@ -42,7 +42,7 @@ export const fetchMyEvents = () => async (dispatch) => {
 export const postEvent = (navigate) => async (dispatch, getState) => {
 
   const state = getState();
-  console.log(state);
+
   const { title, description, start_date, finish_date, start_hour, finish_hour, nb_participant, organizer_id, equipement, price, picture, number, street, zip_code, city, sport, level } = state.createEvent.createEvent;
 
   try {
@@ -69,7 +69,7 @@ export const postEvent = (navigate) => async (dispatch, getState) => {
     if (response.status === 200) {
       dispatch(resetFormField())
       window.scrollTo({ top: 0 })
-      navigate('/event/1');
+      navigate(`/event/${response.data.id}/about`);
     } else {
 
     }
@@ -164,6 +164,7 @@ export const deleteEvent = (navigate) => async (dispatch, getState) => {
 
     if (response.status === 200) {
       dispatch(closeModal());
+      dispatch(closeEventEdit());
       navigate('/home');
       window.scrollTo({ top: 0 })
       dispatch(sendNotification("L'événement a bien été supprimé !"));

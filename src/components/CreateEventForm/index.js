@@ -24,6 +24,7 @@ function CreateEventForm() {
   };
 
   const handleChange = (event) => {
+
     dispatch(changeField({ value: event.target.value, name: event.target.name }));
   };
 
@@ -38,8 +39,6 @@ function CreateEventForm() {
   useEffect(() => {
     dispatch((fetchSports()));
   }, []);
-
-
 
 
   const sports = useSelector((state) => state.sports.sports);
@@ -121,7 +120,7 @@ function CreateEventForm() {
                   <label className='form__label'>Heure de début :</label>
 
                   <input className='form__input__time' type="time" name="start_hour" value={event.start_hour} onChange={handleChange} ></input>
-                  {console.log(event.start_date)}
+
 
                 </div>
                 <div className='form__date'>
@@ -140,7 +139,7 @@ function CreateEventForm() {
                 </div>
                 <div className='form__date__bottom'>
                   <label className='form__label'>Date de fin :</label>
-                  <input className='form__input__date' type="date" id="end_date" name="end_date" value={event.end_date} onChange={handleChange} min={today} />
+                  <input className='form__input__date' type="date" id="end_date" name="finish_date" value={event.finish_date} onChange={handleChange} min={today} />
                 </div>
 
               </div>
@@ -160,19 +159,19 @@ function CreateEventForm() {
           <h5 className='form__title'>Informations supplémentaires</h5>
           <div className='form__right'>
             <label className='form__label'>Niveau souhaité :</label>
-            <div className='form__bottom__radio' id="niveau">
-              <div className='form__bottom__radio__debutant' id="niveau">
+            <div className='form__bottom__radio' >
+              <div className='form__bottom__radio__debutant' >
 
-                <input className='form__input__radio' type="radio" id="debutant" name="level" value={event.level} onChange={handleChange} checked={event.level === "Débutant"}></input>
+                <input className='form__input__radio' type="radio" name="level" onChange={handleChange} value='Débutant' checked={event.level === "Débutant"}></input>
                 <label className='form__label__radio'>Débutant</label>
               </div>
               <div className='form__bottom__radio__debutant' id="niveau">
-                <input className='form__input__radio' type="radio" id="intermediaire" name="level" value={event.level} onChange={handleChange}></input>
+                <input className='form__input__radio' type="radio" name="level" onChange={handleChange} value='Intermédiaire' checked={event.level === "Intermédiaire"}></input>
 
                 <label className='form__label__radio'>Intermédiaire</label>
               </div>
               <div className='form__bottom__radio__debutant' id="niveau">
-                <input className='form__input__radio' type="radio" id="confirme" name="level" value={event.level} onChange={handleChange}></input>
+                <input className='form__input__radio' type="radio" name="level" onChange={handleChange} value='Confirmé' checked={event.level === "Confirmé"}></input>
                 <label className='form__label__radio'>Confirmé</label>
               </div>
             </div>

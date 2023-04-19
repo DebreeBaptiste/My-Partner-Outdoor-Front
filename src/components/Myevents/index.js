@@ -14,27 +14,22 @@ function Myevents() {
     dispatch(fetchMyEvents());
   }, []);
 
-  const handleUpcomingClick = () => {  
+  const handleUpcomingClick = () => {
     setActiveButton('upcoming');
-  }; 
+  };
 
-  const handlePastClick = () => {  
+  const handlePastClick = () => {
     setActiveButton('past');
-  }; 
-
-
-
+  };
 
   const currentdate = new Date();
 
   const upcomingEvents = myEvents.filter(event => {
     const eventDate = new Date(event.start_date.split("/").reverse().join("-"));
-    console.log(eventDate);
-    return eventDate >= currentdate;
-    
-  });
 
-  console.log(upcomingEvents);
+    return eventDate >= currentdate;
+
+  });
 
   const pastEvents = myEvents.filter(event => {
     const eventDate = new Date(event.start_date.split("/").reverse().join("-"));
@@ -42,7 +37,7 @@ function Myevents() {
   });
 
   const eventsToShow = activeButton === "upcoming" ? upcomingEvents : pastEvents;
-  console.log(eventsToShow);
+
 
   return (
     <>
