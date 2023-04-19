@@ -48,6 +48,7 @@ const eventDetailsReducer = createReducer(initialState, (builder) => {
   builder
 
     .addCase(saveEvent, (state, action) => {
+
       const {
         id,
         title,
@@ -67,7 +68,8 @@ const eventDetailsReducer = createReducer(initialState, (builder) => {
         number,
         street,
         zip_code,
-        city, sport,
+        city,
+        sport,
         level
       } = action.payload;
 

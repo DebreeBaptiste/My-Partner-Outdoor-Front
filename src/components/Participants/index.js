@@ -14,31 +14,29 @@ export const Participants = () => {
 
   const dispatch = useDispatch();
 
-  const eventUsers = useSelector((state) => state.eventParticipant.participants);
+  const eventParticipants = useSelector((state) => state.eventParticipants.participants);
   const eventOrganizerId = useSelector((state) => state.eventDetails.event.organizer_id);
 
   useEffect(() => {
     dispatch(getEventUsers(eventId));
   }, []);
 
-
-
   return (
     <section className="event-participants">
-      {eventUsers.map((user) => (
+      {eventParticipants.map((participant) => (
         <div
           className={`event-participants-content 
-          ${eventOrganizerId === user.userid ? "event-participants-content-organizer" : ""}`
+          ${eventOrganizerId === participant.userid ? "event-participants-content-organizer" : ""}`
           }
-          key={user.userid}>
+          key={participant.userid}>
 
-          <Link to={`/profil/${user.userid}`}>
-            <img src={user.picture} className={`event-participants-avatar 
-          ${eventOrganizerId === user.userid ? "event-participants-organizer" : ""}`}
+          <Link to={`/profil/${participant.userid}`}>
+            <img src={participant.picture} className={`event-participants-avatar 
+          ${eventOrganizerId === participant.userid ? "event-participants-organizer" : ""}`}
             />
           </Link>
 
-          <p className='event-participants-name'>{user.pseudo}</p>
+          <p className='event-participants-name'>{participant.pseudo}</p>
 
         </div>
       ))}

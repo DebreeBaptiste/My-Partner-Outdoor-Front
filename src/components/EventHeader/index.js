@@ -1,19 +1,20 @@
 /* Tool */
 import { useDispatch, useSelector } from 'react-redux';
-import { sendNotification } from '../../store/reducers/notification';
 import { toggleEventEdit } from '../../store/reducers/eventDetails';
 import { useLocation, useParams } from 'react-router-dom';
-
 
 /* Component */
 import { Button } from '../../components/Button';
 
+/* Api */
+import { eventUserSubscribe, eventUserUnsubscribe } from '../../api/eventUsers';
+
 /* Image et logo */
 import editIcon from 'src/assets/icon-edit.svg';
 
-
 /* Style */
 import './styles.scss';
+
 
 export const EventHeader = ({ event, userLogged, isEventOrganizer, eventDetails }) => {
 
@@ -23,17 +24,21 @@ export const EventHeader = ({ event, userLogged, isEventOrganizer, eventDetails 
 
   const dispatch = useDispatch();
 
-  const notificationOpen = useSelector((state) => state.notification.open);
+  const participants = useSelector((state) => state.eventParticipants.participants);
+
+  const isEventParticipant = participants.some((participant) => participant.userid === parseInt(localStorage.getItem('userId'), 10));
 
   const handleClickEditEvent = () => {
     dispatch(toggleEventEdit());
   }
 
-  const handleClickParticipateNotification = () => {
-    if (notificationOpen) {
-      return
-    }
-    dispatch(sendNotification("Vous participez à l'évênement"));
+  const handleClickSubscribeEvent = () => {
+
+    dispatch(eventUserSubscribe(eventId))
+  }
+
+  const handleClickUnsubscribeEvent = () => {
+    dispatch(eventUserUnsubscribe(eventId));
   }
 
   return (
@@ -66,10 +71,16 @@ export const EventHeader = ({ event, userLogged, isEventOrganizer, eventDetails 
 
         </div>
 
-        {userLogged && !isEventOrganizer && <Button
+        {userLogged && !isEventOrganizer && !isEventParticipant && <Button
           className={'event-detail-header-button btn-purple'}
-          children={'Je participe'}
-          onClick={handleClickParticipateNotification}
+          children={"S'inscrire"}
+          onClick={handleClickSubscribeEvent}
+        />}
+
+        {userLogged && !isEventOrganizer && isEventParticipant && <Button
+          className={'event-detail-header-button btn-red'}
+          children={'Se Désinscrire'}
+          onClick={handleClickUnsubscribeEvent}
         />}
 
 

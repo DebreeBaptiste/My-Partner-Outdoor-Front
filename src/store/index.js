@@ -12,7 +12,7 @@ import sportsReducer from './reducers/sports';
 import notificationReducer from './reducers/notification';
 import userDetailsReducer from './reducers/userDetails';
 import userProfilReducer from './reducers/userProfil';
-import eventParticipantReducer from './reducers/eventParticipant';
+import eventParticipantsReducer from './reducers/eventParticipants';
 import eventDetailsReducer from './reducers/eventDetails';
 
 
@@ -30,7 +30,7 @@ const store = configureStore({
     error: errorReducer,
     event: eventReducer,
     eventDetails: eventDetailsReducer,
-    eventParticipant: eventParticipantReducer,
+    eventParticipants: eventParticipantsReducer,
     createEvent: createEventReducer,
     sports: sportsReducer,
     notification: notificationReducer,

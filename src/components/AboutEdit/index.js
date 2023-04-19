@@ -4,9 +4,6 @@ import participantsLogo from '../../assets/icon-user-couple.svg';
 import levelLogo from '../../assets/icon-trending-up.svg';
 import priceLogo from '../../assets/icon-currency-euro.svg';
 import equipementLogo from '../../assets/icon-security-important.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { openModal } from '../../store/reducers/modalDelete';
-import { closeEventEdit } from '../../store/reducers/eventDetails';
 
 
 import './styles.scss'

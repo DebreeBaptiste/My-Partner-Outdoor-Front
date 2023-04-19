@@ -4,6 +4,8 @@ import { NavLink, useParams } from 'react-router-dom';
 
 /* Style */
 import './styles.scss';
+import { getEventUsers } from '../../api/eventUsers';
+import { useEffect } from 'react';
 
 export const EventNav = ({ userLogged }) => {
 
@@ -12,6 +14,16 @@ export const EventNav = ({ userLogged }) => {
   const eventId = useParams().id
 
   const dispatch = useDispatch();
+
+
+  const participants = useSelector((state) => state.eventParticipants.participants);
+
+  const isEventParticipant = participants.some((participant) => participant.userid === parseInt(localStorage.getItem('userId'), 10));
+
+
+  useEffect(() => {
+    dispatch(getEventUsers(eventId));
+  }, []);
 
 
   // Copy link logic
@@ -36,7 +48,7 @@ export const EventNav = ({ userLogged }) => {
           <li className='event-detail-nav-item active-link'>A propos</li>
         </NavLink>
 
-        {userLogged && <NavLink
+        {userLogged && isEventParticipant && <NavLink
           to={`/event/${eventId}/messages`}
           className={classNameLink}>
           <li className='event-detail-nav-item'>Discussion</li>

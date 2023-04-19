@@ -4,17 +4,17 @@ import { useNavigate } from 'react-router-dom';
 /* Component */
 import { Button } from '../../components/Button';
 import { Testimonial } from '../../components/Testimonial';
+import { Feature } from '../../components/Feature';
+import { FeatureReverse } from '../../components/Feature/FeatureReverse';
 
 /* Image */
 import footballImage from 'src/assets/resource/football.webp';
 import pushUpImage from 'src/assets/resource/push-up.webp';
-import gymImage from 'src/assets/resource/gym.jpg';
+import gymImage from 'src/assets/resource/gym.webp';
 import ArrowIcon from 'src/assets/icon-cheveron-down.svg';
 
 /* Style */
 import './styles.scss';
-import { Feature } from '../../components/Feature';
-import { FeatureReverse } from '../../components/Feature/FeatureReverse';
 
 export const Landing = () => {
 

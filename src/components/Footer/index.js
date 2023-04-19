@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 // == Import
-import Logo from '../../assets/resource/logoGreen.png';
-import Facebook from '../../assets/resource/facebook.png';
-import Instagram from '../../assets/resource/instagram.png';
-import Twitter from '../../assets/resource/twitter.png';
-import Pinterest from '../../assets/resource/pinterest.png';
+import Logo from '../../assets/resource/logoGreen.webp';
+import Facebook from '../../assets/resource/facebook.webp';
+import Instagram from '../../assets/resource/instagram.webp';
+import Twitter from '../../assets/resource/twitter.webp';
+import Pinterest from '../../assets/resource/pinterest.webp';
 import './styles.scss';
 
 // == Composant

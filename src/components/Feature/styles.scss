@@ -20,6 +20,7 @@
     grid-row-gap: 1rem;
     align-items: center;
     opacity: var(--opacity-0);
+
     transition: opacity 0.4s ease-in-out;
 
     &.visible {
@@ -30,16 +31,17 @@
       opacity: var(--opacity-100);
     }
     &.visible .feature-subtitle {
-      transition-delay: 0.5s;
+      transition-delay: 0.4s;
       opacity: var(--opacity-100);
     }
     &.visible .feature-button {
-      transition-delay: 0.9s;
+      transition-delay: 0.6s;
       opacity: var(--opacity-100);
     }
   }
   &-picture-container {
     opacity: var(--opacity-0);
+
     transition: opacity 0.4s ease-in-out;
 
     &.visible {
