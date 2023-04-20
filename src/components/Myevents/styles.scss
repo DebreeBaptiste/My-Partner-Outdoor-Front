@@ -1,23 +1,14 @@
 .myevents {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  width: 95%;
-  margin: 1em auto;
-  margin-top: 0;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  column-gap: 2rem;
+  width: 100%;
   border: var(--border-sm) solid var(--light-black);
   border-radius: var(--radius-lg);
-  padding-top: 2%;
-  padding-bottom: 2%;
-  height: auto;
-  z-index: 1;
-}
-
-@media (max-width: 700px) {
-  .myevents {
-    display: flex;
-    flex-direction: column;
-  }
+  padding: 4%;
+  overflow-x: scroll;
 }
 
 .myevents__tabs {
@@ -29,7 +20,6 @@
   margin-left: 3.5em;
   margin-top: 2em;
   font-family: 'Jost-Light' sans-serif;
-  // margin-left: 1.3%;
 
   &__button {
     &__past {

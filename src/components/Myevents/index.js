@@ -8,7 +8,7 @@ function Myevents() {
   const dispatch = useDispatch();
   const [activeButton, setActiveButton] = useState("upcoming");
   const myEvents = useSelector((state) => state.myEvent.myEvent);
-  console.log(myEvents);
+
 
   useEffect(() => {
     dispatch(fetchMyEvents());
@@ -28,7 +28,7 @@ function Myevents() {
 
   const upcomingEvents = myEvents.filter(event => {
     const eventDate = new Date(event.start_date);
-    console.log(eventDate >= currentdate)
+
     return eventDate >= currentdate;
 
   });

@@ -37,8 +37,8 @@ export const ModalLogin = () => {
   }, [modalOpen]);
 
   const handClickModalBackdrop = (event) => {
-    if (event.target.className === 'modal-login active') {
-      // dispatch(resetCredentialsValue());
+    if (event.target.className === 'modal-login modal-login-active') {
+      dispatch(resetCredentialsValue());
       dispatch(addErrorMessage(''));
       dispatch(closeModal());
     }
@@ -51,7 +51,7 @@ export const ModalLogin = () => {
   };
 
   const handleCloseModal = () => {
-    // dispatch(resetCredentialsValue());
+    dispatch(resetCredentialsValue());
     dispatch(addErrorMessage(''));
     dispatch(closeModal());
   };
@@ -63,7 +63,7 @@ export const ModalLogin = () => {
 
   return (
     <dialog
-      className={`modal-login ${modalOpen ? 'active' : ''}`}
+      className={`modal-login ${modalOpen ? 'modal-login-active' : ''}`}
       open={modalOpen}
       onClick={handClickModalBackdrop}
     >

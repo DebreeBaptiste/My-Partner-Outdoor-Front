@@ -1,13 +1,14 @@
 .events {
   display: flex;
   flex-direction: row;
+  gap: 3rem;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 95%;
+  width: 100%;
   margin: 1em auto;
   border: var(--border-sm) solid var(--light-black);
   border-radius: var(--radius-lg);
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding: 2%;
   height: auto;
 }
 
@@ -21,10 +22,3 @@
 .MagnifyingGlass-wrapper {
   margin: auto;
 }
-
-@media (max-width: 700px) {
-  .events {
-    display: flex;
-    flex-direction: column;
-  }
-} ;

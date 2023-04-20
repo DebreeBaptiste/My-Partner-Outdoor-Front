@@ -18,6 +18,8 @@ function Event({
   street,
   zip_code,
   city,
+  sport,
+  sport_id,
 
 }) {
 
@@ -46,10 +48,18 @@ function Event({
               <p className='event__detail__up__info__place__text'>{number} {street}, {zip_code}, {city}</p>
             </div>
             <div className='event__detail__up__info__participants'>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="event__detail__up__info__participants__iconusercouple"><path className="event__detail__up__info__participants__iconusercouple__primary" d="M15 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7 8a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z" /><path className="event__detail__up__info__participants__iconusercouple__secondary" d="M9 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7 8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                className="event__detail__up__info__participants__iconusercouple">
+                <path
+                  className="event__detail__up__info__participants__iconusercouple__primary"
+                  d="M15 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7 8a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z" />
+                <path className="event__detail__up__info__participants__iconusercouple__secondary"
+                  d="M9 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7 8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z" />
+              </svg>
               <p className='event__detail__up__info__place__text'>{nb_participant} participants maximum</p>
-
             </div>
+            <span className={`event__detail__up__info__place__sport sport-${sport_id}`}>{sport}</span>
           </div>
         </div>
 
