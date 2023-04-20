@@ -7,7 +7,7 @@ import { login } from 'src/api/auth';
 import PasswordLoginInput from 'src/components/Input/PasswordLoginInput';
 
 /* Image */
-import logo from 'src/assets/mountain-adventure-green.svg';
+import logo from 'src/assets/Mountain-adventure-green.svg';
 
 /* Style */
 import './styles.scss';

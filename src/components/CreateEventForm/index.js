@@ -72,19 +72,8 @@ function CreateEventForm() {
             </div>
             <div className='form__labelinput'>
               <label className='form__label'>Nombre de participant souhaité :</label>
-              <select className='form__input' id="participants" name="nb_participant" value={event.nb_participant} onChange={handleChange}>
-                <option value="0"></option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
+              <input type='number' className='form__input' id="participants" name="nb_participant" value={event.nb_participant} onChange={handleChange} />
+
             </div>
           </div>
         </fieldset>
@@ -146,7 +135,7 @@ function CreateEventForm() {
               <div className='form__price'>
                 <label className='form__label'>Prix :</label>
 
-                <input className='form__input' type="number" name="price" value={event.price} onChange={handleChange}>
+                <input className='form__input' type="number" min={0} name="price" value={event.price} onChange={handleChange}>
 
                 </input>
               </div>
