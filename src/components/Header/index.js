@@ -71,7 +71,7 @@ export const Header = () => {
               <Link to='/profil' onClick={handleClickBurgerButton}>Profil</Link>
             </li>
             <li className="header-menu-list-item">
-              <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
+              <a href='/home' onClick={handleClickBurgerButton}>Evenement</a>
             </li>
             <li className="header-menu-list-item">
               <Link to='/createevent' onClick={handleClickBurgerButton}>Créer un évênement</Link>

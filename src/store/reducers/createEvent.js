@@ -8,9 +8,9 @@ const initialState = {
     finish_date: "",
     start_hour: "12:00",
     finish_hour: "15:00",
-    nb_participant: 2,
+    nb_participant: 1,
     equipement: "",
-    price: 5,
+    price: 0,
     picture: "images/",
     organizer_id: JSON.parse(localStorage.getItem('userId')),
     number: "",
@@ -30,6 +30,7 @@ export const resetFormField = createAction('createUser/resetFormField');
 const createEventReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeField, (state, action) => {
+      console.log(state.createEvent.organizer_id);
       const { value, name } = action.payload;
       state.createEvent[name] = value;
     })

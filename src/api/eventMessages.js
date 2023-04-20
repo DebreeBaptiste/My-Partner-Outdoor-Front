@@ -1,5 +1,5 @@
 
-import { saveMessages } from '../store/reducers/messages';
+import { addNewMessage, saveMessages } from '../store/reducers/messages';
 import { axiosInstance } from './axiosInstance';
 
 // Récupération des participants a un événement
@@ -9,6 +9,7 @@ export const getEventMessages = (eventId) => async (dispatch) => {
 
 
     if (response.status === 200) {
+      console.log(response.data);
       dispatch(saveMessages(response.data));
     }
 
@@ -24,8 +25,20 @@ export const postNewMessage = (eventId) => async (dispatch, getState) => {
   const content = getState().messages.newMessage;
   try {
 
-    await axiosInstance.post(`/event/${eventId}/message`, { content, user_id });
+    const response = await axiosInstance.post(`/event/${eventId}/message`, { content, user_id });
 
+    // console.log(response)
+    // dispatch(addNewMessage(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const deleteMessage = (eventId, messageId) => async (dispatch) => {
+  try {
+    await axiosInstance.delete(`/event/${eventId}/message/${messageId}`);
+
+    dispatch(getEventMessages(eventId));
   } catch (error) {
     console.log(error);
   }

@@ -142,6 +142,7 @@ export const editEvent = (eventId) => async (dispatch, getState) => {
 
 
     if (response.status === 200) {
+      console.log(response.data);
       dispatch(saveEvent(response.data));
       window.scrollTo({ top: 0 })
       dispatch(closeEventEdit());

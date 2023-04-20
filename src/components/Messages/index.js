@@ -58,7 +58,7 @@ export const Messages = ({ userLogged }) => {
       return;
     }
     dispatch(postNewMessage(eventId));
-    dispatch(addNewMessage({ content: newMessage, pseudo: user.pseudo, picture: user.picture }));
+    // dispatch(addNewMessage({ content: newMessage, pseudo: user.pseudo, picture: user.picture }));
     dispatch(createNewMessage(''));
   };
 
@@ -76,7 +76,7 @@ export const Messages = ({ userLogged }) => {
     <section className='event-chat'>
       <div className='event-chat-messages' ref={chatMessagesRef}>
 
-        {messages.map((message, index) => <Message message={message} key={index} />)}
+        {messages.map((message) => <Message message={message} key={message.messageid} />)}
 
       </div>
 
