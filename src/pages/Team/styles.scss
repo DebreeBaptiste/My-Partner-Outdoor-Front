@@ -1,5 +1,5 @@
 .team {
-  min-height: calc(100vh - 260px);
+  min-height: calc(100vh - 350px); // 350px = header + footer
   display: grid;
   grid-template-rows: max-content 1fr;
   justify-items: center;
@@ -43,7 +43,7 @@
 
     & .card-content-box:hover {
       transform: rotateY(0deg) scale(1.2);
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-2xl);
       z-index: 1;
     }
 
