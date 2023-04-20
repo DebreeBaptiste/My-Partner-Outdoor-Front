@@ -29,14 +29,17 @@ export const ModalDeleteUser = () => {
   const handClickModalBackdrop = (event) => {
     if (event.target.className === 'profil-modal active') {
       dispatch(closeModal());
+      document.body.style.overflow = 'visible';
     }
   };
 
   const handleCloseModal = () => {
+    document.body.style.overflow = 'visible';
     dispatch(closeModal());
   };
 
   const handleClickDeleteUser = () => {
+    document.body.style.overflow = 'visible';
     dispatch(deleteUser());
   };
 
