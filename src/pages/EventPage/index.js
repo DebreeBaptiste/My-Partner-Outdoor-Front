@@ -34,6 +34,7 @@ export const EventPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(closeEventEdit());
     dispatch(getOneEvent(eventId));
   }, []);
 
