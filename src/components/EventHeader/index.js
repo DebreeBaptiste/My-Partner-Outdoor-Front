@@ -41,6 +41,9 @@ export const EventHeader = ({ event, userLogged, isEventOrganizer, eventDetails 
     dispatch(eventUserUnsubscribe(eventId));
   }
 
+  const formatedStartDate = event.start_date.split('-').reverse().join('/');
+  const formatedFinishDate = event.start_date.split('-').reverse().join('/');
+
   return (
     <header className="event-detail-header">
       <div className="event-detail-header-picture-container">
@@ -58,13 +61,13 @@ export const EventHeader = ({ event, userLogged, isEventOrganizer, eventDetails 
         <div className='event-detail-header-content-text'>
 
           {event.start_date === event.finish_date &&
-            <p>{`Le ${event.start_date} de ${event.start_hour} à ${event.finish_hour}`}</p>}
+            <p>{`Le ${formatedStartDate} de ${event.start_hour} à ${event.finish_hour}`}</p>}
 
 
           {event.start_date !== event.finish_date &&
             <>
-              <p>{`Du ${event.start_date} à ${event.start_hour}`}</p>
-              <p>{`Au ${event.finish_date} à ${event.finish_hour}`}</p>
+              <p>{`Du ${formatedStartDate} à ${event.start_hour}`}</p>
+              <p>{`Au ${formatedFinishDate} à ${event.finish_hour}`}</p>
             </>}
 
           <p>{event.title.toUpperCase()}</p>

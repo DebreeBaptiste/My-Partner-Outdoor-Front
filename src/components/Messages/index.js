@@ -73,7 +73,7 @@ export const Messages = ({ userLogged }) => {
         target.scroll({ top: target.scrollHeight, behavior: 'smooth' });
       });
     }
-  }, [messages])
+  }, [messages, pathname])
 
 
   return (

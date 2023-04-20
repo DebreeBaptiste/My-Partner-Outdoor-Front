@@ -22,11 +22,13 @@ function Myevents() {
     setActiveButton('past');
   };
 
+
+
   const currentdate = new Date();
 
   const upcomingEvents = myEvents.filter(event => {
     const eventDate = new Date(event.start_date);
-
+    console.log(eventDate >= currentdate)
     return eventDate >= currentdate;
 
   });
@@ -35,6 +37,7 @@ function Myevents() {
 
   const pastEvents = myEvents.filter(event => {
     const eventDate = new Date(event.start_date);
+
     return eventDate < currentdate;
   });
 

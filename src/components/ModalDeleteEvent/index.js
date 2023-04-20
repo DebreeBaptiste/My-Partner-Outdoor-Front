@@ -31,15 +31,18 @@ export const ModalDeleteEvent = () => {
   const handClickModalBackdrop = (event) => {
     if (event.target.className === 'event-delete-modal delete-modal-active') {
       dispatch(closeModal());
+      document.body.style.overflow = 'visible';
     }
   };
 
   const handleCloseModal = () => {
     dispatch(closeModal());
+    document.body.style.overflow = 'visible';
   };
 
   const handleClickDeleteEvent = () => {
     dispatch(deleteEvent(navigate));
+    document.body.style.overflow = 'visible';
   };
 
   return (
