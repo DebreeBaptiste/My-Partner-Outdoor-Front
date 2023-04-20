@@ -25,7 +25,7 @@ function Myevents() {
   const currentdate = new Date();
 
   const upcomingEvents = myEvents.filter(event => {
-    const eventDate = new Date(event.start_date.split("/").reverse().join("-"));
+    const eventDate = new Date(event.start_date);
 
     return eventDate >= currentdate;
 
@@ -34,7 +34,7 @@ function Myevents() {
 
 
   const pastEvents = myEvents.filter(event => {
-    const eventDate = new Date(event.start_date.split("/").reverse().join("-"));
+    const eventDate = new Date(event.start_date);
     return eventDate < currentdate;
   });
 

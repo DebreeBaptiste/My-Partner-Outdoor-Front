@@ -32,8 +32,6 @@ export const EventHeaderEdit = ({ event, userLogged, isEventOrganizer, eventDeta
     dispatch(openEventPictureEdit());
   };
 
-  const eventStartDateFormated = event.start_date.split('/').reverse().join('-');
-  const eventFinishDateFormated = event.finish_date.split('/').reverse().join('-');
 
   return (
     <header className="event-detail-header-edit">
@@ -65,7 +63,7 @@ export const EventHeaderEdit = ({ event, userLogged, isEventOrganizer, eventDeta
               className='event-detail-header-edit-form-input'
               type="date"
               name="start_date"
-              value={eventStartDateFormated}
+              value={event.start_date}
               onChange={onChange}
             />
 
@@ -87,7 +85,7 @@ export const EventHeaderEdit = ({ event, userLogged, isEventOrganizer, eventDeta
               className='event-detail-header-edit-form-input'
               type="date"
               name="finish_date"
-              value={eventFinishDateFormated}
+              value={event.finish_date}
               onChange={onChange}
             />
           </div>

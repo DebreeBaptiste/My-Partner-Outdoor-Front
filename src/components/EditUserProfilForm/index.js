@@ -128,7 +128,7 @@ export const EditUserProfilForm = () => {
               id="user-birthday"
               placeholder="Date de naissance"
               className="profil-user-form-input"
-              value={user.birthday.split('/').reverse().join('-') || ''}
+              value={user.birthday || ''}
               onChange={handleChangeValue}
             />
           </div>
