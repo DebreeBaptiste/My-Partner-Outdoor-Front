@@ -70,8 +70,6 @@ export const postEvent = (navigate) => async (dispatch, getState) => {
       dispatch(resetFormField())
       window.scrollTo({ top: 0 })
       navigate(`/event/${response.data.id}/about`);
-    } else {
-
     }
   } catch (error) {
     console.log(error);
@@ -148,8 +146,6 @@ export const editEvent = (eventId) => async (dispatch, getState) => {
       window.scrollTo({ top: 0 })
       dispatch(closeEventEdit());
       dispatch(sendNotification("L'événement a bien été modifié !"));
-    } else {
-
     }
   } catch (error) {
     console.log(error);
@@ -170,8 +166,6 @@ export const deleteEvent = (navigate) => async (dispatch, getState) => {
       navigate('/home');
       window.scrollTo({ top: 0 })
       dispatch(sendNotification("L'événement a bien été supprimé !"));
-    } else {
-
     }
   } catch (error) {
     console.log(error);

@@ -180,8 +180,8 @@ function CreateEventForm() {
               <textarea className='form__input' id="materiels" name="equipement" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
             </div>
             <div className='form__bottom__button' id="niveau">
-              <button className='form__bottom__button__confirm' type="submit" value="submit">Confirmer</button>
-              <button onClick={handleClickCancel} className='form__bottom__button__cancel' type="reset" value="annuler">Annuler</button>
+              <button className='form__bottom__button__confirm' type="submit" >Confirmer</button>
+              <button onClick={handleClickCancel} className='form__bottom__button__cancel' type="button" >Annuler</button>
 
             </div>
           </div>
