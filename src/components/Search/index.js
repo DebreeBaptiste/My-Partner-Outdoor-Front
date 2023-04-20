@@ -114,7 +114,7 @@ function Search() {
             </select>
 
 
-            <select onChange={handleSelectPrice} className={`search__block__filter__select ${isActivePrice ? 'search__block__filter__select__active' : ''}`}>
+            {/* <select onChange={handleSelectPrice} className={`search__block__filter__select ${isActivePrice ? 'search__block__filter__select__active' : ''}`}>
               <option value="">Prix</option>
               <option value="10">10</option>
               <option value="20">20</option>
@@ -122,7 +122,7 @@ function Search() {
               <option value="40">40</option>
               <option value="50">50</option>
               <option value="60">60</option>
-            </select>
+            </select> */}
 
           </div>
         </div>
