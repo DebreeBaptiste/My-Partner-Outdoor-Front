@@ -14,7 +14,7 @@ import buttonIcon from 'src/assets/icon-cheveron-right-circle.svg';
 
 /* Style */
 import './styles.scss';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getUser } from '../../api/getUser';
 
 export const Messages = ({ userLogged }) => {
@@ -36,6 +36,10 @@ export const Messages = ({ userLogged }) => {
 
   const chatMessagesRef = useRef(null)
 
+  const { pathname } = useLocation();
+
+  const userId = parseInt(localStorage.getItem('userId'), 10);
+
 
   useEffect(() => {
 
@@ -44,8 +48,8 @@ export const Messages = ({ userLogged }) => {
     }
 
     dispatch(getEventMessages(eventId));
-    dispatch(getUser());
-  }, [isEventParticipant]);
+    dispatch(getUser(userId));
+  }, [isEventParticipant, pathname]);
 
   const handleChangeValue = (event) => {
     const { value } = event.target;
@@ -58,7 +62,6 @@ export const Messages = ({ userLogged }) => {
       return;
     }
     dispatch(postNewMessage(eventId));
-    // dispatch(addNewMessage({ content: newMessage, pseudo: user.pseudo, picture: user.picture }));
     dispatch(createNewMessage(''));
   };
 
@@ -72,11 +75,12 @@ export const Messages = ({ userLogged }) => {
     }
   }, [messages])
 
+
   return (
     <section className='event-chat'>
       <div className='event-chat-messages' ref={chatMessagesRef}>
 
-        {messages.map((message) => <Message message={message} key={message.messageid} />)}
+        {messages.map((message) => <Message message={message} key={message.messageid} />).reverse()}
 
       </div>
 

@@ -5,6 +5,8 @@ import { deleteMessage } from '../../api/eventMessages';
 
 export const Message = ({ message }) => {
 
+
+
   const participantId = parseInt(localStorage.getItem('userId'), 10);
 
   const dispatch = useDispatch();
@@ -34,8 +36,8 @@ export const Message = ({ message }) => {
 Message.propTypes = {
   message: PropTypes.shape({
     content: PropTypes.string,
-    pseudo: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
+    pseudo: PropTypes.string,
+    picture: PropTypes.string,
   }).isRequired,
 
 }

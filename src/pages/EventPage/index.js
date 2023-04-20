@@ -48,7 +48,7 @@ export const EventPage = () => {
 
 
   if (!userLogged && pathname === `/event/${eventId}/messages`) {
-    return < Navigate to={`/event/${eventId}`} />
+    return < Navigate to={`/event/${eventId}/about`} />
   }
 
   const handleClickDeleteEvent = (event) => {

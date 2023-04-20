@@ -5,7 +5,7 @@ export const initialState = {
   editPictureModal: false,
   updatePicture: Date.now(),
   user: {
-    id: '',
+    id: JSON.parse(localStorage.getItem('userId')),
     firstname: '',
     lastname: '',
     email: '',
@@ -32,6 +32,7 @@ export const userDetailsLogout = createAction('userDetails/userDetailsLogout');
 export const saveUserAddress = createAction('userDetails/saveUserAddress');
 export const updateUserAddress = createAction('userDetails/updateUserAddress');
 export const deleteUserAddress = createAction('userDetails/deleteUserAddress');
+export const userAdressNotFound = createAction('userDetails/userAdressNotFound');
 
 export const saveSport = createAction('userDetails/saveUserSport');
 export const addSport = createAction('userDetails/addSport');
@@ -118,6 +119,15 @@ const userDetailsReducer = createReducer(initialState, (builder) => {
       state.user.address[name] = value;
     })
     .addCase(deleteUserAddress, (state) => {
+      state.user.address = {
+        id: '',
+        zip_code: '',
+        city: '',
+        street: '',
+        number: '',
+      };
+    })
+    .addCase(userAdressNotFound, (state) => {
       state.user.address = {
         id: '',
         zip_code: '',

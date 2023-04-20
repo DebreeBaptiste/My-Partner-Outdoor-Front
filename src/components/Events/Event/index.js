@@ -1,9 +1,8 @@
 //  Import
-import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { eventUserSubscribe, eventUserUnsubscribe, getEventUsers } from '../../../api/eventUsers';
+
 
 // == Import
 import './styles.scss';
@@ -25,30 +24,11 @@ function Event({
   const userId = parseInt(localStorage.getItem('userId'), 10);
 
 
-  const dispatch = useDispatch();
-
-
-  const participants = useSelector((state) => state.eventParticipants.participants);
   const userLogged = useSelector((state) => state.user.logged);
 
 
 
   const isOrganizer = organizer_id === userId;
-
-  const isEventParticipant = participants.some((participant) => participant.userid === userId);
-
-  useEffect(() => {
-
-    dispatch(getEventUsers(parseInt(id, 10)));
-  }, []);
-
-  const handleClickEventSubscribe = () => {
-    dispatch(eventUserSubscribe(parseInt(id, 10)));
-  };
-
-  const handleClickEventUnsubscribe = () => {
-    dispatch(eventUserUnsubscribe(parseInt(id, 10)));
-  };
 
 
   return (
@@ -82,8 +62,7 @@ function Event({
             </div>
             {!userLogged && <button type="button" className='event__detail__down__priceButton__button'><Link to="/register">Inscription</Link></button>}
             {isOrganizer && <button type="button" className='event__detail__down__priceButton__button'><Link to={`/event/${id}/about`}>Modifier</Link></button>}
-            {userLogged && !isEventParticipant && !isOrganizer && <button type="button" className='event__detail__down__priceButton__button' onClick={handleClickEventSubscribe}>Inscription</button>}
-            {userLogged && isEventParticipant && !isOrganizer && <button type="button" className='event__detail__down__priceButton__button btn-red' onClick={handleClickEventUnsubscribe}>Se désinscrire</button>}
+            {userLogged && !isOrganizer && <button type="button" className='event__detail__down__priceButton__button'><Link to={`/event/${id}/about`}>Détails</Link></button>}
 
           </div>
           <div className='event__detail__down__moreinfo'>

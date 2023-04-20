@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import './styles.scss';
 import { postEvent } from '../../api/event';
 
-import { changeField, resetFormField } from '../../store/reducers/createEvent';
+import { changeField, resetFormField, setOrganizerId } from '../../store/reducers/createEvent';
 
 import { fetchSports } from '../../api/sports';
 
@@ -37,6 +37,7 @@ function CreateEventForm() {
 
 
   useEffect(() => {
+    dispatch(setOrganizerId(parseInt(localStorage.getItem('userId'))));
     dispatch((fetchSports()));
   }, []);
 

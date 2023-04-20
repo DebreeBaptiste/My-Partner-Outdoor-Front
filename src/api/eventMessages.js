@@ -9,12 +9,12 @@ export const getEventMessages = (eventId) => async (dispatch) => {
 
 
     if (response.status === 200) {
-      console.log(response.data);
+
       dispatch(saveMessages(response.data));
     }
 
   } catch (error) {
-    console.log(error);
+    dispatch(saveMessages([]));
   }
 
 }
@@ -27,8 +27,9 @@ export const postNewMessage = (eventId) => async (dispatch, getState) => {
 
     const response = await axiosInstance.post(`/event/${eventId}/message`, { content, user_id });
 
-    // console.log(response)
-    // dispatch(addNewMessage(response.data));
+
+    dispatch(addNewMessage(response.data));
+    dispatch(getEventMessages(eventId));
   } catch (error) {
     console.log(error);
   }

@@ -44,7 +44,7 @@ export const About = ({ event }) => {
       </div>
       <div className='event-about-participants-max event-about-item'>
         <img src={participantsLogo} className='event-about-icon' />
-        <span>{`${event.number} participants maximum`}</span>
+        <span>{`${event.nb_participant} participants maximum`}</span>
       </div>
       <div className='event-about-level event-about-item'>
         <img src={levelLogo} className='event-about-icon' />

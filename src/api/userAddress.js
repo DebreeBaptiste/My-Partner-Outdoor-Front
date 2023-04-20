@@ -1,5 +1,5 @@
 import { sendNotification } from '../store/reducers/notification';
-import { closeProfilEdit, saveUserAddress } from '../store/reducers/userDetails';
+import { closeProfilEdit, saveUserAddress, userAdressNotFound } from '../store/reducers/userDetails';
 import { saveOtherUserAddress } from '../store/reducers/userProfil';
 import { axiosInstance } from './axiosInstance';
 
@@ -25,7 +25,7 @@ export const getUserAddress = () => async (dispatch) => {
     }
 
   } catch (error) {
-
+    dispatch(userAdressNotFound());
   }
 }
 
@@ -57,7 +57,7 @@ export const getOtherUserAddress = (userId) => async (dispatch) => {
       if (data.length === 0) {
         return;
       }
-      
+
       dispatch(saveOtherUserAddress(data));
     }
 

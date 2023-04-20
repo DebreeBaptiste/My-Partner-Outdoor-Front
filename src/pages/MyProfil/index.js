@@ -36,8 +36,10 @@ export const MyProfil = () => {
   const userLogged = useSelector((state) => state.user.logged);
   const edit = useSelector((state) => state.userDetails.edit);
   const sports = useSelector((state) => state.sports.sports);
-  const userPicture = useSelector((state) => state.userDetails.user.picture);
+
   const updatePictureDate = useSelector((state) => state.userDetails.updatePicture);
+
+  const userId = parseInt(localStorage.getItem('userId'), 10);
 
   useEffect(() => {
     if (!userLogged) {
@@ -46,7 +48,7 @@ export const MyProfil = () => {
 
     if (userLogged) {
 
-      dispatch(getUser());
+      dispatch(getUser(userId));
       dispatch(getUserSport());
       dispatch(getUserAddress());
       dispatch(fetchSports());
@@ -108,7 +110,7 @@ export const MyProfil = () => {
           <div className='profil-user-container'>
             <div className='profil-user-picture-container'>
               <div className='profil-user-picture-wrapper'>
-                <img src={`${userPicture}?key=${updatePictureDate}`} className='profil-user-picture' />
+                <img src={`${user.picture}?key=${updatePictureDate}`} className='profil-user-picture' />
                 {edit && <img src={editPictureIcon} alt="edit picture button" className='profil-user-picture-edit' onClick={handleClickOpenEditPictureModal} />}
               </div>
             </div>

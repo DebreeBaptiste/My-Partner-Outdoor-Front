@@ -17,7 +17,7 @@ export const fetchRandomEvents = () => async (dispatch) => {
 export const fetchSearchEvents = async (search, dept, dispatch) => {
   try {
     const response = await axiosInstance.get(`/event/s?search=${search}&dept=${dept}`);
-    console.log(response.data);
+
     dispatch(getRandomEvents(response.data));
   } catch (error) {
     console.log(error);
@@ -118,6 +118,7 @@ export const editEvent = (eventId) => async (dispatch, getState) => {
 
   const state = getState();
   const { title, description, start_date, finish_date, start_hour, finish_hour, nb_participant, equipement, price, picture, organizer_id, number, street, zip_code, city, sport, level } = state.eventDetails.event;
+
 
   try {
     const response = await axiosInstance.patch(`/event/${eventId}`, {

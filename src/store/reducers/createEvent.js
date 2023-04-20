@@ -26,6 +26,7 @@ const initialState = {
 export const saveEvent = createAction('createEvent/saveEvent');
 export const changeField = createAction('createEvent/changeField');
 export const resetFormField = createAction('createUser/resetFormField');
+export const setOrganizerId = createAction('createEvent/setOrganizerId');
 
 const createEventReducer = createReducer(initialState, (builder) => {
   builder
@@ -38,6 +39,10 @@ const createEventReducer = createReducer(initialState, (builder) => {
 
       state.createEvent = action.payload;
     })
+    .addCase(setOrganizerId, (state, action) => {
+      state.createEvent.organizer_id = action.payload;
+    })
+
     .addCase(resetFormField, (state) => {
       state.createEvent = {
         title: "",

@@ -54,7 +54,7 @@ export const Header = () => {
         {!userLogged &&
           <>
             <li className="header-menu-list-item">
-              <Link to='/home' onClick={handleClickBurgerButton}>Evenement</Link>
+              <a href='/home' onClick={handleClickBurgerButton}>Evenement</a>
             </li>
 
             <li className="header-menu-list-item">
@@ -98,7 +98,7 @@ export const Header = () => {
 
       {userLogged && <Link to='/createevent' className="header-event">Créer un évênement</Link>}
 
-      <Link to='/home' className="header-event">Evenement</Link>
+      <a href='/home' className="header-event">Evenement</a>
 
 
       <div className='header-button-container'>

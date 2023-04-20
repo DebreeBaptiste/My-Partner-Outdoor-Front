@@ -1,4 +1,4 @@
-import { addSport, closeProfilEdit, openProfilEdit, removeSport, updateUserAddress, updateUserField } from '../../store/reducers/userDetails';
+import { addSport, closeProfilEdit, openProfilEdit, removeSport, updateUserAddress, updateUserField, userAdressNotFound } from '../../store/reducers/userDetails';
 import { editUser } from '../../api/editUser';
 import { openModal } from '../../store/reducers/modalDelete';
 import { deleteUserAddress, getUserAddress } from '../../api/userAddress.js';
@@ -14,6 +14,7 @@ import userAddressTrash from 'src/assets/icon-trash.svg';
 /* Style */
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../api/getUser';
 
 
 export const EditUserProfilForm = () => {
@@ -21,6 +22,8 @@ export const EditUserProfilForm = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userDetails.user);
+
+  const userId = parseInt(localStorage.getItem('userId'), 10);
 
   const hasAddress = user.address && Object.values(user.address).every(value => value !== '');
 
@@ -48,6 +51,7 @@ export const EditUserProfilForm = () => {
   }
 
   const handleClickCloseEdit = () => {
+    dispatch(getUser(userId));
     window.scrollTo(0, 0);
     dispatch(closeProfilEdit());
   };
@@ -124,7 +128,7 @@ export const EditUserProfilForm = () => {
               id="user-birthday"
               placeholder="Date de naissance"
               className="profil-user-form-input"
-              value={user.birthday || ''}
+              value={user.birthday.split('/').reverse().join('-') || ''}
               onChange={handleChangeValue}
             />
           </div>

@@ -2,6 +2,7 @@
 .event-detail-nav {
   display: grid;
   position: sticky;
+  z-index: 2;
   top: 70px;
   grid-template-columns: 100%;
   width: 100%;
