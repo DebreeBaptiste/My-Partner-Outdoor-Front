@@ -1,7 +1,7 @@
+import explorer from '../../assets/resource/explorer.webp';
+import { useNavigate } from 'react-router-dom';
 // == Import
 import './styles.scss';
-import explorer from '../../assets/resource/explorer.jpeg';
-import { useNavigate } from 'react-router-dom';
 
 // == Composant
 function Error404() {
