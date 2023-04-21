@@ -109,7 +109,7 @@ function Search() {
 
               <option value="">Niveau</option>
               <option value="Débutant">Débutant</option>
-              <option value="Intermediaire">Intermédiaire</option>
+              <option value="Intermédiaire">Intermédiaire</option>
               <option value="Confirmé">Confirmé</option>
             </select>
 
