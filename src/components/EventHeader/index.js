@@ -42,7 +42,7 @@ export const EventHeader = ({ event, userLogged, isEventOrganizer, eventDetails 
   }
 
   const formatedStartDate = event.start_date.split('-').reverse().join('/');
-  const formatedFinishDate = event.start_date.split('-').reverse().join('/');
+  const formatedFinishDate = event.finish_date.split('-').reverse().join('/');
 
   return (
     <header className="event-detail-header">
