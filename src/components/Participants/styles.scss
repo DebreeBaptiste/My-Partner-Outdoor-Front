@@ -1,0 +1,50 @@
+.event-participants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 900px;
+  min-height: 30vh;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    order: 2;
+  }
+
+  &-content-organizer {
+    order: 1;
+  }
+
+  &-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+  }
+  &-organizer {
+    border: var(--border-sm) solid var(--dark-red);
+  }
+
+  &-name {
+    font-family: 'Jost-Regular';
+    font-size: var(--text-xs);
+  }
+}
+@media (min-width: 700px) {
+  .event-participants {
+    gap: 1.5rem;
+    padding: 1.8rem;
+
+    &-avatar {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

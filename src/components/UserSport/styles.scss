@@ -1,0 +1,117 @@
+/* Sport color Item */
+.profil-user-sport-item {
+  position: relative;
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+
+  &-delete {
+    position: absolute;
+    top: -0.2rem;
+    right: 0;
+    height: 100%;
+    border-radius: var(--radius-full);
+    opacity: 0.8;
+    cursor: pointer;
+
+    &-icon {
+      height: 1rem;
+    }
+  }
+}
+.add {
+  background-color: var(--extra-light-grey);
+}
+.sport-0 {
+  background-color: var(--light-red);
+}
+.sport-1 {
+  background-color: var(--extra-light-green);
+}
+.sport-2 {
+  background-color: var(--light-green);
+}
+.sport-3 {
+  background-color: var(--extra-light-blue);
+}
+.sport-4 {
+  background-color: var(--extra-light-orange);
+}
+.sport-5 {
+  background-color: var(--extra-light-pink);
+}
+.sport-6 {
+  background-color: var(--light-yellow);
+}
+.sport-7 {
+  background-color: var(--light-grey);
+}
+.sport-8 {
+  background-color: var(--extra-light-red);
+}
+.sport-9 {
+  background-color: var(--light-purple);
+}
+.sport-10 {
+  background-color: var(--extra-light-yellow);
+}
+.sport-11 {
+  background-color: var(--extra-light-red);
+}
+.sport-12 {
+  background-color: var(--extra-light-green);
+}
+.sport-13 {
+  background-color: var(--extra-light-blue);
+}
+.sport-14 {
+  background-color: var(--extra-light-orange);
+}
+.sport-15 {
+  background-color: var(--extra-light-pink);
+}
+.sport-16 {
+  background-color: var(--extra-light-red);
+}
+.sport-17 {
+  background-color: var(--light-green);
+}
+.sport-18 {
+  background-color: var(--extra-light-blue);
+}
+.sport-19 {
+  background-color: var(--extra-light-orange);
+}
+.sport-20 {
+  background-color: var(--extra-light-pink);
+}
+.sport-21 {
+  background-color: var(--extra-light-blue);
+}
+.sport-22 {
+  background-color: var(--light-grey);
+}
+.sport-23 {
+  background-color: var(--extra-light-green);
+}
+.sport-24 {
+  background-color: var(--light-purple);
+}
+.sport-25 {
+  background-color: var(--light-purple);
+}
+.sport-26 {
+  background-color: var(--extra-light-yellow);
+}
+.sport-27 {
+  background-color: var(--extra-light-red);
+}
+.sport-28 {
+  background-color: var(--extra-light-green);
+}
+.sport-29 {
+  background-color: var(--extra-light-blue);
+}
+.sport-30 {
+  background-color: var(--extra-light-orange);
+}

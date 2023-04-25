@@ -1,0 +1,102 @@
+.forgetpassword-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 300px);
+}
+
+.forgetpassword {
+  width: 27%;
+  border: 1px solid var(--dark-black);
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-sm);
+
+  &__title {
+    padding: 2%;
+    margin-bottom: 3%;
+  }
+
+  &__form {
+    padding: 2%;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+
+    &__text {
+      font-family: 'Jost-Light', sans-serif;
+      font-size: var(--text-xs);
+      margin-bottom: 5%;
+    }
+
+    &__input {
+      margin-bottom: 0.5em;
+      border: 1px solid var(--light-grey);
+      border-radius: var(--border-base);
+      padding: 0.3em;
+      margin-top: 0.5em;
+      margin-right: 6%;
+    }
+    &__input::placeholder {
+      font-size: var(--text-xs);
+    }
+
+    &__button {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      padding: 7%;
+      padding-right: 6%;
+      justify-content: flex-end;
+
+      &__cancel {
+        color: var(--medium-purple);
+        background-color: white;
+        border-radius: var(--radius-base);
+        box-shadow: var(--shadow-sm);
+        font-family: 'Jost-light', sans-serif;
+        margin-right: 10%;
+        border: 1px solid var(--light-purple);
+        padding: 2% 10%;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          color: #fff;
+          border: var(--border-sm) solid var(--light-red);
+          background-color: var(--light-red);
+        }
+      }
+
+      &__submit {
+        background-color: var(--medium-purple);
+        color: white;
+
+        border-radius: var(--radius-base);
+        box-shadow: var(--shadow-sm);
+        font-family: 'Jost-light', sans-serif;
+        border: 1px solid var(--light-purple);
+        padding: 2% 10%;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          border: var(--border-sm) solid var(--light-green);
+          background-color: var(--light-green);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .forgetpassword {
+    width: 70%;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1250px) {
+  .forgetpassword {
+    width: 40%;
+  }
+} ;

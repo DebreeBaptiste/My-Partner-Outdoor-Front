@@ -1,0 +1,37 @@
+.error {
+  display: grid;
+  height: calc(
+    100vh - 394px
+  ); // 100vh - header height - footer height on mobile
+  align-items: end;
+  justify-items: center;
+
+  &__title {
+    font-family: 'Jost-Regular', sans-serif;
+    font-size: var(--text-5xl);
+    text-align: center;
+  }
+
+  &__text {
+    font-family: 'Jost-Light', sans-serif;
+    font-size: var(--text-lg);
+    text-align: center;
+    align-self: center;
+  }
+
+  &__img {
+    align-self: end;
+    width: 100%;
+    max-width: 460px;
+    cursor: pointer;
+  }
+}
+@media (min-width: 700px) {
+  .error {
+    height: calc(100vh - 350px);
+
+    &__img {
+      max-width: 580px;
+    }
+  }
+}
