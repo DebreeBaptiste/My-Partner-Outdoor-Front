@@ -9,7 +9,7 @@ import Myevents from '../../components/Myevents';
 import './styles.scss';
 
 
-function Home() {
+export const Home = () => {
 
   const userLogged = useSelector((state) => state.user.logged);
 
@@ -24,5 +24,3 @@ function Home() {
   );
 }
 
-// == Export
-export default Home;
