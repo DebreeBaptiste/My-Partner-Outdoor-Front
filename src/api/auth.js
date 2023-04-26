@@ -18,7 +18,12 @@ export const login = (navigate) => async (dispatch, getState) => {
     const { data, status } = await axiosInstance.post('/user/login', {
       email,
       password
-    });
+    },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
     if (status === 200) {
 
