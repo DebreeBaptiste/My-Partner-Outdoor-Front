@@ -26,16 +26,16 @@ export const login = (navigate) => async (dispatch, getState) => {
       });
 
     if (status === 200) {
-      console.log("data", data);
-      // localStorage.setItem('token', data.token);
-      // localStorage.setItem('userId', data.id);
 
-      // axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.id);
 
-      // dispatch(addErrorMessage(""));
-      // dispatch(userLogged());
-      // dispatch(closeModal());
-      // dispatch(sendNotification(`Bienvenue ${data.pseudo} !`));
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+
+      dispatch(addErrorMessage(""));
+      dispatch(userLogged());
+      dispatch(closeModal());
+      dispatch(sendNotification(`Bienvenue ${data.pseudo} !`));
     }
 
 
