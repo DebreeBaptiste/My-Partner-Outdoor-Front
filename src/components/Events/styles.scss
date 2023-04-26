@@ -6,10 +6,15 @@
   flex-wrap: wrap;
   width: 100%;
   margin: 1em auto;
-  border: var(--border-sm) solid var(--light-black);
+  border: none;
   border-radius: var(--radius-lg);
   padding: 2%;
   height: auto;
+}
+@media (min-width: 700px) {
+  .events {
+    border: var(--border-sm) solid var(--light-black);
+  }
 }
 
 .loading-container {
