@@ -150,6 +150,7 @@
   color: var(--extra-light-grey);
   background: linear-gradient(to right, #57ae5b54, #3f9142b7, #0e5814ba);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: transform 0.3s ease;
   transform: translateY(calc(-100% - 70px));
   font-family: 'Jost-regular';
