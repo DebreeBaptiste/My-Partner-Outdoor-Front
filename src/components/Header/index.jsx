@@ -7,7 +7,7 @@ import { addErrorMessage } from '../../store/reducers/error';
 
 /* Component */
 import logo from '../../assets/Mountain-adventure.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../Button'
 
 
@@ -16,6 +16,8 @@ import './styles.scss';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { pathname } = useLocation();
 
   const dispatch = useDispatch()
 
@@ -30,7 +32,7 @@ export const Header = () => {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [userLogged]);
+  }, [userLogged, pathname]);
 
   const handleClickBurgerButton = () => {
     setMenuOpen((prevState) => !prevState);
