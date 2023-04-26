@@ -25,12 +25,12 @@
   &-container {
     display: flex;
     flex-direction: column;
-    row-gap: 1.5rem;
+    row-gap: 0.5rem;
     align-items: center;
     position: relative;
     width: 100%;
     max-width: 380px;
-    padding: 3rem 2rem;
+    padding: 1.5rem;
     background-color: #fff;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
@@ -52,7 +52,7 @@
       color: var(--medium-green);
       text-decoration: underline;
       font-size: var(--text-xs);
-      padding-top: 2rem;
+      padding-top: 0.8rem;
       transition: all 0.3s ease-in-out;
 
       &:hover {
@@ -67,12 +67,12 @@
       align-items: center;
 
       &-title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-weight: 600;
       }
 
       &-logo {
-        height: 5rem;
+        height: 3rem;
       }
     }
 

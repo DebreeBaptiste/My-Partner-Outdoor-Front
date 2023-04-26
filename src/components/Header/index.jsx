@@ -34,6 +34,7 @@ export const Header = () => {
 
   const handleOpenModal = (event) => {
     event.preventDefault();
+    setMenuOpen(false);
     dispatch(addErrorMessage(''));
     dispatch(openModal());
   };

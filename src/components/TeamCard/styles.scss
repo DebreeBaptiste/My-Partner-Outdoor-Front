@@ -10,7 +10,6 @@
   overflow: hidden;
 
   &:hover &-image-container::before {
-    mix-blend-mode: multiply;
     opacity: var(--opacity-1);
   }
 
@@ -51,6 +50,7 @@
       z-index: 1;
       opacity: var(--opacity-0);
       transition: 0.2s;
+      border-radius: var(--radius-xl);
       mix-blend-mode: multiply;
     }
   }
