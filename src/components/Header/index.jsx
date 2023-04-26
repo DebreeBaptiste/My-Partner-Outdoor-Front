@@ -25,14 +25,8 @@ export const Header = () => {
   const modalOpen = useSelector((state) => state.modalLogin.open);
 
   useEffect(() => {
-    if (modalOpen) {
-      setMenuOpen(false);
-    }
-  }, [modalOpen]);
-
-  useEffect(() => {
     setMenuOpen(false);
-  }, [userLogged, pathname]);
+  }, [userLogged, pathname,modalOpen]);
 
   const handleClickBurgerButton = () => {
     setMenuOpen((prevState) => !prevState);
