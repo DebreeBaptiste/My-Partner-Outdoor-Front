@@ -91,9 +91,9 @@ export const Testimonial = () => {
 
       </div>
       <div className='testimonial-button-container'>
-        <Button className={`testimonial-button ${activeTab === 0 ? 'active-tab' : ''}`} onClick={clickFirstButtonHandler} />
-        <Button className={`testimonial-button ${activeTab === 1 ? 'active-tab' : ''}`} onClick={clickSecondButtonHandler} />
-        <Button className={`testimonial-button ${activeTab === 2 ? 'active-tab' : ''}`} onClick={clickThirdButtonHandler} />
+        <div className={`testimonial-button ${activeTab === 0 ? 'active-tab' : ''}`} onClick={clickFirstButtonHandler} ></div>
+        <div className={`testimonial-button ${activeTab === 1 ? 'active-tab' : ''}`} onClick={clickSecondButtonHandler} ></div>
+        <div className={`testimonial-button ${activeTab === 2 ? 'active-tab' : ''}`} onClick={clickThirdButtonHandler} ></div>
       </div>
     </section>
   );
