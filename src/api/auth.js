@@ -30,21 +30,12 @@ export const login = (navigate) => async (dispatch, getState) => {
       localStorage.setItem('token', data.token);
       localStorage.setItem('userId', data.id);
 
-      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      // axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
-      dispatch(addErrorMessage(""));
-      dispatch(userLogged())
-      /*     dispatch(saveUser({
-            firstname: data.user.firstname,
-            lastname: data.user.lastname,
-            pseudo: data.user.pseudo,
-            id: data.user.id,
-            picture: data.user.picture,
-            email: data.user.email,
-            bio: data.user.bio,
-          })); */
-      dispatch(closeModal());
-      dispatch(sendNotification(`Bienvenue ${data.pseudo} !`));
+      // dispatch(addErrorMessage(""));
+      // dispatch(userLogged());
+      // dispatch(closeModal());
+      // dispatch(sendNotification(`Bienvenue ${data.pseudo} !`));
     }
 
 
