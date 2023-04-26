@@ -57,7 +57,7 @@
   &-button {
     width: 1rem;
     height: 1rem;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background-color: var(--light-grey);
     border: none;
     cursor: pointer;

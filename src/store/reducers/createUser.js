@@ -2,13 +2,13 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
   credentials: {
-    firstname: 'John',
-    lastname: 'doe',
-    email: 'JohnDoe@gmail.com',
-    password: 'John1234!',
-    repeat_password: 'John1234!',
-    pseudo: 'JohnDoe',
-    sport: 'Football',
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    repeat_password: '',
+    pseudo: '',
+    sport: '',
   },
 };
 

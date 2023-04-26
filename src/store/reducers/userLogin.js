@@ -3,8 +3,8 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 export const initialState = {
   logged: !!localStorage.getItem('token'),
   credentials: {
-    email: 'JohnDoe@gmail.com',
-    password: 'John1234!',
+    email: '',
+    password: '',
   },
 };
 
