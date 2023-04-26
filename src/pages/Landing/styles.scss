@@ -29,7 +29,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
 
   &::before {
     grid-row: 1;
@@ -40,6 +39,11 @@
     height: 100%;
     background-color: var(--extra-dark-black);
     opacity: var(--opacity-60);
+  }
+}
+@media (min-width: 700px) {
+  .hero-overlay {
+    background-attachment: fixed;
   }
 }
 
