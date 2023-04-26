@@ -157,3 +157,10 @@ input,
 button {
   outline: 0;
 }
+
+button{
+  border-radius: 0;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+}
