@@ -26,9 +26,9 @@ export const login = (navigate) => async (dispatch, getState) => {
       });
 
     if (status === 200) {
-
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('userId', data.id);
+      console.log("data", data);
+      // localStorage.setItem('token', data.token);
+      // localStorage.setItem('userId', data.id);
 
       // axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
 
@@ -41,6 +41,7 @@ export const login = (navigate) => async (dispatch, getState) => {
 
   } catch (error) {
     if (error) {
+      console.log("error", error);
       dispatch(addErrorMessage("Veuillez vérifier vos identifiants"));
     }
     return
