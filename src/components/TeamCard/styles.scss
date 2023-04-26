@@ -33,6 +33,7 @@
     width: 100%;
     height: 100%;
     border-radius: var(--radius-xl);
+    overflow: hidden;
 
     &::before {
       content: '';
@@ -46,6 +47,7 @@
         rgb(0, 148, 40) 0%,
         rgba(0, 0, 0, 1) 100%
       );
+      border-radius: var(--radius-xl);
       z-index: 1;
       opacity: var(--opacity-0);
       transition: 0.2s;
