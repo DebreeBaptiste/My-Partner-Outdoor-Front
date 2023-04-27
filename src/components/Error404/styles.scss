@@ -1,20 +1,19 @@
 .error {
   display: grid;
-  height: calc(
-    100vh - 394px
-  ); // 100vh - header height - footer height on mobile
   align-items: end;
   justify-items: center;
+  margin-top: 1.5rem;
+  grid-row-gap: 2rem;
 
   &__title {
     font-family: 'Jost-Regular', sans-serif;
-    font-size: var(--text-5xl);
+    font-size: var(--text-3xl);
     text-align: center;
   }
 
   &__text {
     font-family: 'Jost-Light', sans-serif;
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     text-align: center;
     align-self: center;
   }
@@ -28,8 +27,12 @@
 }
 @media (min-width: 700px) {
   .error {
-    height: calc(100vh - 350px);
-
+    &__title {
+      font-size: var(--text-5xl);
+    }
+    &__text {
+      font-size: var(--text-lg);
+    }
     &__img {
       max-width: 580px;
     }
