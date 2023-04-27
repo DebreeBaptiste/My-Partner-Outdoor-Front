@@ -11,9 +11,6 @@ export const fetchRandomEvents = () => async (dispatch) => {
   const response = await axiosInstance.get('/event/random');
 
   dispatch(getRandomEvents(response.data));
-  const answer = await axiosInstance.get('/images/users/default.jpg');
-
-  console.log(answer);
 };
 
 // Récupération des événements en fonction de la recherche
