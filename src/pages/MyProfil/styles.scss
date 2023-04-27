@@ -20,7 +20,7 @@
     row-gap: 0.8rem;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
-    padding: 2rem;
+    padding: 1rem;
   }
   &-user-container {
     display: grid;
@@ -61,8 +61,8 @@
   }
   &-user-edit {
     position: absolute;
-    top: 1.5rem;
-    right: 2rem;
+    top: 0.8rem;
+    right: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
