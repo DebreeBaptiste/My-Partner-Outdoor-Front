@@ -47,7 +47,7 @@ function Events() {
           wrapperClass="MagnifyingGlass-wrapper"
           glassColor='#c0efff'
           color='#8662c7'
-        />;
+        />
       </div>)
   }
   return (

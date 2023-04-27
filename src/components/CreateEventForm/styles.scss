@@ -136,7 +136,7 @@
       display: none;
     }
 
-    &__date{
+    &__date {
       font-size: var(--text-sm);
       margin-bottom: 0.5em;
       border: 1px solid var(--light-grey);
@@ -145,7 +145,7 @@
       margin-top: 0.5em;
     }
 
-    &__time{
+    &__time {
       font-size: var(--text-sm);
       margin-bottom: 0.5em;
       border: 1px solid var(--light-grey);
@@ -214,31 +214,26 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-
     }
 
     &__bottom {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-
     }
   }
 
-  &__hours{
-    &__up{
+  &__hours {
+    &__up {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-  
-      
     }
 
     &__bottom {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      
     }
   }
 
@@ -292,7 +287,7 @@
         background-color: var(--medium-purple);
         color: white;
         border-radius: var(--radius-base);
-        box-shadow: 0 10px 10px var(--light-grey);
+        box-shadow: var(--shadow-sm);
         font-family: 'Jost-light', sans-serif;
         margin-right: 10%;
         border: none;
@@ -303,16 +298,12 @@
         background-color: white;
         color: var(--medium-purple);
         border-radius: var(--radius-base);
-        box-shadow: 0 10px 10px var(--light-grey);
+        box-shadow: var(--shadow-sm);
         font-family: 'Jost-light', sans-serif;
         border: 1px solid var(--light-purple);
         padding: 4% 14%;
       }
     }
-  }
-
-  &__date__hours__up{
-  
   }
 }
 
@@ -351,7 +342,7 @@
           background-color: var(--medium-purple);
           color: white;
           border-radius: var(--radius-base);
-          box-shadow: 0 10px 10px var(--light-grey);
+          box-shadow: var(--shadow-sm);
           font-family: 'Jost-light', sans-serif;
           margin-right: 10%;
           border: none;
@@ -362,7 +353,7 @@
           background-color: white;
           color: var(--medium-purple);
           border-radius: var(--radius-base);
-          box-shadow: 0 10px 10px var(--light-grey);
+          box-shadow: var(--shadow-sm);
           font-family: 'Jost-light', sans-serif;
           border: 1px solid var(--light-purple);
           padding: 2% 8%;
@@ -464,4 +455,4 @@
       width: 35%;
     }
   }
-} ;
+}

@@ -79,8 +79,8 @@
     }
   }
   &-user-edit-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 1.6rem;
+    height: 1.6rem;
   }
 
   &-user-info {
@@ -133,6 +133,10 @@
       max-width: 900px;
       margin: 0 auto;
     }
+    &-user-edit-icon {
+      width: 2rem;
+      height: 2rem;
+    }
 
     &-user-picture-container {
       grid-column: 1 / 2;
@@ -143,6 +147,7 @@
       justify-items: center;
       text-align: center;
     }
+
     &-user-picture-edit {
       position: absolute;
       bottom: 0.5rem;
@@ -151,6 +156,7 @@
       border-radius: 50%;
       cursor: pointer;
     }
+
     &-user-picture {
       width: 160px;
       height: 160px;

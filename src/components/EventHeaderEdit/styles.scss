@@ -68,6 +68,10 @@
     cursor: pointer;
     font-size: var(--text-xs);
   }
+  &-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 
   &-input-container {
     display: flex;
@@ -86,8 +90,11 @@
 }
 @media (min-width: 700px) {
   .event-detail-header-edit-btn {
-    width: 2.8rem;
     font-size: var(--text-sm);
+  }
+  .event-detail-header-edit-icon {
+    width: 2rem;
+    height: 2rem;
   }
   .event-detail-header-edit-content {
     padding: 1rem 10%;
