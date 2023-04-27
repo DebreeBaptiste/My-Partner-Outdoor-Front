@@ -5,11 +5,11 @@ import CreateEventForm from '../components/CreateEventForm';
 // == Composant
 function CreateEvent() {
   return (
-    <div className="createEvent">
+    <main className="createEvent">
         <CreateEventForm />
      
       
-    </div>
+    </main>
   );
 }
 

@@ -45,21 +45,22 @@ function CreateEventForm() {
 
 
   return (
-    <div className='createEvent'>
-      <h1 className='title'>Création de votre événement</h1>
-      <form onSubmit={handleSubmit} className='form'>
-        <fieldset className='form__up'>
-          <h5 className='form__title'>Essentiel</h5>
-          <div className='form__right'>
-            <div className='form__labelinput'>
-              <label className='form__label'>Nom de l'événement :</label>
+    <div className='create-event-container'>
+      <h1 className='create-event-title'>Création de votre événement</h1>
+      <hr className='create-event-divider'/>
+      <form onSubmit={handleSubmit} className='event-form'>
+        <fieldset className='event-form-section'>
+          <h5 className='event-form-title'>Essentiel</h5>
+          <div className='event-form-section-content'>
+            <div className='event-form-input-container'>
+              <label className='event-form-label'>Nom de l'événement :</label>
 
-              <input className='form__input' type="text" id="title" name="title" value={event.title} onChange={handleChange} />
+              <input className='event-form-input' type="text" id="title" name="title" value={event.title} onChange={handleChange} />
 
             </div>
-            <div className='form__labelinput'>
-              <label className='form__label'>Sport :</label>
-              <select className='form__input' id="sport" name="sport" value={event.sport} onChange={handleChange}>
+            <div className='event-form-input-container'>
+              <label className='event-form-label'>Sport :</label>
+              <select className='event-form-input' id="sport" name="sport" value={event.sport} onChange={handleChange}>
                 <option value=" "></option>
                 {sports.map((sport) => (
 
@@ -68,72 +69,71 @@ function CreateEventForm() {
                 ))}
               </select>
             </div>
-            <div className='form__labelinput'>
-              <label className='form__label'>Nombre de participant souhaité :</label>
-              <input type='number' className='form__input' id="participants" name="nb_participant" value={event.nb_participant} onChange={handleChange} />
+            <div className='event-form-input-container'>
+              <label className='event-form-label'>Nombre de participant souhaité :</label>
+              <input type='number' className='event-form-input' id="participants" name="nb_participant" value={event.nb_participant} onChange={handleChange} />
 
             </div>
           </div>
         </fieldset>
 
-        <fieldset className='form__middle'>
-          <h5 className='form__title'>Coordonnées</h5>
-          <div className='form__right'>
-            <div className='form__adress'>
-              <div className='form__adress__up'>
-                <div className='form__adress__up__number'>
-                  <label className='form__label__number'>Numéro :</label>
-                  <input className='form__input__number' type="text" id="number" name="number" value={event.number} onChange={handleChange}></input>
+        <hr className='create-event-divider'/>
+
+        <fieldset className='event-form-section'>
+          <h5 className='event-form-title'>Coordonnées</h5>
+          <div className='event-form-section-content'>
+            <div className='event-form-address'>
+              <div className='event-form-address-content'>
+                <div className='event-form-input-container event-form-address-number'>
+                  <label className='event-form-label'>Numéro :</label>
+                  <input className='event-form-input' type="text" id="number" name="number" value={event.number} onChange={handleChange}></input>
                 </div>
-                <div className='form__adress__up__street'>
-                  <label className='form__label__street'>Rue :</label>
-                  <input className='form__input__street' type="text" id="street" name="street" value={event.street} onChange={handleChange}></input>
+                <div className='event-form-input-container event-form-address-street'>
+                  <label className='event-form-label'>Rue :</label>
+                  <input className='event-form-input' type="text" id="street" name="street" value={event.street} onChange={handleChange}></input>
                 </div>
               </div>
-              <div className='form__adress__bottom'>
-                <div className='form__adress__bottom__postal'>
-                  <label className='form__label__postal'>Postal :</label>
-                  <input className='form__input__postal' type="text" id="postal-code" name="zip_code" value={event.zip_code} onChange={handleChange}></input>
+              <div className='event-form-address-content'>
+                <div className='event-form-input-container'>
+                  <label className='event-form-label'>Postal :</label>
+                  <input className='event-form-input' type="text" id="postal-code" name="zip_code" value={event.zip_code} onChange={handleChange}></input>
                 </div>
-                <div className='form__adress__bottom__city'>
-                  <label className='form__label__city'>Ville :</label>
-                  <input className='form__input__city' type="text" id="city" name="city" value={event.city} onChange={handleChange}></input>
+                <div className='event-form-input-container'>
+                  <label className='event-form-label'>Ville :</label>
+                  <input className='event-form-input' type="text" id="city" name="city" value={event.city} onChange={handleChange}></input>
                 </div>
               </div>
             </div>
-            <div className='form__date'>
-              <div className='form__date__hours__up' >
-                <div className='form__hours__up' >
-                  <label className='form__label'>Heure de début :</label>
-
-                  <input className='form__input__time' type="time" name="start_hour" value={event.start_hour} onChange={handleChange} ></input>
-
-
+            <div className='event-form-date'>
+              
+                <div className='event-form-input-container' >
+                  <label className='event-form-label'>Heure de début :</label>
+                  <input className='event-form-input' type="time" name="start_hour" value={event.start_hour} onChange={handleChange} ></input>
                 </div>
-                <div className='form__date'>
-                  <div className='form__date__up' >
-                    <label className='form__label'>Date de début :</label>
-                    <input className='form__input__date' type="date" id="start_date" name="start_date" value={event.start_date} onChange={handleChange} min={event.start_date} />
+               
+                  <div className='event-form-input-container' >
+                    <label className='event-form-label'>Date de début :</label>
+                    <input className='event-form-input' type="date" id="start_date" name="start_date" value={event.start_date} onChange={handleChange} min={event.start_date} />
 
                   </div>
-                </div>
-              </div>
-              <div className='form__date__hours__bottom' >
+                
+              
+              
 
-                <div className='form__hours__bottom' >
-                  <label className='form__label'>Heure de fin :</label>
-                  <input className='form__input__time' type="time" name="finish_hour" value={event.finish_hour} onChange={handleChange} ></input>
+                <div className='event-form-input-container' >
+                  <label className='event-form-label'>Heure de fin :</label>
+                  <input className='event-form-input' type="time" name="finish_hour" value={event.finish_hour} onChange={handleChange} ></input>
                 </div>
-                <div className='form__date__bottom'>
-                  <label className='form__label'>Date de fin :</label>
-                  <input className='form__input__date' type="date" id="end_date" name="finish_date" value={event.finish_date} onChange={handleChange} min={event.finish_date} />
+                <div className='event-form-input-container'>
+                  <label className='event-form-label'>Date de fin :</label>
+                  <input className='event-form-input' type="date" id="end_date" name="finish_date" value={event.finish_date} onChange={handleChange} min={event.finish_date} />
                 </div>
 
-              </div>
-              <div className='form__price'>
-                <label className='form__label'>Prix :</label>
+              
+              <div className='event-form-input-container'>
+                <label className='event-form-label'>Prix :</label>
 
-                <input className='form__input' type="number" min={0} name="price" value={event.price} onChange={handleChange}>
+                <input className='event-form-input' type="number" min={0} name="price" value={event.price} onChange={handleChange}>
 
                 </input>
               </div>
@@ -142,43 +142,44 @@ function CreateEventForm() {
 
         </fieldset>
 
-        <fieldset className='form__bottom'>
-          <h5 className='form__title'>Informations supplémentaires</h5>
-          <div className='form__right'>
-            <label className='form__label'>Niveau souhaité :</label>
-            <div className='form__bottom__radio' >
-              <div className='form__bottom__radio__debutant' >
+        <hr className='create-event-divider'/>
 
-                <input className='form__input__radio' type="radio" name="level" onChange={handleChange} value='Débutant' checked={event.level === "Débutant"}></input>
-                <label className='form__label__radio'>Débutant</label>
-              </div>
-              <div className='form__bottom__radio__debutant' id="niveau">
-                <input className='form__input__radio' type="radio" name="level" onChange={handleChange} value='Intermédiaire' checked={event.level === "Intermédiaire"}></input>
+        <fieldset className='event-form-section'>
+          <h5 className='event-form-title'>Informations supplémentaires</h5>
+          <div className='event-form-section-content'>
 
-                <label className='form__label__radio'>Intermédiaire</label>
+          <div className='event-form-input-radio-container'>
+            <label className='event-form-label'>Niveau souhaité :</label>
+            <div className='event-form-input-radio-content' >
+              <div className='event-form__bottom__radio__debutant' >
+
+                <input className='event-form-input' type="radio" name="level" onChange={handleChange} value='Débutant' checked={event.level === "Débutant"}></input>
+                <label className='event-form-label-radio'>Débutant</label>
               </div>
-              <div className='form__bottom__radio__debutant' id="niveau">
-                <input className='form__input__radio' type="radio" name="level" onChange={handleChange} value='Confirmé' checked={event.level === "Confirmé"}></input>
-                <label className='form__label__radio'>Confirmé</label>
+              <div className='event-form__bottom__radio__debutant' id="niveau">
+                <input className='event-form__input__radio' type="radio" name="level" onChange={handleChange} value='Intermédiaire' checked={event.level === "Intermédiaire"}></input>
+
+                <label className='event-form-label-radio'>Intermédiaire</label>
+              </div>
+              <div className='event-form__bottom__radio__debutant' id="niveau">
+                <input className='event-form__input__radio' type="radio" name="level" onChange={handleChange} value='Confirmé' checked={event.level === "Confirmé"}></input>
+                <label className='event-form-label-radio'>Confirmé</label>
               </div>
             </div>
-            {/* <div className='form__bottom__photo' id="niveau">
-              <label className='form__label'>Photo :</label>
-              <label htmlFor="file" className="form__label__file">Changer photo</label>
-              <input className='form__input__photo' type="file" accept="image/png, image/jpg, image/gif, image/jpeg" name="photo" value={formValues.nbParticipant} onChange={handleChange}></input>
-            </div> */}
-            <div className='form__bottom__description' id="niveau">
-              <label className='form__label'>Description :</label>
-              <textarea className='form__input' id="description" name="description" rows="5" cols="40" value={event.description} onChange={handleChange}></textarea>
+          </div>
+            
+            <div className='event-form-description' id="niveau">
+              <label className='event-form-label'>Description :</label>
+              <textarea className='event-form-input-textarea' id="description" name="description" rows="5" cols="40" value={event.description} onChange={handleChange}></textarea>
             </div>
-            <div className='form__bottom__materials' id="niveau">
-              <label className='form__label'>Matériels à apporter :</label>
+            <div className='event-form-equipement' id="niveau">
+              <label className='event-form-label'>Equipements à apporter :</label> 
 
-              <textarea className='form__input' id="materiels" name="equipement" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
+              <textarea className='event-form-input-textarea' id="materiels" name="equipement" rows="5" cols="40" value={event.equipement} onChange={handleChange}></textarea>
             </div>
-            <div className='form__bottom__button' id="niveau">
-              <button className='form__bottom__button__confirm' type="submit" >Confirmer</button>
-              <button onClick={handleClickCancel} className='form__bottom__button__cancel' type="button" >Annuler</button>
+            <div className='event-form__button' id="niveau">
+              <button onClick={handleClickCancel} className='event-form__button__cancel' type="button" >Annuler</button>
+              <button className='event-form__button__confirm' type="submit" >Confirmer</button>
 
             </div>
           </div>
