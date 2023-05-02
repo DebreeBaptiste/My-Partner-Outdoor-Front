@@ -77,7 +77,7 @@ function Event({
           </div>
           <div className='event__detail__down__moreinfo'>
             <Link to={`/event/${id}/about`}>
-              <p className='event__detail__down__moreinfo__text'>Plus d'informations en détails</p>
+              <p className='event__detail__down__moreinfo__text'>Plus de détails</p>
             </Link>
 
           </div>
