@@ -51,10 +51,10 @@ function Myevents() {
         <button onClick={handleUpcomingClick} className={activeButton === 'upcoming' ? 'active' : 'myevents__tabs__button__upcoming'} href="#" >À venir</button>
       </div>
       <div className='myevents'>
-        {eventsToShow.map(event => (
+      {eventsToShow.map(event => (
           <Event {...event} key={event.id} />
         ))}
-      </div>
+      </div> 
     </>
   );
 }

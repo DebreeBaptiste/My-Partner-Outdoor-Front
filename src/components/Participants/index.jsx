@@ -36,14 +36,14 @@ export const Participants = () => {
           }
           key={participant.userid}>
 
-          {userLogged && <Link to={`/profil/${participant.userid}`}>
+          {userLogged && <Link to={`/profil/${participant.userid}`} className='event-participants-wrapper'>
             <img src={participant.picture} className={`event-participants-avatar 
           ${eventOrganizerId === participant.userid ? "event-participants-organizer" : ""}`}
             />
             <p className='event-participants-name'>{participant.pseudo}</p>
           </Link>}
 
-          {!userLogged && <div onClick={handleClickParticipant}>
+          {!userLogged && <div onClick={handleClickParticipant} className='event-participants-wrapper'>
             <img src={participant.picture} 
             className={`event-participants-avatar 
             ${eventOrganizerId === participant.userid ? "event-participants-organizer" : ""}`}/>

@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 0.8rem;
+  margin-top: 1.6rem;
 
   &-title {
     font-family: 'Jost-Light', sans-serif;
@@ -78,7 +79,7 @@
 @media (min-width: 700px) {
   .search {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 1.6rem auto;
 
     &-bar-content {
       grid-template-columns: 1fr 1fr;

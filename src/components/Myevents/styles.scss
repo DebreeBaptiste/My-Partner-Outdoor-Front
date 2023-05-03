@@ -115,6 +115,9 @@
 }
 
 @media (max-width: 700px) {
+  .myevents__tabs {
+    margin-left: 1rem;
+  }
   .myevents__tabs__button {
     margin-right: 2%;
   }
@@ -124,4 +127,4 @@
   .myevents__tabs__button {
     margin-right: 1%;
   }
-} ;
+}
