@@ -175,6 +175,13 @@
     grid-template-rows: 1fr 1fr;
     grid-row-gap: 0.5rem;
 
+    &__image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: auto;
+    }
+
     &__detail__up__info__place__text {
       display: -webkit-box;
       -webkit-line-clamp: 1;
