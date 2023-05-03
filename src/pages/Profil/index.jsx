@@ -26,10 +26,6 @@ export const Profil = () => {
       navigate('/')
     }
 
-    /*  if (parseInt(userId, 10) === JSON.parse(localStorage.getItem('userId'))) {
-       navigate('/profil')
-     } */
-
     if (userLogged) {
       dispatch(getOtherUser(userId));
       dispatch(getOtherUserSport(userId));

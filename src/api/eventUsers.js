@@ -24,7 +24,7 @@ export const eventUserSubscribe = (eventId) => async (dispatch) => {
     const response = await axiosInstance.post(`/event/${eventId}/user/${localStorage.getItem('userId')}`);
 
     if (response.status === 200) {
-      dispatch(sendNotification("Vous participez à l'évênement"));
+      dispatch(sendNotification("Vous participez à l'événement"));
       dispatch(getEventUsers(eventId));
     }
 
@@ -38,7 +38,7 @@ export const eventUserUnsubscribe = (eventId) => async (dispatch) => {
     const response = await axiosInstance.delete(`/event/${eventId}/user/${localStorage.getItem('userId')}`);
 
     if (response.status === 200) {
-      dispatch(sendNotification("Vous ne participez plus à l'évênement"));
+      dispatch(sendNotification("Vous ne participez plus à l'événement"));
       dispatch(getEventUsers(eventId));
     }
 

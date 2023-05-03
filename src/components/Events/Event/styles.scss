@@ -49,7 +49,7 @@
           align-items: center;
 
           &__iconlocationpin {
-            width: 1.5rem;
+            width: 1.6rem;
 
             &__primary {
               fill: var(--icon-grey);
@@ -169,6 +169,7 @@
 @media (max-width: 470px) {
   .event {
     min-width: 200px;
+    max-width: 320px;
     height: auto;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -179,6 +180,12 @@
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
       overflow: hidden;
+    }
+    &__detail__up__info__place__iconlocationpin {
+      width: 1.3rem;
+    }
+    &__detail__up_info_participants__inconusercouple {
+      width: 1.3rem;
     }
 
     &__detail__up {

@@ -7,6 +7,7 @@ import { getEventUsers } from '../../api/eventUsers';
 
 /* Style */
 import './styles.scss';
+import { sendNotification } from '../../store/reducers/notification';
 
 export const Participants = () => {
 
@@ -16,10 +17,15 @@ export const Participants = () => {
 
   const eventParticipants = useSelector((state) => state.eventParticipants.participants);
   const eventOrganizerId = useSelector((state) => state.eventDetails.event.organizer_id);
+  const userLogged = useSelector((state) => state.user.logged);
 
   useEffect(() => {
     dispatch(getEventUsers(eventId));
   }, []);
+
+  const handleClickParticipant = () => {
+    dispatch(sendNotification('Connexion requise pour consulter le profil'));
+  }
 
   return (
     <section className="event-participants">
@@ -30,13 +36,20 @@ export const Participants = () => {
           }
           key={participant.userid}>
 
-          <Link to={`/profil/${participant.userid}`}>
+          {userLogged && <Link to={`/profil/${participant.userid}`}>
             <img src={participant.picture} className={`event-participants-avatar 
           ${eventOrganizerId === participant.userid ? "event-participants-organizer" : ""}`}
             />
-          </Link>
+            <p className='event-participants-name'>{participant.pseudo}</p>
+          </Link>}
 
-          <p className='event-participants-name'>{participant.pseudo}</p>
+          {!userLogged && <div onClick={handleClickParticipant}>
+            <img src={participant.picture} 
+            className={`event-participants-avatar 
+            ${eventOrganizerId === participant.userid ? "event-participants-organizer" : ""}`}/>
+            <p className='event-participants-name'>{participant.pseudo}</p>
+          </div>}
+
 
         </div>
       ))}

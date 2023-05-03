@@ -36,7 +36,7 @@ export const EventNav = ({ userLogged }) => {
     }
 
     await navigator.clipboard.writeText(location.href);
-    dispatch(sendNotification("Le lien de l'évênement a été copié !"));
+    dispatch(sendNotification("Le lien de l'événement a été copié !"));
   }
 
   return (

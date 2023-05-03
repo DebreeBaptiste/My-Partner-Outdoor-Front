@@ -16,6 +16,8 @@
     align-items: center;
     gap: 0.3rem;
     order: 2;
+    cursor: pointer;
+    height: fit-content;
   }
 
   &-content-organizer {
@@ -33,6 +35,7 @@
   }
 
   &-name {
+    text-align: center;
     font-family: 'Jost-Regular';
     font-size: var(--text-xs);
   }
