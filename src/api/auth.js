@@ -52,7 +52,7 @@ export const login = (navigate) => async (dispatch, getState) => {
 
 };
 
-export const logout = () => (dispatch) => {
+export const logout = (navigate) => (dispatch) => {
   localStorage.removeItem('token');
   localStorage.removeItem('userId');
   localStorage.removeItem('userAddressId');
@@ -61,4 +61,5 @@ export const logout = () => (dispatch) => {
   dispatch(userDetailsLogout());
   dispatch(userLogout());
   window.scrollTo({ top: 0 });
+  navigate('/');
 };

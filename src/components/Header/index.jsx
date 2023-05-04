@@ -1,13 +1,13 @@
 /* Tool */
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { openModal } from '../../store/reducers/modalLogin';
 import { logout } from '../../api/auth';
 import { addErrorMessage } from '../../store/reducers/error';
 
 /* Component */
 import logo from '../../assets/Mountain-adventure.svg';
-import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../Button'
 
 
@@ -18,6 +18,8 @@ export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
 
@@ -40,7 +42,7 @@ export const Header = () => {
   };
 
   const handleClickLogout = () => {
-    dispatch(logout())
+    dispatch(logout(navigate))
   }
 
 
