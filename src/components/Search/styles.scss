@@ -58,13 +58,16 @@
   }
 
   &-bar-content-submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     border: var(--border-sm) solid var(--dark-black);
     background-color: var(--dark-black);
   }
 
   &-bar-content-submit-button-image {
-    height: 100%;
+    width: 1.4rem;
   }
 
   &-bar-content-filter-select {
