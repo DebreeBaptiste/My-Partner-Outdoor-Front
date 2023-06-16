@@ -6,10 +6,10 @@ export const createEmptyFieldErrorMessage = (state) => {
     if (state[property] === undefined || state[property] === '') {
 
       switch (property) {
-        case 'firstname':
-          return 'Le champ prénom est vide';
         case 'lastname':
           return 'Le champ nom est vide';
+        case 'firstname':
+          return 'Le champ prénom est vide';
         case 'pseudo':
           return 'Le champ pseudo est vide';
         case 'sport':

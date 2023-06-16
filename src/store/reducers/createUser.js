@@ -2,8 +2,8 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const initialState = {
   credentials: {
-    firstname: '',
     lastname: '',
+    firstname: '',
     email: '',
     password: '',
     repeat_password: '',
@@ -23,8 +23,8 @@ const createUserReducer = createReducer(initialState, (builder) => {
     })
     .addCase(resetFormField, (state) => {
       state.credentials = {
-        firstname: '',
         lastname: '',
+        firstname: '',
         email: '',
         password: '',
         repeat_password: '',

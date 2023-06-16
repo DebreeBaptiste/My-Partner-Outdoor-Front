@@ -5,8 +5,9 @@ import { isPasswordValid } from './isPasswordValid';
 export const checkErrorBeforeCallAPI = (state, dispatch) => {
 
   // check if all field are filled and send error message if not
-  if (createEmptyFieldErrorMessage(state.createUser.credentials) !== undefined) {
-    dispatch(addErrorMessage(createEmptyFieldErrorMessage(state.createUser.credentials)));
+  const emptyFieldErrorMessage = createEmptyFieldErrorMessage(state.createUser.credentials);
+  if (emptyFieldErrorMessage !== undefined) {
+    dispatch(addErrorMessage(emptyFieldErrorMessage));
     return false
   }
 

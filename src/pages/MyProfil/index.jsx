@@ -66,10 +66,6 @@ export const MyProfil = () => {
 
   const handleChangeSportValue = (event) => {
     const newSport = user.sport.find((sport) => sport.name === event.target.value);
-    if (newSport) {
-      return
-    }
-
     if (!newSport) {
       const sportToAdd = sports.find((sport) => sport.name === event.target.value)
       dispatch(addUserSport(sportToAdd.id));
@@ -83,16 +79,21 @@ export const MyProfil = () => {
 
 
   const handleClickDelete = (event) => {
-    if (user.sport.length === 1) {
-      dispatch(addErrorMessage("Vous devez avoir au moins un sport"))
-      return
+    
+    const sportName = event.target.closest('.profil-user-sport-item').textContent;
+    const sportToDelete = user.sport.find((sport) => sport.name === sportName);
+  
+    if (!sportToDelete) {
+      return;
     }
-
-    const sportToDelete = user.sport.find((sport) => sport.name === event.target.closest('.profil-user-sport-item').textContent)
-
-    dispatch(deleteUserSport(sportToDelete.sport_id));
-    const deleteUserSportToState = user.sport.filter((sport) => sport.sport_id !== sportToDelete.sport_id);
-    dispatch(removeSport(deleteUserSportToState));
+  
+    if (user.sport.length === 1) {
+      dispatch(addErrorMessage("Vous devez avoir au moins un sport"));
+    } else {
+      dispatch(deleteUserSport(sportToDelete.sport_id));
+      const updatedUserSports = user.sport.filter((sport) => sport.sport_id !== sportToDelete.sport_id);
+      dispatch(removeSport(updatedUserSports));
+    }
   };
 
   const errorMessage = useSelector((state) => state.error.message);
@@ -110,7 +111,7 @@ export const MyProfil = () => {
           <div className='profil-user-container'>
             <div className='profil-user-picture-container'>
               <div className='profil-user-picture-wrapper'>
-                <img src={`${user.picture}?key=${updatePictureDate}`} className='profil-user-picture' />
+                <img src={`${user.picture}?key=${updatePictureDate}`} className='profil-user-picture' alt="photo de profil"/>
                 {edit && <img src={editPictureIcon} alt="edit picture button" className='profil-user-picture-edit' onClick={handleClickOpenEditPictureModal} />}
               </div>
             </div>
@@ -128,7 +129,13 @@ export const MyProfil = () => {
             <ul className='profil-user-sport-list'>
               {
                 user.sport.map((sport) => (
-                  <UserSport sport={sport} key={`sportId-${sport.sport_id}`} edit={edit} deleteSport={handleClickDelete} />))
+                  <UserSport 
+                  sport={sport} 
+                  key={`sportId-${sport.sport_id}`} 
+                  edit={edit} 
+                  deleteSport={handleClickDelete} 
+                  />
+                  ))
               }
 
               {edit && <select className='profil-user-sport-item add' onChange={handleChangeSportValue}>

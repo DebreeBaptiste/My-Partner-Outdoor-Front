@@ -7,7 +7,7 @@ export const deleteUser = () => async (dispatch) => {
   const userDataId = JSON.parse(localStorage.getItem('userId'))
   const { data, status } = await axiosInstance.delete(`/user/${userDataId}`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: axiosInstance.defaults.headers.common['Authorization']
     }
   })
 
